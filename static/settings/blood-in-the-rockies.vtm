@@ -1,0 +1,81 @@
+{
+	"chapters" : [
+		{
+			"name" : "Denver in Decline",
+			"scenes" : [
+				{
+					"name" : "Bedlam Downtown",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "An Audience with the Prince",
+					"story" : "",
+					"notes": []
+				}
+			]
+		},
+		{
+			"name" : "The \"Free States of Colorado\"",
+			"scenes" : [
+				{
+					"name" : "Anarch You Kidding Me?",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "The New Council",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "Live and Let Die",
+					"story" : "",
+					"notes": []
+				}
+			]
+		},
+		{
+			"name" : "They Walk in the Light",
+			"scenes" : [
+				{
+					"name" : "What Are You?",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "Why We Don't Go to Cheesman Park",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "A Mysterious Substance",
+					"story" : "",
+					"notes" : []
+				}
+			]
+		},
+		{
+			"name" : "Among the Shadows",
+			"scenes" : [
+				{
+					"name" : "Dread Rocks",
+					"story" : "A.K.A. \"Why We Also Don't Go Out into the Rockies\"",
+					"notes": []
+				},
+				{
+					"name" : "They Might Be Onto Us",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "A Horrifying Discovery",
+					"story" : "",
+					"notes": []
+				}
+			]
+		}
+	],
+	"notes" : [
+	]
+}

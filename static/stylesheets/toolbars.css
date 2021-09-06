@@ -1,0 +1,107 @@
+/*************************************/
+/*             TOOLBAR               */
+/*************************************/
+#toolbar__wrapper {
+    padding-top: 20px;
+	height: calc( 100vh - 100px );
+	position: absolute;
+	font-size: 1.25em;
+	font-family: 'Modern Antiqua', cursive;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: width 0.5s ease, padding-left 0.5s ease;
+    background-color: black;
+    z-index: 200;
+}
+#toolbar__wrapper:not(.slideLeft) {
+	width: 250px;
+    padding-left: 20px;
+}
+#toolbar__wrapper.slideLeft {
+	width: 0px;
+	padding-left: 0px;
+}
+#toolbar {
+	margin-right: 30px;
+}
+.toolbar-item-header:hover,
+.clan-compulsion-header:hover {
+	cursor: pointer;
+}
+.toolbar-item,
+.no-bullet,
+.chapter {
+	list-style-type: none;
+}
+.hover-link:not(.active):hover {
+	cursor: pointer;
+	background-color: #7D191640;
+}
+.hover-link.active {
+	background-color: #7D191660;
+}
+
+/*************************************/
+/*           STORY TOOLBAR           */
+/*************************************/
+#story-toolbar {
+	position: absolute;
+    right: 0;
+    top: 0;
+    color: #A2091E;
+    padding: 30px 20px 0 0;
+    font-size: 1.25em;
+    font-family: 'Modern Antiqua', cursive;
+}
+.chapter:not(.active):hover {
+	cursor: pointer;
+}
+.chapter.active {
+	opacity: 0.7;
+}
+#story-toolbar-overlay {
+	width: calc( 100% - 2px );
+    bottom: 140px;
+    left: 1px;
+    background-color: black;
+    position: absolute;
+    overflow-x: auto;
+    overflow-y: hidden;
+    opacity: 0.9;
+    height: 0px;
+    transition: height 0.5s ease;
+}
+#story-toolbar-overlay.active {
+	height: 120px;
+}
+#story-toolbar-overlay>div {
+	display: flex;
+}
+#chapter-header:before {
+    content: "\e91f";
+    font-family: 'chronicle-companion-10';
+    position: absolute;
+}
+#btn_pc:before {
+    content: "\e923";
+    font-family: 'chronicle-companion-10';
+}
+#btn_npc:before {
+    content: "\e923";
+    font-family: 'chronicle-companion-10';
+}
+#btn_locations:before {
+    content: "\e903";
+    font-family: 'chronicle-companion-10';
+}
+#notes:before {
+    content: "\e907";
+    font-family: 'chronicle-companion-10';
+    line-height: 1.5;
+}
+
+
+
+.spacer {
+	flex: 0 0 1px;
+}

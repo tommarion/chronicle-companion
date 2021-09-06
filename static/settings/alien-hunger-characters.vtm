@@ -1,0 +1,1599 @@
+{
+	"pcs" : {
+		"Monica Belhurst" : {
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "1"
+						},
+						"dexterity" : {
+							"level" : "2"
+						},
+						"stamina" : {
+							"level" : "3"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "4"
+						},
+						"composure" : {
+							"level": "3"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "2"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "3"
+						}
+					}
+				},
+				"skills" : {
+					"athletics" : {
+						"level" : "1"
+					},
+					"brawl" : {
+						"level" : "1"
+					},
+					"drive" : {
+						"level" : "1"
+					},
+					"firearms" : {
+						"level" : "3"
+					},
+					"stealth" : {
+						"level" : "1"
+					},
+					"animal ken" : {
+						"level" : "1"
+					},
+					"etiquette" : {
+						"level" : "1"
+					},
+					"insight" : {
+						"level" : "2"
+					},
+					"leadership" : {
+						"level" : "2"
+					},
+					"performance" : {
+						"level" : "2",
+						"specialty" : "acting"
+					},
+					"persuasion" : {
+						"level" : "2"
+					},
+					"streetwise" : {
+						"level" : "1"
+					},
+					"subterfuge" : {
+						"level" : "2"
+					},
+					"academics" : {
+						"level" : "1"
+					},
+					"awareness" : { 
+						"level" : "2"
+					},
+					"investigation" : {
+						"level" : "4"
+					},
+					"politics" : {
+						"level" : "1"
+					},
+					"technology" : {
+						"level" : "1"
+					}
+				},
+				"disciplines" : {
+					"dominate" : {
+						"level" : "3"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "8",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"description" : ""
+		},
+		"Theresa Harper" : {
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "2"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "3"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "2"
+						},
+						"manipulation" : {
+							"level" : "1"
+						},
+						"composure" : {
+							"level": "3"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "4"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "3"
+						}
+					}
+				},
+				"skills" : {
+					"brawl" : {
+						"level" : "1"
+					},
+					"drive" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "1"
+					},
+					"stealth" : {
+						"level" : "1"
+					},
+					"animal ken" : {
+						"level" : "3"
+					},
+					"etiquette" : {
+						"level" : "1"
+					},
+					"intimidation" : {
+						"level" : "1"
+					},
+					"performance" : {
+						"level" : "1"
+					},
+					"persuasion" : {
+						"level" : "1"
+					},
+					"subterfuge" : {
+						"level" : "1"
+					},
+					"academics" : {
+						"level" : "1"
+					},
+					"awareness" : {
+						"level" : "1"
+					},
+					"investigation" : {
+						"level" : "2"
+					},
+					"medicine" : {
+						"level" : "3"
+					},
+					"occult" : {
+						"level" : "2"
+					},
+					"science" : {
+						"level" : "4",
+						"specialty" : "chemistry"
+					},
+					"technology" : {
+						"level" : "2"
+					}
+				},
+				"disciplines" : {
+					"protean" : {
+						"level" : "3"
+					},
+					"animalism" : {
+						"level" : "1"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "9",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"description" : "",
+			"notes" : [
+				"Fed from Mavis"
+			]
+		},
+		"Arnold Simpson" : {
+			"aka" : "Flash",		
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "3"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "4"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "2"
+						},
+						"composure" : {
+							"level": "3"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "1"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "2"
+						}
+					}
+				},
+				"skills" : {
+					"athletics" : {
+						"level" : "4",
+						"specialty" : "football"
+					},
+					"brawl" : {
+						"level" : "3"
+					},
+					"firearms" : {
+						"level" : "3"
+					},
+					"larceny" : {
+						"level" : "2"
+					},
+					"melee" : {
+						"level" : "1"
+					},
+					"stealth" : {
+						"level" : "2"
+					},
+					"intimidation" : {
+						"level" : "1"
+					},
+					"persuasion" : {
+						"level" : "1"
+					},
+					"streetwise" : {
+						"level" : "3"
+					},
+					"subterfuge" : {
+						"level" : "2"
+					},
+					"occult" : {
+						"level" : "1"
+					}
+				},
+				"disciplines" : {
+					"celerity" : {
+						"level" : "1"
+					},
+					"potence" : {
+						"level" : "2"
+					},
+					"presence" : {
+						"level" : "1"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "7",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "7",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"description" : "",
+			"notes" : [
+				"Killed Vince"
+			]
+		},
+		"Emerson Wilkershire III" : {
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "1"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "2"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "4"
+						},
+						"manipulation" : {
+							"level" : "3"
+						},
+						"composure" : {
+							"level": "3"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "3"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "2"
+						}
+					}
+				},
+				"skills" : {
+					"athletics" : {
+						"level" : "1",
+						"specialty" : "riding"
+					},
+					"drive" : {
+						"level" : "1"
+					},
+					"firearms" : {
+						"level" : "1"
+					},
+					"melee" : {
+						"level" : "1"
+					},
+					"stealth" : {
+						"level" : "2"
+					},
+					"animal ken" : {
+						"level" : "1"
+					},
+					"etiquette" : {
+						"level" : "2"
+					},
+					"intimidation" : {
+						"level" : "2"
+					},
+					"performance" : {
+						"level" : "2"
+					},
+					"persuasion" : {
+						"level" : "2"
+					},
+					"awareness" : {
+						"level" : "1"
+					},
+					"finance" : {
+						"level" : "3"
+					},
+					"investigation" : {
+						"level" : "1"
+					},
+					"politics" : {
+						"level" : "3"
+					},
+					"technology" : {
+						"level" : "3"
+					}
+				},
+				"disciplines" : {
+					"presence" : {
+						"level" : "3"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "8",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"description" : "",
+			"notes" : [
+				"Bought a blood bank"
+			]
+		}
+	},
+	"npcs" : {
+		"Marcus Smith-Kerns" : {
+			"bio" : "Another of Prestor's victims, Marcus awakens with the PCs in Prestor's basement at the start of the story.",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "2"
+						},
+						"dexterity" : {
+							"level" : "4"
+						},
+						"stamina" : {
+							"level" : "2"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "1"
+						},
+						"manipulation" : {
+							"level" : "3"
+						},
+						"composure" : {
+							"level": "2"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "2"
+						},
+						"wits" : {
+							"level" : "4"
+						},
+						"resolve" : {
+							"level" : "5"
+						}
+					}
+				},
+				"skills" : {
+					"performance" : {
+						"level" : "3",
+						"specialty" : "acting"
+					},
+					"awareness" : {
+						"level" : "3"
+					},
+					"athletics" : {
+						"level" : "1"
+					},
+					"streetwise" : {
+						"level" : "1"
+					},
+					"subterfuge" : {
+						"level" : "3"
+					},
+					"drive" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "1"
+					},
+					"stealth" : {
+						"level" : "3"
+					},
+					"survival" : {
+						"level" : "1"
+					},
+					"technology" : {
+						"level" : "1"
+					},
+					"finance" : {
+						"level" : "1"
+					},
+					"academics" : {
+						"level" : "1",
+						"specialty" : "linguistics"
+					},
+					"occult" : {
+						"level" : "4",
+						"specialty" : "paganism"
+					},
+					"brawl" : {
+						"level" : "2"
+					},
+					"insight" : {
+						"level" : "2"
+					}
+				},
+				"disciplines" : {
+					"auspex" : {
+						"level" : "3"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "7",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "8",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"description" : ""
+		},
+		"Jacob Prestor" : {
+			"aka" : "Louis Pasteur",
+			"bio" : "",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "2"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "3"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "3"
+						},
+						"composure" : {
+							"level": "4"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "5"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "3"
+						}
+					}
+				},
+				"skills" : {
+					"awareness" : {
+						"level" : "2"
+					},
+					"brawl" : {
+						"level" : "2"
+					},
+					"insight" : {
+						"level" : "3"
+					},
+					"intimidation" : {
+						"level" : "1"
+					},
+					"leadership" : {
+						"level" : "4"
+					},
+					"subterfuge" : {
+						"level" : "4"
+					},
+					"etiquette" : {
+						"level" : "3"
+					},
+					"firearms" : {
+						"level" : "1"
+					},
+					"stealth" : {
+						"level" : "2"
+					},
+					"politics" : {
+						"level" : "2"
+					},
+					"finance" : {
+						"level" : "1"
+					},
+					"investigation" : {
+						"level" : "3"
+					},
+					"academics" : {
+						"level" : "2",
+						"specialty" : "linguistics"
+					},
+					"medicine" : {
+						"level" : "4"
+					},
+					"science" : {
+						"level" : "5",
+						"specialty" : "chemistry"
+					}
+				},
+				"disciplines" : {
+					"auspex" : {
+						"level" : "2"
+					},
+					"celerity" : {
+						"level" : "2"
+					},
+					"dominate" : {
+						"level" : "4"
+					},
+					"potence" : {
+						"level" : "2"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "7",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "8",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"generation" : "12th",
+			"embraced" : "1895",
+			"clan" : "Caitiff",
+			"apparentAge" : "Late 50s",
+			"description" : "Heavy-set and bearded, with a wild flame in is eyes",
+			"notes" : []
+		},
+		"Thaddeus" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Edward Williams" : {
+			"aka" : "Edward, Prince of Denver",
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Duke" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Jason Dodgerson" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Karen Mauve" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Leslie Boothe" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Leslie Wilkes" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Mina" : {
+
+		},
+		"Lucy" : {
+
+		},
+		"Roger Manot" : {
+
+		},
+		"Rachel" : {
+			"bio" : "",
+			"sheet" : {
+
+			},
+			"generation" : "",
+			"embraced" : "",
+			"clan" : "",
+			"apparentAge" : "",
+			"description" : "",
+			"notes" : []
+		},
+		"Earl" : {
+			"bio" : "<p>Along with Duke and The Count (Gregory), they are Prince Edward's Enforcement Arm, and happily serve him. They enjoy the finer things in life in exchange for their obedience.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "5"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "4"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "1"
+						},
+						"composure" : {
+							"level": "2"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "2"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "2"
+						}
+					}
+				},
+				"skills" : {
+					"athletics" : {
+						"level" : "2"
+					},
+					"brawl" : {
+						"level" : "3"
+					},
+					"insight" : {
+						"level" : "3"
+					},
+					"intimidate" : {
+						"level" : "2"
+					},
+					"drive" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "3"
+					},
+					"melee" : {
+						"level" : "1"
+					},
+					"brawl" : {
+						"level" : "3"
+					}
+				},
+				"disciplines" : {
+					"fortitude" : {
+						"level" : "2"
+					},
+					"potence" : {
+						"level" : "2"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "7",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "4",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "6",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"generation" : "11th",
+			"embraced" : "1952",
+			"clan" : "Ventrue",
+			"apparentAge" : "32",
+			"description" : "A heavyset man who looks like a bouncer",
+			"notes" : []
+		},
+		"Gregory" : {
+			"aka" : "The Count",
+			"bio" : "<p>Along with Duke and Earl, they are Prince Edward's Enforcement Arm, and happily serve him. They enjoy the finer things in life in exchange for their obedience.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "3"
+						},
+						"dexterity" : {
+							"level" : "5"
+						},
+						"stamina" : {
+							"level" : "4"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "1"
+						},
+						"manipulation" : {
+							"level" : "3"
+						},
+						"composure" : {
+							"level": "2"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "2"
+						},
+						"wits" : {
+							"level" : "1"
+						},
+						"resolve" : {
+							"level" : "3"
+						}
+					}
+				},
+				"skills" : {
+					"brawl" : {
+						"level" : "3"
+					},
+					"athletics" : {
+						"level" : "3"
+					},
+					"intimidate" : {
+						"level" : "2"
+					},
+					"subterfuge" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "1"
+					},
+					"melee" : {
+						"level" : "3"
+					},
+					"stealth" : {
+						"level" : "2"
+					},
+					"academics" : {
+						"level" : "1",
+						"specialty" : "linguistics"
+					}
+				},
+				"disciplines" : {
+					"protean" : {
+						"level" : "2"
+					},
+					"potence" : {
+						"level" : "2"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "7",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "5",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"generation" : "12th",
+			"embraced" : "1963",
+			"clan" : "Brujah",
+			"apparentAge" : "28",
+			"description" : "A thin-whip and moves very quickly with the grace of a dancer",
+			"notes" : []
+		},
+		"Detective William Brandt" : {
+			"bio" : "",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "2"
+						},
+						"dexterity" : {
+							"level" : "2"
+						},
+						"stamina" : {
+							"level" : "2"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "2"
+						},
+						"manipulation" : {
+							"level" : "4"
+						},
+						"composure" : {
+							"level": "4"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "4"
+						},
+						"wits" : {
+							"level" : "4"
+						},
+						"resolve" : {
+							"level" : "5"
+						}
+					}
+				},
+				"skills" : {
+					"awareness" : {
+						"level" : "3"
+					},
+					"brawl" : {
+						"level" : "1"
+					},
+					"insight" : {
+						"level" : "3"
+					},
+					"intimidatio" : {
+						"level" : "1"
+					},
+					"streetwise" : {
+						"level" : "3"
+					},
+					"subterfuge" : {
+						"level" : "2"
+					},
+					"drive" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "2"
+					},
+					"academics" : {
+						"level" : "3"
+					},
+					"medicine" : {
+						"level" : "1"
+					},
+					"investigation" : {
+						"level" : "4"
+					},
+					"technology" : {
+						"level" : "2"
+					},
+					"politics" : {
+						"level" : "3"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "9",
+						"superficial" : "0",
+						"aggravated" : "0"
+					}
+				}
+			},
+			"age" : "Mid 40s",
+			"description" : "Rumpled-looking, untidy, and easily misjudged. He is given to making seemingly irrelevant statements that tend to have some relevance.",
+			"notes" : []
+		},
+		"Tony" : {
+			"bio" : "<p>An Italian of the 13th century, Tony is a 9th Generation vampire. He has traveled the world over, rarely staying in one place for too long. He has been in Denver for 3 years now, and getting the itch to get involved in some trouble.</p><p>He has been seen feeding off of his favorites in the 24th Diocese in public, and seeks out the players to meddle in their affairs. He may also try to use them against Edward which ends up in his death.</p><p>He is an arrogant type, given to grand mysterious gestures, such as his appearance to the characters. Theatricality is one of hsi ways of combatting boredom. As may be obvious, Tony's derangement deals with this rash love of danger. It is not quite a death wish, though not entirely dissimilar either.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "2"
+						},
+						"dexterity" : {
+							"level" : "4"
+						},
+						"stamina" : {
+							"level" : "3"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "2"
+						},
+						"composure" : {
+							"level": "3"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "3"
+						},
+						"wits" : {
+							"level" : "2"
+						},
+						"resolve" : {
+							"level" : "5"
+						}
+					}
+				},
+				"skills" : {
+					"performance" : {
+						"level" : "1",
+						"specialty" : "acting"
+					},
+					"awareness" : {
+						"level" : "4"
+					},
+					"athletics" : {
+						"level" : "2"
+					},
+					"intimidation" : {
+						"level" : "2"
+					},
+					"streetwise" : {
+						"level" : "4"
+					},
+					"subterfuge" : {
+						"level" : "3"
+					},
+					"firearems" : {
+						"level" : "1"
+					},
+					"melee" : {
+						"level": "1"
+					},
+					"medicine" : {
+						"level" : "3"
+					},
+					"stealth" : {
+						"level" : "4"
+					},
+					"politics" : {
+						"level" : "2"
+					},
+					"occult" : {
+						"level" : "2"
+					},
+					"academics" : {
+						"level": "2",
+						"specialty" : "linguistics"
+					}
+				},
+				"disciplines" : {
+					"auspex" : {
+						"level" : "5"
+					},
+					"dominate" : {
+						"level" : "2"
+					},
+					"obfuscate" : {
+						"level" : "2"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "8",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "6",
+						"stains" : "0"
+					},
+					"hunger" : "1"
+				}
+			},
+			"generation" : "9th",
+			"embraced" : "1228",
+			"clan" : "Malkavian",
+			"apparentAge" : "Late 20s",
+			"description" : "Tall, dark, Mediterranean type",
+			"notes" : []
+		},
+		"Mavis and Suzy Jackson" : {
+			"bio" : "<p>Mavis is the librarian at the Denver Public Library. Her connection with Emerson is that his bank gave them a loan so the library could acquire some rare books, and Mavis was his contact for the negotiations.</p><p>Prestor couldn't bear to leave Mavis' 8-year-old daughter alone, so he kidnapped her too. Mavis and Suzy should be used as a counter example to the inhumanity of the players now that they have transformed.</p><p>Use them as temptation to feed. Use them to highlight the differences of being dead vs alive (inability to feel temperature changes, don't breathe so can't cough from smoke).</p>"
+		},
+		"Vincent Belhurst" : {
+			"bio" : "<p>Monica's husband, Vince is a DPD cop. He was another one of Prestor's would-be victims and awakens with the group in his basement. As it happens, however, Prestor's death resulted in the reversal of his transformation.</p><p>Vince will be torn as to what to do about his wife; on the one hand he cannot condone violence, but he still loves Monica. If she can convince him they are only feeding off animals, he will reluctantly accept the situation and even assist them to the best of his ability. Otherwise he should harass them to the ends of the Earth</p><p>Monica can also simply convince him to leave or even fake her own death, but they will both be heartbroken without the other. Be sure to remind Monica of this.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "3"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "3"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "3"
+						},
+						"composure" : {
+							"level": "3"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "3"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "3"
+						}
+					}
+				},
+				"skills" : {
+					"alertness" : {
+						"level" : "2"
+					},
+					"insight" : {
+						"level" : "3"
+					},
+					"intimidation" : {
+						"level" : "2"
+					},
+					"streetwise" : {
+						"level" : "2"
+					},
+					"drive" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "2"
+					},
+					"investigation" : {
+						"level" : "3"
+					},
+					"technology" : {
+						"level" : "3",
+						"specialty" : "theater tech"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					}
+				}
+			},
+			"description" : "",
+			"notes" : []
+		},
+		"James" : {
+			"bio": "<p>A small-timer in Edward's court, James would love to move up but is too much of a coward. He spends his time hiding from the elders and terrorizing the youngsters. If he should get into a fight with the PCs, have him surrender immediately upon taking any damage and offer information in return.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "4"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "4"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "2"
+						},
+						"manipulation" : {
+							"level" : "4"
+						},
+						"composure" : {
+							"level": "2"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "1"
+						},
+						"wits" : {
+							"level" : "3"
+						},
+						"resolve" : {
+							"level" : "2"
+						}
+					}
+				},
+				"skills" : {
+					"performance" : {
+						"level" : "1",
+						"specialty" : "acting"
+					},
+					"awareness" : {
+						"level" : "1"
+					},
+					"athletics" : {
+						"level" : "3"
+					},
+					"brawl" : {
+						"level" : "4"
+					},
+					"streetwise" : {
+						"level" : "2"
+					},
+					"melee" : {
+						"level" : "2"
+					},
+					"stealth" : {
+						"level" : "1"
+					},
+					"occult" : {
+						"level" : "1"
+					},
+					"politics" : {
+						"level" : "1"
+					},
+					"larceny" : {
+						"level" : "4"
+					}
+				},
+				"disciplines" : {
+					"fortitude" : {
+						"level" : "3"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "7",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "4",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"humanity" : {
+						"maxLevel" : "4",
+						"stains" : "0"
+					},
+					"hunger" : "0"
+				}
+			},
+			"generation" : "12th",
+			"clan" : "Gengrel",
+			"description" : "Short, stocky, blonde hair with a buzzcut.",
+			"apparentAge" : "Late teens",
+			"notes" : []
+		},
+		"Roger Liverman" : {
+			"bio" : "<p>The biochemist hired by Prestor to help with the research of the serum. He currently rents lab space in the University of Colorado Medical School. He is very skilled, and may potentially try to track the players down out of curiosity if they leave too many clues. He is already mystified by the strange properties of Vampire blood. Unmarried, he spends most of his evenings in the club scene.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "1"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "2"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "3"
+						},
+						"manipulation" : {
+							"level" : "1"
+						},
+						"composure" : {
+							"level": "2"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "4"
+						},
+						"wits" : {
+							"level" : "2"
+						},
+						"resolve" : {
+							"level" : "4"
+						}
+					}
+				},
+				"skills" : {
+					"awareness" : {
+						"level" : "1"
+					},
+					"insight" : {
+						"level" : "3"
+					},
+					"leadership" : {
+						"level" : "1"
+					},
+					"drive" : {
+						"level" : "2"
+					},
+					"firearms" : {
+						"level" : "1"
+					},
+					"performance" : {
+						"level" : "1",
+						"specialty" : "music"
+					},
+					"technology" : {
+						"level" : "3"
+					},
+					"investigation" : {
+						"level" : "3"
+					},
+					"medicine" : {
+						"level" : "3"
+					},
+					"science" : {
+						"level" : "4",
+						"specialty" : "biochemistry"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					}
+				}
+			},
+			"description" : "A paunchy, balding, middle-aged man with glasses. The little hair he does have is blond. A picturesque moderately successful businessman.",
+			"notes" : []
+		},
+		"Robert Klondike" : {
+			"bio" : "<p>A peasant from England, Robert was originally made into a ghoul by  an English Vampire as cannon fodder in the war with the Sabbat. He soon found himself travelling all over Europe against his will and under the Domination of one Cainite or another. While he greatly enjoyed the powers that drinking vitae afforded him, he did resent the loss of freedom associated with it.</p><p>In hopes of finding a Vampire to embrace him, he went to the New World and eventually ended up with Thaddeus. Eventually realizing that Thaddeus had no intentions of Embracing him, he went out on his own, but not without useful information.</p><p>With Thaddeus' knowledge of Prestor's serums, he broke into the scientist's house (before it was burnt down by the Prince's crew) in hopes of turning himself scientifically. He found Prestor's notes where he discovered that Liverman was working with him, so he broke into Liverman's house as well, where he stole the serums.</p><p>He now sits in his home, serums in hand, unsure of what to do and unaware of the players' existance. If the players do not discover him, he will inject a coctail of the serums and end up dying.</p>",
+			"sheet" : {
+				"attributes" : {
+					"physical" : {
+						"strength" : {
+							"level": "3"
+						},
+						"dexterity" : {
+							"level" : "3"
+						},
+						"stamina" : {
+							"level" : "3"
+						}
+					},
+					"social" : {
+						"charisma" : {
+							"level": "1"
+						},
+						"manipulation" : {
+							"level" : "2"
+						},
+						"composure" : {
+							"level": "2"
+						}
+					},
+					"mental" : {
+						"intelligence" : {
+							"level" : "3"
+						},
+						"wits" : {
+							"level" : "2"
+						},
+						"resolve" : {
+							"level" : "3"
+						}
+					}
+				},
+				"skills" : {
+					"awareness" : {
+						"level" : "2"
+					},
+					"brawl" : {
+						"level" : "3"
+					},
+					"insight" : {
+						"level" : "2"
+					},
+					"streetwise" : {
+						"level" : "1"
+					},
+					"subterfuge" : {
+						"level" : "2"
+					},
+					"drive" : {
+						"level" : "1"
+					},
+					"firearms" : {
+						"level" : "4"
+					},
+					"melee" : {
+						"level" : "3"
+					},
+					"stealth" : {
+						"level" : "2"
+					},
+					"investigation" : {
+						"level" : "2"
+					},
+					"occult" : {
+						"level" : "2"
+					},
+					"technology" : {
+						"level" : "3"
+					}
+				},
+				"disciplines" : {
+					"fortitude" : {
+						"level" : "2"
+					},
+					"celerity" : {
+						"level" : "2"
+					},
+					"potence" : {
+						"level" : "3"
+					}
+				},
+				"trackers" : {
+					"health" : {
+						"maxLevel" : "6",
+						"superficial" : "0",
+						"aggravated" : "0"
+					},
+					"willpower" : {
+						"maxLevel" : "5",
+						"superficial" : "0",
+						"aggravated" : "0"
+					}
+				}
+			},
+			"apparentAge" : "Late 50s and aging by the day",
+			"description" : "He has dirty blond hair and a beard and mustache, rapidly going gray. Dresses in old rugby shirts, unless he expects danger, in which he'll wear a flak jacked or bullet proof vest underneath.",
+			"notes" : []
+		}
+	}
+}

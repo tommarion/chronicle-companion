@@ -1,0 +1,85 @@
+{
+	"pcs" : {
+	},
+	"npcs" : {
+		"Monica Belhurst" : {
+			"bio" : "Became baron or human??"
+		},
+		"Theresa Harper" : {
+			"bio" : "After the events of Alien Hunger, Theresa became the de-facto Baron of City Park headquartered at the Museum of Natural History--much to the chagrin of Prince Edward and the Camarilla."
+		},
+		"Arnold Simpson" : {
+			"aka" : "Flash",
+			"bio" : "Theresa's unofficial \"sheriff\", though don't call him that. Upon hearing about the exploits of Nines Rodriguez in LA, the two quickly struck up a friendship to compare notes (you can imagine where that's going)."
+		},
+		"Emerson Wilkershire III" : {
+
+		},
+		"Marcus Smith-Kerns" : {
+
+		},
+		"Louis Pasteur" : {
+			"aka" : "Jacob Prestor"
+		},
+		"Thaddeus" : {
+			"bio" : "Has left Denver after the events of Alien Hunger, but his mark remains and he is infamous among Nosferatu"
+		},
+		"Edward Williams" : {
+			"aka" : "Edward, Prince of Denver"
+		},
+		"Duke" : {
+
+		},
+		"Jason Dodgerson" : {
+			"bio" : "Now thinks that he's Kurt Cobain."
+		},
+		"Karen Mauve" : {
+
+		},
+		"Leslie Boothe" : {
+
+		},
+		"Leslie Wilkes" : {
+
+		},
+		"Mina" : {
+
+		},
+		"Lucy" : {
+
+		},
+		"Roger Manot" : {
+
+		},
+		"Rachel" : {
+			"bio" : "A crucial contact for Theresa, especially considering the fact that they're both Gengrels. Her helping Theresa gain Barony over City Park was really more of a selfish move, since she's guaranteed domain within the city when she wants it"
+		},
+		"Earl" : {
+
+		},
+		"The Count" : {
+
+		},
+		"Detective William Brandt" : {
+
+		},
+		"Tony" : {
+
+		},
+		"Mavis and Suzy Jackson" : {
+
+		},
+		"Vincent Belhurst" : {
+
+		},
+		"Bothwell" : {
+
+		},
+		"Roger Liverman" : {
+
+		},
+		"Robert Klondike" : {
+
+		}
+	}
+}

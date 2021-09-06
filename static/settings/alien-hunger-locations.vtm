@@ -1,0 +1,26 @@
+{
+	"Prestor's House" : {
+		"description" : ""
+	},
+	"The Broadstreet" : {
+		"description" : "<p>A nightclub/venue owned and operated by Prince Edward, it is also the base of operations for his court. Seventh Son (Edwards band) is the house band there, and can be found playing every Wednesday night. Prized highly in the live music scene for those \"in-the-know\", it can seat around 40, with room for another 15 at the bar and a decent-sized dance floor. On a good night, there can be around 100 people inside, though there isn't really room for it. Edward can most likely be found there, in his office in the back, on any given night other than Wednesay, with a 1-7 roll on a d10.</p><p>Due to the highly public nature of the club and the location, it is basically an Elysium by default. The Prince permits those in his court to use it as a location to scout for prey because of the high volume of patrons entering and leaving at any given time. Feeding must always be done off-premises and away from the club though, since it is his main source of income, and thus he will defend it with extreme prejudice.</p><p>Entering the club early on in the story will not raise any alarms with the staff so long as Edward is not aware of their identities, though they will be aware that they are Kindred. They can easily arrange a meeting with Edward since it is expected of visitors to introduce themselves when entering or passing through. As such, they will be treated civilly.</p><p>Entering after Edward finds out about them means being pushed, shoved, and threatened, but no overt violence. If they leave, Edward's people will follow them and try to lead them somewhere they can be attacked with impunity. As long as they remain out in the open in the club, however, they will be relatively safe. They should still be able to gain an audience with Edward should they wish, though it will not be without tension.</p><p>Play Bob Dylan's \"Gotta Serve Somebody\" for the first meeting with Edward.</p>",
+		"address" : "17th St & Market St",
+		"area" : "It is located in the Union Station / Ballpark / Central Business Distric neighborhoods downtown, near Coors Field, the 16th St Mall, and Union Station."
+	},
+	"First United Bank" : {
+		"description" : "<p>The players may learn, either through research on Prestor, a break-in at The Broadstreet, or from Edward directly if they make peace with him, that Prestor has a safety deposit box here. They must act quickly, as the police will seize the box as part of their investigation 3 weeks after the fire</p><p>There are a few methods to access it, either through making an appointment after hours and forging documents of executorship, or perhaps police documents (more difficult), convincing an employee, or breaking into the bank (most difficult).</p><p>If the players choose to forge documents, they will be met outside by the owner, Mr. Pilkersworth. He will scrutinize the documents in the doorway between the bank and the street before admitting you inside if the forgery is adequate. Be sure to give a tense moment during scrutiny. He will insist that he accompany you to make sure that nothing is removed. He can, of course, be pursuaded otherwise.</p><p>Convincing an employee to fetch the contents should not be too hard, depending on the route used. Dominate is definitely possible, as is persuasion with adequate dice pool.</p><p></p>",
+		"address" : "17th St & Stout St"
+	},
+	"Edward's House" : {
+		"description" : ""
+	},
+	"The 24th Diocese" : {
+		"description" : "Tony's "
+	},
+	"Liverman's House" : {
+
+	},
+	"Klondike's Haven" : {
+
+	}
+}

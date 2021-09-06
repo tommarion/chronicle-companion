@@ -1,0 +1,221 @@
+/*************************************/
+/*            LEVEL METERS           */
+/*************************************/
+.level {
+	font-family: auto;
+	font-size: 2em;
+}
+.level0:after {
+	content: "\25CB\25CB\25CB\25CB\25CB";
+}
+.level1:after {
+	content: "\25CF\25CB\25CB\25CB\25CB";
+}
+.level2:after {
+	content: "\25CF\25CF\25CB\25CB\25CB";
+}
+.level3:after {
+	content: "\25CF\25CF\25CF\25CB\25CB";
+}
+.level4:after {
+	content: "\25CF\25CF\25CF\25CF\25CB";
+}
+.level5:after {
+	content: "\25CF\25CF\25CF\25CF\25CF";
+}
+
+/*************************************/
+/*        ATTRIBUTES & SKILLS        */
+/*************************************/
+#character-sheet__wrapper {
+	display: flex;
+}
+#character-bio {
+}
+#character-bio p {
+    text-indent: 40px;
+    text-align: justify;
+}
+#character-sheet {
+	flex: 0 0 500px;
+    margin-left: 20px;
+}
+#attribute__wrapper {
+	display: flex;
+	text-align: center;
+}
+#aka {
+	text-align: center;
+}
+#attribute__wrapper>div {
+	flex: 0 0 calc( 33% - 20px );
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 10px;
+    padding-top: 10px;
+}
+#skills__wrapper .title:not(.sub-text),
+#attribute__wrapper .title:not(.sub-text) {
+	font-size: 1em;
+}
+#skills__wrapper .level,
+#attribute__wrapper .level {
+	margin-top: -5px;
+	font-size: 1.3em;
+}
+.attr__wrapper {
+	padding-top: 10px;
+	border-radius: 4px;
+}
+.attr__wrapper:hover {
+	cursor: pointer;
+	background-color: #A2091E77;
+}
+#skills__wrapper {
+	display: flex;
+	text-align: center;
+	flex-wrap: wrap;
+}
+#skills__wrapper .attr__wrapper {
+	flex: 0 0 33%;
+}
+#value-modifier__background {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+#value-modifier__dialog {
+	height: 200px;
+    width: 600px;
+    position: fixed;
+    top: calc( 50vh - 100px );
+    left: calc( 50vw - 300px );
+    background: black;
+    border: 1px solid;
+    border-radius: 4px;
+}
+#btn__dialog-close {
+    position: absolute;
+    right: 10px;
+    font-size: 2em;
+    top: -3px;
+}
+#btn__dialog-close:hover {
+	cursor: pointer;
+	opacity: 0.6;
+}
+#dialog-value__wrapper {
+    font-size: 2em;
+    text-align: center;
+    width: 124px;
+    margin: 25px auto 35px;
+}
+#dialog-value {
+    width: 60px;
+    font-family: 'Modern Antiqua';
+    font-size: 1.4em;
+}
+#dialog-text {
+
+}
+#options__wrapper {
+	margin-left: 10px;
+}
+.btn-option {
+	height: 45px;
+    width: 75px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: 3px solid #A2091E;
+}
+.btn-option.disabled {
+	opacity: 0.35;
+}
+.btn-option:not(.active) {
+	color: black;
+    background-color: #A2091E;
+}
+.btn-option:not(.disabled):not(.active):hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+.note {
+	font-size: 1.3em;
+    font-weight: bold;
+    font-family: 'Modern Antiqua', cursive;
+}
+.note:before {
+    content: "\e907";
+    font-family: 'chronicle-companion-10';
+    margin-right: 10px;
+}
+.characterName {
+	margin-left: 50px;
+}
+#clan {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+}
+#clan.human:after {
+    content: "\e90b";
+    font-family: 'chronicle-companion-10';
+    font-size: 2em;
+    line-height: 1.5;
+    margin-left: 10px;
+}
+#clan.Thin-Blood:after {
+	content: "\25D1";
+    font-family: 'chronicle-companion-10';
+    font-size: 2em;
+    line-height: 1.5;
+    margin-left: 10px;
+}
+#clan.Banu-Haqim {
+    background-image: url(../img/clan-logos/banu-haqim-white.png);
+}
+#clan.Brujah {
+    background-image: url(../img/clan-logos/brujah-white.png);
+}
+#clan.Gangrel {
+    background-image: url(../img/clan-logos/gangrel-white.png);
+}
+#clan.Hecata {
+    background-image: url(../img/clan-logos/hecata-white.png);
+}
+#clan.Lasombra {
+    background-image: url(../img/clan-logos/lasombra-white.png);
+}
+#clan.Malkavian {
+    background-image: url(../img/clan-logos/malkavian-white.png);
+}
+#clan.Ministry {
+    background-image: url(../img/clan-logos/ministry-white.png);
+}
+#clan.Nosferatu {
+    background-image: url(../img/clan-logos/nosferatu-white.png);
+}
+#clan.Ravnos {
+    background-image: url(../img/clan-logos/ravnos-white.png);
+}
+#clan.Salubri {
+    background-image: url(../img/clan-logos/salubri-white.png);
+}
+#clan.Toreador {
+    background-image: url(../img/clan-logos/toreador-white.png);
+}
+#clan.Tremere {
+    background-image: url(../img/clan-logos/tremere-white.png);
+}
+#clan.Tzimisce {
+    background-image: url(../img/clan-logos/tzimisce-white.png);
+}
+#clan.Ventrue {
+    background-image: url(../img/clan-logos/ventrue-white.png);
+}
+

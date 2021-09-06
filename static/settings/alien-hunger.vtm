@@ -1,0 +1,86 @@
+{
+	"chapters" : [
+		{
+			"name" : "The First Nights",
+			"scenes" : [
+				{
+					"name" : "The Attacks", 
+					"story" : "<p>Prestor has been planning his attack, stalking his victims waiting for the perfect moment to kidnap them. He will attempt to remove the memory of the attack afterwards so roll for Cloud Memory (Charisma + Dominate vs Wits + Resolve).</p><p>If the player resists the Cloud Memory roll, proceed with the attack, otherwise skip over it. For the fight, you will attempt to get the player to follow you home with Mesmerize (Manipulation + Dominate vs Intelligence + Resolve to resist but not everyone will)</p><p>Prestor will put all of the players as well as Vince Belhurst and Mavis and Suzy Jackson in the basement, and inject them with a serum. He intends to wait for the change to take place and explain everything to them the following evening.</p><p>Unfortunately, the following evening (Saturday) just after dark, Prestor is attacked by Duke, Earl, and the Count. All of his limbs are broken, and before they leave, they set fire to the house in order to cover their tracks.</p>",
+					"notes": []
+				},
+				{
+					"name" : "A Fiery Awakening",
+					"story" : "<p>The players awaken that evening to the sound of a smoke alarm. It takes them a couple of seconds to realize that they are not at home in their beds, but in a pitch-black room, the basement of Prestor's home. Unless they resisted the Cloud Memory roll, they are unaware of anything.</p><p>\"Hello?\" they hear. It is the voice of a young child, in between infrequent coughs. \"Suzy, baby, are you ok?\" a woman's voice replies, loudly and quite alarmed. \"Mommy, I can't see.\"</p><p>See if Theresa wants to use Eyes of the Beast, otherwise see if anyone has a lighter on them. Remember to remind them of the hunger they feel, describing the humans there with words typically reserved for food. Even in the apparent danger they're in, Mavis just looks good enough to eat. Make sure to remind them of their detachment from their old life, lighters remind them of smoking but they have no desire to do so now, etc.</p><p>Lead them into discussion of what to do, making random noises as distractions in the background. The house may start to fall apart due to the fire. Heartbeats growing louder, the Beast whispering in their ear to eat. Find an excuse for them to brush up against a human and describe the coldness and the desire to feed. The humans may notice how cold they are and offer their sweaters. Think of opportunities for reassuring touches.</p><p>The awakening in the basement is the first real opportunity for role-playing so make sure to make the most of it. Try to convince the players to drain the humans dry, but at the same time doing your best to make sure that they will feel guilty if they do so. Welcome to <b>Vampire</b>.</p>",
+					"notes": []
+				},
+				{
+					"name" : "Escape",
+					"story": "<p>In the basement, the players need to make a decision about what to do, quickly. Although they are not in much danger, the humans are slowly losing air to breathe. Again, emphasize the fact that they are not choking on the lack of oxygen even though everyone else seems to be.</p><p>The heat coming off of the door is immense. Anyone who touches it should roll Dodge to see if they're quick enough to pull their hand away (difficulty 3) otherwise they take 1 point superficial damage.</p><p>If they start to take too long, make them roll Stamina + Survival with a difficulty of 2 to avoid superficial damage from the heat. After 6 checks, the temperature will start to go down and they can safely leave the building. A 1-7 roll on a d10 will mean a police officer sees them leaving.</p><p>An Investigation roll with a difficulty of 4 will reveal a weak point in the south wall of the basement. This wall connects with the sewer system. Rolling Strength + Brawl with a difficulty of 5 will break down the wall. Hitting the wall will incur one superficial damage unless there is a crit or 2  or more net success.</p>",
+					"notes": []
+				},
+				{
+					"name" : "The Sewers",
+					"story": "<p>If the players escape through the sewers they will soon find a manhole and emerge a few blocks away where they will be able to see a crowd of people gathered to watch the fire. Authorities have started to arrive by now, so Vince will leave to go and join them to check in. Have them start to make plans about what to do.</p><p>A woman will pass by walking her dog and look suspiciously at the players, but offer to let them use her cellphone. Kindred can use cellphones because touchscreens are not yet common at this time. Also emphasize how good the woman looks, to try to get them to feed. If they haven't fed by now they should be hallucinating about food. Try to convince them to feed on Mavis, Suzy, or any of the passersby.</p>",
+					"notes": []
+				}
+			]
+		},
+		{
+			"name" : "Life in Death",
+			"scenes" : [
+				{
+					"name" : "Police Investigation",
+					"story" : "<p>The next evening, the players should be approached by Detective Brandt. There is, of course, the murder of Jacob Prestor, and the arson of his house, as well as the fact that all of the characters were likely reported missing just before this. If any of the players killed anyone, include this investigation as well.</p><p>Detective Brandt should grill each player separately, in an effort to catch some inconsistencies in their stories. Ask about shoes and reference notes from the night of the fire</p><p>Since the players obviously cannot \"go down to the station\" so they will either have to talk their way out of trouble (nearly impossible) or simply disappear. They could also get someone else to confess for the crime.",
+					"notes": []
+				},
+				{
+					"name" : "Angel Tony",
+					"story": "<p>Ask everyone to roll Wits + Perception. Difficulty of 4 to notice someone watching outright, 3 to get the feeling of being watched.</p><p>\"Do you all have a death wish or are you just <i>idiots</i>?\" a voice bellows in the darkness.</p><p>Tony will try to get as much information from the players as possible, and in exchange, give them a crash course on Vampire life. He will also gi</p>",
+					"notes": []
+				},
+				{
+					"name" : "Seek and Ye Shall Find",
+					"story": "<p>The goal of this chapter is for the players to look for information regarding Jacob Prestor. One of the best coarses of action would be to speak to neighbors, each interaction taking a full night and will only have one roll. Few successes yield little information, where as more and more will tell about a blond man (Liverman) who visited often. Even more will tell that it is a Jaguar, and 4 or more successes will tell them that the car had a vanity plate SCIENCE</p><p>Prestor's finances are also a good place to start with. Intelligence + Finance can tell the players who handled Prestor's money and that he has a safety deposit box at First United Bank.</p>",
+					"notes": []
+				},
+				{
+					"name" : "The Hunters",
+					"story": "",
+					"notes": []
+				}
+			]
+		},
+		{
+			"name" : "On the Offensive",
+			"scenes" : [
+				{
+					"name" : "Dr. Liverman, I Presume?",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "The Shadow Knows",
+					"story" : "",
+					"notes": []
+				}
+			]
+		},
+		{
+			"name" : "To Live Once More",
+			"scenes" : [
+				{
+					"name" : "In the Ghoul's Grasp",
+					"story" : "",
+					"notes": []
+				},
+				{
+					"name" : "A Heartbeat",
+					"story" : "",
+					"notes": []
+				}
+			]
+		}
+	],
+	"notes" : [
+	]
+}

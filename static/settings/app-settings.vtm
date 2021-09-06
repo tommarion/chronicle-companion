@@ -1,0 +1,12 @@
+{
+	"chronicles": [
+		{
+			"name" : "Alien Hunger",
+			"file": "alien-hunger.vtm"
+		},
+		{
+			"name" : "Blood in the Rockies",
+			"file": "blood-in-the-rockies.vtm"
+		}
+	]
+}

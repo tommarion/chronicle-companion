@@ -1,0 +1,226 @@
+.dice-result {
+	font-size: 3em;
+	font-family: 'chronicle-companion-10' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	letter-spacing: 12px;
+	margin: 0 auto;
+	padding: 6px 0 4px;
+	border-radius: 6px;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.dice-roll.own-roll:not(.rerolled):not(.reroll) .dice-result:hover {
+	cursor: pointer;
+	background: #8c0013;
+}
+.dice-roll.own-roll.rerolled .dice-result {
+    background: #382729;
+    opacity: 0.4;
+}
+.dice-roll.own-roll.rerolled .dice-result {
+    background: #382729;
+}
+
+#btn_roll-dice__wrapper {
+    width: 300px;
+    height: 80px;
+    top: 20px;
+    position: absolute;
+}
+#roll-dice__input__wrapper {
+    width: 180px;
+    margin-left: 60px;
+}
+#roll-type {
+	background: #A2091E;
+    color: black;
+    font-family: 'Modern Antiqua';
+    font-size: 1.25em;
+    text-align: center;
+    border-radius: 6px;
+    padding: 7px;
+}
+#roll-type:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+#btn_roll-type {
+    position: absolute;
+    right: 74px;
+}
+#roll-type:not(.active) #btn_roll-type:after {
+    content: "\22C1";
+}
+#roll-type.active #btn_roll-type:after {
+	content: "\22C0";
+}
+#roll-type__dropdown {
+	transition: height 0.5s ease;
+    width: 170px;
+    margin-left: 3px;
+    background: #A2091E;
+    position: absolute;
+    z-index: 200;
+    border: 2px solid black;
+    overflow-y: auto;
+}
+#roll-type__dropdown:not(.active) {
+	transition: height 0.5s ease, border 0s ease 0.5s;
+	height: 0px;
+	border-top: none;
+	border-bottom: none;
+}
+#roll-type__dropdown.active {
+	transition: height 0.5s ease;
+	height: 400px;
+}
+.roll-type__option {
+    padding: 5px 7px;
+}
+.roll-type__option.active,
+.roll-type__option:not(:hover) {
+    color: black;
+}
+.roll-type__option:not(.active):hover {
+    background: black;
+    color: #C5C5C5;
+}
+#dice-pool__input-label {
+	margin-top: 8px;
+}
+#dice-pool__input,
+#hunger-dice__input {
+	font-size: 1.25em;
+    font-family: 'Modern Antiqua';
+    text-align: center;
+    border-radius: 6px;
+    padding: 7px 5px 5px;
+}
+#dice-pool__input {
+	width: 53px;
+    background: black;
+    color: #C5C5C5;
+    border: 2px solid;
+}
+#hunger-dice__input {
+	width: 43px;
+    background: #A2091E;
+    border: 2px solid #C5C5C5;
+    border-top-right-radius: 0px;
+    margin-left: 10px;
+    color: #C5C5C5;
+}
+#dice-pool__input:disabled,
+#hunger-dice__input:disabled {
+	opacity: 0.5;
+}
+#hunger-dice__input-label {
+	line-height: 0.85;
+    margin-top: 6px;
+}
+#hunger-dice__input-div {
+	background: #A2091E;
+    width: 20px;
+    height: 20px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 2px solid #C5C5C5;
+    margin-left: -2px;
+}
+#hunger-dice__input-div.selected:after {
+	content: "\2715";
+    color: #C5C5C5;
+    margin-left: 4px;
+    line-height: 20px;
+}
+#dice-roll__wrapper {
+	position: fixed;
+    top: 100px;
+    left: 0;
+    width: 320px;
+    height: calc( 100% - 180px);
+    overflow: hidden;
+    background-color: #000000aa;
+}
+#dice-roll__window {
+	width: 100%;
+    height: calc( 100% - 4px );
+    overflow: auto;
+    border-radius: 10px;
+    border: 1px solid #610000;
+}
+#dice-roll__window hr {
+	width: 80%;
+    border-color: #8C0013;
+}
+.dice-roll {
+	text-align: center;
+    width: 300px;
+    margin: 0 auto;
+}
+.die {    
+	background: #5d000d;
+    margin: 0 5px 5px;
+    border-radius: 10px;
+    padding: 5px 0 5px 13px;
+    height: 48px;
+}
+.die:not(.hunger) {
+	color: black;
+}
+
+.icon_book:before {
+  content: "\e91f";
+}
+.icon_profile:before {
+  content: "\e923";
+}
+.icon_office:before {
+  content: "\e903";
+}
+.icon_quill:before {
+  content: "\e907";
+}
+.icon_dice:before {
+  content: "\e915";
+}
+.icon_droplet:before {
+  content: "\e90b";
+}
+.icon_failure:before {
+  content: "\25CF";
+  font-size: 0.8em;
+}
+.icon_bestial-failure:before {
+	content: "\e901";    
+	font-size: 0.81em;
+	line-height: 1.15;
+}
+.icon_critical_success:before {
+  content: "\e902";
+}
+.icon_critical_success_hunger:before {
+  content: "\e904";
+}
+.icon_success:before {
+  content: "\e905";
+}
+.icon_tracker-full:before {
+  content: "\25a0";
+}
+.icon_tracker-aggravated:before {
+  content: "\22a0";
+}
+.icon_tracker-superficial:before {
+  content: "\29c4";
+}
+.icon_tracker-empty:before {
+  content: "\25a1";
+}

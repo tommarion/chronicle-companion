@@ -1,0 +1,107 @@
+/*************************************/
+/*              BUTTONS              */
+/*************************************/
+#btn__ref-show-hide {
+    position: absolute;
+    font-size: 3em;
+    left: 10px;
+    top: 35px;
+    height: 15px;
+    width: 15px;
+    transition: left 0.5s ease;
+}
+#btn__show-hide-character {
+    position: absolute;
+    font-size: 3em;
+    height: 10px;
+    width: 10px;
+    transition: left 0.5s ease;
+    right: 16px;
+    top: -5px;
+    z-index: 200;
+}
+#btn__ref-show-hide.active {
+	left: 290px;
+}
+#btn__show-hide-character.active {
+    top: 7px;
+}
+#btn__show-hide-character:hover,
+#btn__ref-show-hide:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+#btn__show-hide-character>div,
+#btn__ref-show-hide>div {
+	height: 100%;
+    width: 100%;
+    border: solid #A2091E;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+#btn__ref-show-hide:not(.active)>div {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+#btn__ref-show-hide.active>div {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+#btn__show-hide-character:not(.active)>div {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+#btn__show-hide-character.active>div {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.btn.active {
+	opacity: 0.5;
+}
+.btn:not(.active):hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+.btn:active {
+	transform: scale(0.9);
+}
+
+.btn-chronicle {
+	height: 110px;
+    width: 180px;
+    display: table;
+    text-align: center;
+    background-color: #A2091E;
+    color: black;
+	font-family: 'Modern Antiqua', cursive;
+	font-size: 1.5em;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 5px 20px;
+}
+.btn-chronicle>div {
+	display: table-cell;
+	vertical-align: middle;
+}
+.btn-location,
+.btn-character {
+	background-color: #A2091E;
+    color: black;
+    padding: 10px 20px;
+    margin: 20px 20px 0;
+    flex: 0 0 160px;
+    text-align: center;
+    display: table;
+    border-radius: 5px;
+}
+.btn-location>div,
+.btn-character>div {
+	display: table-cell;
+	vertical-align: middle;
+}

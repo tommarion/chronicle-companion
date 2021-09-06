@@ -1,0 +1,84 @@
+#reference__wrapper {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+}
+#content,
+#story-content {
+	height: calc( 100vh - 225px );
+	overflow-y: auto;
+	font-size: 1.25em;
+	border: 1px solid #610000;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: #000000aa;
+    color: #c5c5c5;
+}
+#content__wrapper,
+#story__wrapper {
+	width: calc( 100vw - 370px );
+	height: calc( 100vh - 50px );
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin:  100px 50px 0 320px;
+	position: absolute;
+}
+#content__wrapper:not(.active) {
+	display: none;
+}
+#character__wrapper,
+#chronicles__wrapper {
+    width: calc( 100% - 40px );
+    position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: auto;
+}
+#character__wrapper {
+    height: 0px;
+	transition: height 0.5s ease;
+}
+#chronicles__wrapper,
+#character__wrapper.active {
+    height: calc( 100% - 180px );
+}
+#story-text__wrapper {
+	position: absolute;
+    overflow-y: auto;
+    width: calc( 100% - 145px );
+    transition: height 0.5s ease;
+}
+#story-text__wrapper:not(.min) {
+    height: calc( 100% - 180px );
+}
+#story-text__wrapper.min {
+    height: calc( 100% - 280px );
+}
+#story-text {
+    padding-bottom: 40px;
+    display: none;
+    padding-right: 20px;
+    height: calc( 100% - 40px );
+}
+#story-text p {
+    text-indent: 40px;
+    text-align: justify;
+}
+#location-description {
+	flex: 0 0 calc( 100% - 277px );
+    padding-right: 20px;
+}
+
+#location-description p {
+    text-indent: 40px;
+    text-align: justify;
+}
+#location-header {
+	flex: 0 0 20px;
+	text-align: center;
+}
+.chapter {
+	text-align: center;
+    width: 30px;
+}

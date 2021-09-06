@@ -1,0 +1,142 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE scenes(
+chronicle TEXT NOT NULL,
+number INT NOT NULL,
+name TEXT NOT NULL,
+story TEXT NOT NULL,
+notes TEXT,
+PRIMARY KEY (chronicle, number)
+);
+CREATE TABLE characters(
+chronicle TEXT NOT NULL,
+name TEXT NOT NULL,
+description TEXT,
+notes TEXT,
+id INT UNIQUE NOT NULL, aka TEXT, bio TEXT, apparent_age TEXT, type TEXT,
+PRIMARY KEY(chronicle, name)
+);
+INSERT INTO characters VALUES('Alien Hunger','Monica Belhurst',NULL,NULL,1,NULL,NULL,NULL,'pc');
+INSERT INTO characters VALUES('Alien Hunger','Theresa Harper',NULL,NULL,2,NULL,NULL,NULL,'pc');
+INSERT INTO characters VALUES('Alien Hunger','Arnold Simpson',NULL,NULL,3,'Flash',NULL,NULL,'pc');
+INSERT INTO characters VALUES('Alien Hunger','Emerson Wilkershire III',NULL,NULL,4,NULL,NULL,NULL,'pc');
+INSERT INTO characters VALUES('Alien Hunger','Marcus Smith-Kerns',NULL,NULL,5,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Jacob Prestor',NULL,NULL,6,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Thaddeus',NULL,NULL,7,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Edward Williams',NULL,NULL,8,'Edward, Prince of Denver',NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Jason Dodgerson',NULL,NULL,10,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Duke',NULL,NULL,9,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Karen Mauve',NULL,NULL,11,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Leslie Boothe',NULL,NULL,12,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Leslie Wilkes',NULL,NULL,13,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Mina',NULL,NULL,14,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Lucy',NULL,NULL,15,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Roger Manot',NULL,NULL,16,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Rachel',NULL,NULL,17,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Earl',NULL,NULL,18,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Gregory',NULL,NULL,19,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Detective William Brandt',NULL,NULL,20,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Tony',NULL,NULL,21,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Mavis and Suzy Jackson',NULL,NULL,22,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Vincent Belhurst',NULL,NULL,23,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','James',NULL,NULL,24,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Roger Liverman',NULL,NULL,25,NULL,NULL,NULL,'npc');
+INSERT INTO characters VALUES('Alien Hunger','Robert Klondike',NULL,NULL,26,NULL,NULL,NULL,'npc');
+CREATE TABLE attributes(
+id INT UNIQUE NOT NULL,
+strength INT,
+dexterity INT,
+stamina INT,
+charisma INT,
+manipulation INT,
+composure INT,
+intelligence INT,
+wits INT,
+resolve INT,
+PRIMARY KEY (id)
+);
+INSERT INTO attributes VALUES(1,1,2,3,3,4,3,2,3,3);
+INSERT INTO attributes VALUES(2,2,3,3,2,1,3,4,3,3);
+INSERT INTO attributes VALUES(3,3,3,4,3,2,3,1,3,2);
+INSERT INTO attributes VALUES(4,1,3,2,4,3,3,3,3,2);
+CREATE TABLE skills(
+id INT PRIMARY KEY,
+athletics INT,
+athletics_specialty TEXT,
+brawl INT,
+brawl_specialty TEXT,
+craft INT,
+craft_specialty TEXT,
+drive INT,
+drive_specialty TEXT,
+firearms INT,
+firearms_specialty TEXT,
+melee INT,
+melee_specialty TEXT,
+larceny INT,
+larceny_specialty TEXT,
+stealth INT,
+stealth_specialty TEXT,
+survival INT,
+survival_specialty TEXT,
+animal_ken INT,
+animal_ken_specialty TEXT,
+etiquette INT,
+etiquette_specialty TEXT,
+insight INT,
+insight_specialty TEXT,
+intimidation INT,
+intimidation_specialty TEXT,
+leadership INT,
+leadership_specialty TEXT,
+performance INT,
+performance_specialty TEXT,
+persuasion INT,
+persuasion_specialty TEXT,
+streetwise INT,
+streetwise_specialty TEXT,
+subterfuge INT,
+subterfuge_specialty TEXT,
+academics INT,
+academics_specialty TEXT,
+awareness INT,
+awareness_specialty TEXT,
+finance INT,
+finance_specialty TEXT,
+investigation INT,
+investigation_specialty TEXT,
+medicine INT,
+medicine_specialty TEXT,
+occult INT,
+occult_specialty TEXT,
+politics INT,
+politics_specialty TEXT,
+science INT,
+science_specialty TEXT,
+technology INT,
+technology_specialty TEXT
+);
+INSERT INTO skills VALUES(1,1,NULL,1,NULL,NULL,NULL,1,NULL,3,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,1,NULL,1,NULL,2,NULL,NULL,NULL,2,NULL,2,'acting',2,NULL,1,NULL,2,NULL,1,NULL,2,NULL,NULL,NULL,4,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,1,NULL);
+INSERT INTO skills VALUES(2,NULL,NULL,1,NULL,NULL,NULL,2,NULL,1,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,3,NULL,1,NULL,NULL,NULL,1,NULL,NULL,NULL,1,NULL,1,NULL,NULL,NULL,1,NULL,1,NULL,1,NULL,NULL,NULL,2,NULL,3,NULL,2,NULL,NULL,NULL,4,'chemistry',2,NULL);
+INSERT INTO skills VALUES(3,4,'football',3,NULL,NULL,NULL,NULL,NULL,3,NULL,1,NULL,2,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,1,NULL,3,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO skills VALUES(4,1,'riding',NULL,NULL,NULL,NULL,1,NULL,1,NULL,1,NULL,NULL,NULL,2,NULL,NULL,NULL,1,NULL,2,NULL,NULL,NULL,2,NULL,NULL,NULL,2,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,3,NULL,1,NULL,NULL,NULL,NULL,NULL,3,NULL,NULL,NULL,3,NULL);
+CREATE TABLE trackers(
+id INT PRIMARY KEY,
+health_superficial INT NOT NULL,
+health_aggravated INT NOT NULL,
+willpower_superficial INT NOT NULL,
+willpower_aggravated INT NOT NULL,
+humanity_max INT NOT NULL,
+humanity_stains INT NOT NULL,
+hunger INT NOT NULL);
+INSERT INTO trackers VALUES(1,0,0,0,0,8,0,1);
+INSERT INTO trackers VALUES(2,0,0,0,0,9,0,1);
+INSERT INTO trackers VALUES(3,2,0,0,0,7,2,1);
+INSERT INTO trackers VALUES(4,0,0,0,0,8,0,1);
+CREATE TABLE disciplines(
+id INT NOT NULL,
+discipline TEXT NOT NULL,
+level INT NOT NULL,
+powers TEXT NOT NULL,
+PRIMARY KEY (id, discipline));
+COMMIT;
