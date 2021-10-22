@@ -248,7 +248,7 @@ function getConvAndTouch() {
 
 
 function serializeLocation() {
-	let locationObj = {}
+	let locationObj = {};
 	let name = $( '#location_add_name' ).val();
 
 	if ( name ) {
@@ -281,4 +281,21 @@ function serializeLocation() {
 	locationObj[ 'visible' ] = $( '#location_add_visible' ).prop( 'checked' );
 
 	return locationObj;
+}
+
+function serializeStory() {
+	let storyObj = [];
+	chapterWrappers = $( '.chapter__wrapper:not(.add)' ).each(function() {
+		let chapterObj = {};
+		chapterObj['name'] = $( this ).prev().find( 'input' ).val();
+		chapterObj['scenes'] = [];
+		$( this ).find( '.scene__wrapper:not(.add)' ).each(function() {
+			let sceneObj = {};
+			sceneObj['name'] = $( this ).prev().find( 'input' ).val();
+			sceneObj['story'] = $( this ).find( 'textarea' ).val();
+			chapterObj['scenes'].push(sceneObj);
+		});
+		storyObj.push(chapterObj);
+	});
+	return storyObj;
 }

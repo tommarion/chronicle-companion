@@ -24,7 +24,7 @@ $( '.btn-chronicle-enabled' ).on( 'click', function() {
 	}
 });
 
-$( '.btn-chronicle-enabled input' ).on( 'click', function( e ) {
+$( '.btn-chronicle-enabled input, #story_list input' ).on( 'click', function( e ) {
 	e.stopPropagation();
 });
 
@@ -49,7 +49,7 @@ $( '#btn__close-chronicle-settings' ).on( 'click', function() {
 
 function populateChronicleSettings( chronicleSettings ) {
 	$( '#chronicle_name__input' ).val( chronicleSettings.name );
-	$( '#story_list' ).html( getChronicleSettingsStory(chronicleSettings.chapters) );
+	$( '#story_list' ).html( getChronicleSettingsStory( chronicleSettings.chapters ) );
 	$( '#pc_list' ).html( getChronicleSettingsCharacters( chronicleSettings.characters.pc ) );
 	$( '#npc_list' ).html( getChronicleSettingsCharacters( chronicleSettings.characters.npc ) );
 	$( '#locations_list' ).html( getChronicleSettingsLocations( chronicleSettings.locations ) );
@@ -61,8 +61,8 @@ function getChronicleSettingsStory( chapters ) {
 	for (chapter in chapters) {
 		let chapterObj = chapters[chapter];
 		let sceneCount = 1;
-		storyStr += '<div class="chapter-header toolbar-item-header">Chapter ' + chapterCount + ' ~ ';
-		storyStr += '<input class="chapter-name" value="' + chapterObj.name + '"/></div>';
+		storyStr += '<div><div class="chapter-header toolbar-item-header">Chapter ' + chapterCount + ' ~ ';
+		storyStr += "<input class='chapter-name' value='" + chapterObj.name + "'/></div>";
 		storyStr += '<div class="chapter__wrapper">';
 		for (scene in chapterObj.scenes) {
 			let sceneObj = chapterObj.scenes[scene];
@@ -70,7 +70,7 @@ function getChronicleSettingsStory( chapters ) {
 			sceneCount++;
 		}
 		storyStr += getSceneStr( sceneCount, '', '', false, false, true );
-		storyStr += '</div>';
+		storyStr += '</div></div>';
 		chapterCount++;
 	}
 	storyStr += '<div class="add_chapter__wrapper"><div class="header">Add Chapter</div><div class="chapter-header">Chapter ' + chapterCount + ' ~ ';
@@ -99,7 +99,7 @@ function getSceneStr( num, name, story, isRemoveable, isCollapsible, isAdd ) {
 		sceneStr += '<div class="header">Add Scene</div>';
 	}
 	sceneStr += '<div class="scene-header' + headerDivClass + '">Scene <span class="number">' + num + '</span> ~ ';
-	sceneStr += '<input class="scene-name" value="' + name + '"/></div>';
+	sceneStr += "<input class='scene-name' value='" + name + "'/></div>";
 	sceneStr += '<div class="scene__wrapper' + wrapperDivClass + '">';
 	
 
@@ -108,7 +108,7 @@ function getSceneStr( num, name, story, isRemoveable, isCollapsible, isAdd ) {
 	if ( isAdd ) {
 		sceneStr += '<div class="btn btn__add-scene disabled">Add scene</div>';
 	} else if ( isRemoveable ) {
-		sceneStr += '<div class="btn btn__remove-scene">Remove Scene</div>';
+		sceneStr += '<div class="btn btn__remove-scene">&times;</div>';
 	}
 	sceneStr += '</div>';
 	return sceneStr;
@@ -413,3 +413,118 @@ $( '#advantages__wrapper, #flaws__wrapper' ).on( 'click', '.level', function( ev
 	$( this ).attr( 'class', 'level level' + level );
 });
 
+$( '#story_list' ).on( 'blur', 'input, textarea', function() {
+	if ( !$( this ).parent().parent().hasClass( 'add_scene__wrapper' ) &&
+			!$( this ).parent().parent().hasClass( 'add_chapter__wrapper' ) && 
+			!$( this ).parent().parent().parent().parent().hasClass( 'add_chapter__wrapper' ) ) {
+		const loc = window.location.href;
+		const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
+		let postData = {
+			'value' : $( this ).val(),
+			'chapterIndex' : null,
+			'sceneIndex' : null,
+			'mode' : ''
+		};
+		switch ( $( this ).attr( 'class' ) ) {
+			case 'chapter-name':
+				postData['chapterIndex'] = $( this ).parent().parent().index();
+				if ( chronicleSettings.chapters[postData['chapterIndex']].name != postData['value'] ) {
+					if ( postData['value'] == '' ) {
+						$( this ).val( chronicleSettings.chapters[postData['chapterIndex']].name );
+					} else {
+						updateStory( 'PUT', postData, chronicleId );	
+					}
+					
+				}
+				break;
+			case 'scene-name':
+				postData['sceneIndex'] = $( this ).parent().parent().index();
+				postData['chapterIndex'] = $( this ).parent().parent().parent().parent().index();
+				if ( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].name != postData['value'] ) {
+					if ( postData['value'] == '' ) {
+						$( this ).val( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].name );
+					} else {
+						postData['mode'] = 'name';
+						updateStory( 'PUT', postData, chronicleId );	
+					}
+					
+				}
+				break;
+			case 'scene-story__text':
+				postData['sceneIndex'] = $( this ).parent().parent().index();
+				postData['chapterIndex'] = $( this ).parent().parent().parent().parent().index();
+				postData['value'] = assembleStoryText( postData['value'] )
+				if ( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].story != postData['value'] ) {
+					if ( postData['value'] == '' ) {
+						$( this ).val( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].story );
+					} else {
+						postData['mode'] = 'story';
+						updateStory( 'PUT', postData, chronicleId );	
+					}
+					
+				}
+				break;	
+		}
+	}
+});
+
+$( '#story_list' ).on( 'keyup', '.add_scene__wrapper input, .add_scene__wrapper textarea', function() {
+	if ( $( '.add_scene__wrapper' ).find( '.scene-name' ).val() != '' &&
+			$( '.add_scene__wrapper' ).find( '.scene-story__text' ) != '' ) {
+		$( '.btn__add-scene' ).removeClass( 'disabled' );
+	} else {
+		$( '.btn__add-scene' ).addClass( 'disabled' );
+	}
+});
+
+$( '#story_list' ).on( 'keyup', '.add_chapter__wrapper input, .add_chapter__wrapper textarea', function() {
+	if ( $( '.add_chapter__wrapper' ).find( '.chapter-name' ).val() != '' &&
+			$( '.add_chapter__wrapper' ).find( '.scene-name' ).val() != '' &&
+			$( '.add_chapter__wrapper' ).find( '.scene-story__text' ).val() != '' ) {
+		$( '.btn__add-chapter' ).removeClass( 'disabled' );
+	} else {
+		$( '.btn__add-chapter' ).addClass( 'disabled' );
+	}
+});
+
+$( '#story_list' ).on( 'click', '.btn__add-scene', function() {
+	if ( !$( this ).hasClass( 'disabled' ) ) {
+		const loc = window.location.href;
+		const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
+		let postData = {
+			'chapterName' : null,
+			'sceneName' : $( '.add_scene__wrapper' ).find( '.scene-name' ).val(),
+			'story' : assembleStoryText( $( '.add_scene__wrapper' ).find( '.scene-story__text' ).val() ),
+			'sceneIndex' : $( '.add_scene__wrapper' ).index(),
+			'chapterIndex' : $( '.add_scene__wrapper' ).parent().parent().index()
+		}
+		if ( postData['sceneName'] != '' && postData['sceneStory'] != '' ) {
+			updateStory( 'POST', postData, chronicleId );
+		}
+	}
+});
+
+$( '#story_list' ).on( 'click', '.btn__add-chapter', function() {
+	if ( !$( this ).hasClass( 'disabled' ) ) {
+		const loc = window.location.href;
+		const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
+		let postData = {
+			'chapterName' : $( '.add_chapter__wrapper' ).find( '.chapter-name' ).val(),
+			'sceneName' : $( '.add_chapter__wrapper' ).find( '.scene-name' ).val(),
+			'story' : assembleStoryText( $( '.add_chapter__wrapper' ).find( '.scene-story__text' ).val() ),
+			'chapterIndex' : $( '.add_chapter__wrapper' ).index()
+		}
+		if ( postData['chapterName'] != '' && postData['sceneName'] != '' && postData['sceneStory'] != '' ) {
+			updateStory( 'POST', postData, chronicleId );
+		}
+	}
+});
+
+function assembleStoryText( text ) {
+	let textList = text.split( '\n\n' );
+	let textStr = '';
+	for ( index in textList ) {
+		textStr += '<p>' + textList[index] + '</p>';
+	}
+	return textStr;
+}

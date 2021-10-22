@@ -443,7 +443,7 @@ def create_character(id):
 		print(e.__class__.__name__)
 		return Response("{\"message\":\"There was an error saving character data in the database: " + e.__class__.__name__ + '-' + str( e ) + "\"}", status=500)
 
-	return Response(chronicle_data(id), status=200)
+	return chronicle_data(id)
 
 @app.route('/chronicle/<id>/enable/', methods = [ 'GET' ])
 def toggle_chronicle_enable(id):
@@ -631,6 +631,57 @@ def chapter_data_by_chronicle(id):
 		chapters_list[scene.chapter_id - 1]['scenes'].append(scene_dict)
 
 	return chapters_list
+
+
+@app.route('/chronicle/<id>/chapters/', methods = [ 'PUT' ])
+def update_story(id):
+	if id is None or id is 'undefined':
+		return Response("{\"message\":\"Invalid Chronicle ID value: " + id + "\'}", status=400)
+	data = request.get_json()
+
+	try:
+		if data['sceneIndex'] is None:
+			chapter_DTO = db.session.query(Chapters).filter(Chapters.chronicle_id == id, Chapters.number == data['chapterIndex'] + 1).one()
+			chapter_DTO.name = data['value']
+			db.session.commit()
+		else:
+			if 'mode' in data and data['mode'] is not None:
+				scene_DTO = db.session.query(Scenes).filter(Scenes.chronicle_id == id, Scenes.chapter_id == data['chapterIndex'] + 1, 
+					Scenes.number == data['sceneIndex'] + 1).one()
+				if data['mode'] == 'name':
+					scene_DTO.name = data['value']
+				elif data['mode'] == 'story':
+					scene_DTO.story = data['value']
+				db.session.commit()
+	except Exception as e:
+		print(str(e))
+		print(e.__class__.__name__)
+		return Response("{\"message\":\"There was an error saving character data in the database: " + e.__class__.__name__ + '-' + str( e ) + "\"}", status=500)
+
+	return chronicle_data(id)
+
+@app.route('/chronicle/<id>/chapters/', methods = [ 'POST' ])
+def add_story(id):
+	if id is None or id is 'undefined':
+		return Response("{\"message\":\"Invalid Chronicle ID value: " + id + "\'}", status=400)
+	data = request.get_json()
+
+	try:
+		scene_index = 1
+		if 'chapterName' in data and data['chapterName'] is not None:
+			chapter_model = Chapters(chronicle_id=id, number=data['chapterIndex'] + 1, name=data['chapterName'])
+			db.session.add(chapter_model)
+		else:
+			scene_index = data['sceneIndex'] + 1
+		scene_model = Scenes(chronicle_id=id, chapter_id=data['chapterIndex'] + 1, number=scene_index, name=data['sceneName'], story=data['story'])
+		db.session.add(scene_model)
+		db.session.commit()
+	except Exception as e:
+		print(str(e))
+		print(e.__class__.__name__)
+		return Response("{\"message\":\"There was an error saving character data in the database: " + e.__class__.__name__ + '-' + str( e ) + "\"}", status=500)
+
+	return chronicle_data(id)
 
 @app.route('/roll/', methods = [ 'POST' ])
 def roll_dice():
