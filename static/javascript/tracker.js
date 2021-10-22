@@ -260,15 +260,10 @@ function updateHunger( operation ) {
 	let characterId = characterBioElem.parent().data( 'id' );
 
 	let remove = false;
-	if ( operation == 'remove' ) {
-		remove = true;
-		hunger -= hungerChange;
-	} else {
-		hunger += hungerChange;
-	}
+	remove = operation == 'remove';
 
 	updateCharacterValue( characterId, VALUE_TYPE_TRACKERS, 'hunger', null, hungerChange, remove );
-	$( '#hunger-dice__input' ).val( hunger );
+	$( '#hunger-dice__input' ).val( remove ? hunger - hungerChange : hunger + hungerChange );
 }
 
 function updateCharacterValue( characterId, type, tracker, damageType, value, remove ) {

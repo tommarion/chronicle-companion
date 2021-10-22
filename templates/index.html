@@ -10,6 +10,7 @@
 	<link href='static/stylesheets/character.css' rel="stylesheet">
 	<link href='static/stylesheets/loader.css' rel="stylesheet">
 	<link href='static/stylesheets/dice.css' rel="stylesheet">
+	<link href='static/stylesheets/settings.css' rel="stylesheet">
 </head>
 <!-- TODO: MAKE-A LOOK-A NICE -->
 <body>
@@ -21,14 +22,21 @@
 			Companion
 		</span>
 		<div id='version__wrapper'>
-			<span class='sub-text'>(v. 0.0.1)</span>
+			<span class='sub-text'>(v1.0.0)</span>
 		</div>
 	</div>
 	<div id='reference__wrapper'>
+		<div id='btn-chronicle__settings' class='btn'></div>
+		<div id='btn-relationship_map' class='btn hidden'></div>
 		<div id='story__wrapper'>
 			<div id='story-content'>
 				<div id='story-text__wrapper'>
 					<div id='story-text'></div>
+					<div id='story-text__none__wrapper' class='btn hidden'>
+						<div id='story-text__none'>
+						Looks like this chronicle has no story yet!<br/>
+						Click here to edit</div>
+					</div>
 				</div>
 				<div id='story-toolbar' class='hidden'>
 					<div id='chapters'>
@@ -42,13 +50,22 @@
 				</div>
 				<div id='chronicles__wrapper'>
 					{% for chronicle in chronicles %}
+						{% if chronicle.enabled %}
 					 	<div class='btn btn-chronicle' data-id='{{ chronicle.id }}'>
 					 		<div>{{ chronicle.name }}</div>
 					 	</div>
+					 	{% else %}
+					 	<div class='btn btn-chronicle disabled' data-id='{{ chronicle.id }}'>
+					 		<div>{{ chronicle.name }}</div>
+					 	</div>
+					 	{% endif %}
 					{% endfor %}
 				</div>
 				<div id="btn__show-hide-character" class="active hidden"><div></div></div>
 				<div id='character__wrapper'></div>
+				<div id='relationship__wrapper'>
+					<iframe id='relationship_map'></iframe>
+				</div>
 				<div id='story-toolbar-overlay'>
 					<div id='story-toolbar-content'></div>
 				</div>
@@ -62,7 +79,7 @@
 						<div class='header'>Starting the Night</div>
 						<ul>
 							<li>Must to do a rouse check for hunger</li>
-							<li>May heal one Aggravated Health damage doing an additional 3 rouse checks (must pass all 3 to heal)</li>
+							<li>May heal Aggravated damage to Health (# equal to Blood Potency) doing an additional 3 rouse checks</li>
 							<li>Recover superficial Willpower damage equal to Resolve or Composure, whichever is higher</li>
 						</ul>
 						<div class='header'>Ending the Night</div>
@@ -70,6 +87,7 @@
 							<li>Any character with stains on their humanity must roll remorse. With a dice pool equal to the unmarked, unchecked Humanity (minimum 1 for full), any successes means Humanity level remains. All failures, and Humanity decreases by 1. Regardless of result, all stains are removed.<br/>
 								<span class='sub-text'>(for example, Humanity level 6 with 2 stains rolls 2 dice)</span></li>
 							<li>Heal one Aggravated Willpower damage if player stuck to their Ambition the session</li>
+							<li>Characters that survive the events of the evening improve their chances for surviving the next one, hence, they each get 1 EXP point. The end of a story means an additional EXP point as well.</li>
 						</ul>
 					</div>
 
@@ -695,7 +713,7 @@
 						<br/>
 						<div class='header'>Triggers</div>
 						<br/>
-						<div>Given the situation, make a test with a dice pool equal to Willpower + 1/3 Humanity (round down)</div>
+						<div>Given the situation, make a test with a dice pool equal to current Willpower + 1/3 Humanity (round down)</div>
 						<br/>
 
 						<div class='flex flex-3-sections'>
@@ -1305,6 +1323,9 @@
 				</div>
 			</div>
 		</div>
+		<div id='settings__wrapper' class='hidden'>
+			
+		</div>
 	</div>
 	<div id='btn_roll-dice__wrapper' class='hidden'>
 		<div id='roll-dice__input__wrapper'>
@@ -1351,8 +1372,25 @@
 			</svg>
 		</div>
 	</div>
-	<div id='dice-roll__wrapper'>
+	<div id='dice-roll__wrapper' class='hidden'>
 		<div id='dice-roll__window'>
+			<div id='clear_dice-results'>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+					<g>
+						<path d="M479.971,32.18c-21.72,21.211-42.89,43-64.52,64.301c-1.05,1.23-2.26-0.16-3.09-0.85
+							c-24.511-23.98-54.58-42.281-87.221-52.84c-37.6-12.16-78.449-14.07-117.029-5.59c-68.67,14.67-128.811,64.059-156.44,128.609
+							c0.031,0.014,0.062,0.025,0.093,0.039c-2.3,4.537-3.605,9.666-3.605,15.1c0,18.475,14.977,33.451,33.451,33.451
+							c15.831,0,29.084-11.002,32.555-25.773c19.757-41.979,58.832-74.445,103.967-85.527c52.2-13.17,111.37,1.33,149.4,40.041
+							c-22.03,21.83-44.391,43.34-66.33,65.26c59.52-0.32,119.06-0.141,178.59-0.09C480.291,149.611,479.931,90.891,479.971,32.18z"/>
+						<path d="M431.609,297.5c-14.62,0-27.041,9.383-31.591,22.453c-0.009-0.004-0.019-0.008-0.027-0.012
+							c-19.11,42.59-57.57,76.219-102.84,88.18c-52.799,14.311-113.45,0.299-152.179-39.051c21.92-21.76,44.369-43.01,66.189-64.869
+							c-59.7,0.049-119.41,0.029-179.11,0.01c-0.14,58.6-0.159,117.189,0.011,175.789c21.92-21.91,43.75-43.91,65.79-65.699
+							c14.109,13.789,29.76,26.07,46.92,35.869c54.739,31.971,123.399,38.602,183.299,17.891
+							c57.477-19.297,106.073-63.178,131.212-118.318c3.645-5.357,5.776-11.824,5.776-18.793C465.06,312.477,450.083,297.5,431.609,297.5
+							z"/>
+					</g>
+				</svg>
+			</div>
 			<div id='dice-results'></div>
 		</div>
 	</div>
@@ -1392,6 +1430,9 @@
 			</ul>
 			<div class='hover-link'>Settings</div>
 		</div>
+	</div>
+	<div id='btn__ref-show-hide__wrapper'>
+		<div id='btn__ref-show-hide'><div></div></div>
 	</div>
 	<div id='hand__wrapper'><div></div></div>
 	<div id='users__wrapper' class='hidden'></div>
@@ -1443,8 +1484,218 @@
 		</div>
 		<div id='dialog-text'></div>
 	</div>
-	<div id='btn__ref-show-hide__wrapper'>
-		<div id='btn__ref-show-hide'><div></div></div>
+	<div id='app_settings__wrapper' class='hidden'>
+		<div id='app_settings'>
+			<div id='btn__close-app-settings' class='btn'>&times;</div>
+			<div id='label_app_settings'>App Settings</div>
+			<div id='chronicles_list__wrapper'>
+				<div id='chronicles_list'>
+					{% for chronicle in chronicles %}
+						{% if chronicle.enabled %}
+					 	<div class='btn-chronicle-enabled' data-id='{{ chronicle.id }}'>
+					 		<input class='chronicle-name__input' value='{{ chronicle.name }}'>
+					 	</div>
+					 	{% else %}
+					 	<div class='btn-chronicle-enabled disabled' data-id='{{ chronicle.id }}'>
+					 		<input class='chronicle-name__input' value='{{ chronicle.name }}'>
+					 	</div>
+					 	{% endif %}
+					{% endfor %}
+				</div>
+				<div id='chronicles_add' class='btn'>+</div>
+			</div>
+		</div>
+	</div>
+	<div id='chronicle_settings__wrapper' class='hidden'>
+		<div id='chronicle_settings'>
+			<div id='btn__close-chronicle-settings' class='btn'>&times;</div>
+			<div id='label_chronicle_settings'>Settings</div>
+			<div id='settings__wrapper'>
+				<div id='chronicle_name__wrapper'>
+					Chronicle: <input id='chronicle_name__input'/>
+				</div>
+				<div class='settings_label toolbar-item-header'>Story</div>
+				<div id='story_list'></div>
+				<div class='settings_label toolbar-item-header'>Player Characters</div>
+				<div id='pc_list'></div>
+				<div class='settings_label toolbar-item-header'>NPC Characters</div>
+				<div id='npc_list'></div>
+				<div class='settings_label toolbar-item-header'>Locations</div>
+				<div id='locations_list'></div>
+			</div>
+		</div>
+	</div>
+	<div id='player_sheet_add' class='hidden'>
+		<div id='player_sheet__wrapper'>
+			<div id='character_info__pane'>
+				<div id='character_info__wrapper'>
+					<div id='character_name__wrapper'>
+						<input placeholder="Character Name" />
+					</div>
+					<div id='character_clan__wrapper'>
+						<select id='character_clan'>
+							<option selected disabled>Select Clan</option>
+						</select>
+					</div>
+					<div id='character_age__wrapper'>
+						Apparent Age:<br/>
+						<input type='number' min='18' max='120' step='1' />
+					</div>
+					<div id='character_born__wrapper'>
+						Born:<br/>
+						<input type='number' max='2000' step='1' />
+					</div>
+					<div id='character_embraced__wrapper'>
+						Embraced:<br/>
+						<input type='number' max='2021' step='1' />
+					</div>
+					<div id='character_generation__wrapper'>
+						Generation:<br/>
+						<input type='number' min='6' max='15' step='1' />
+					</div>
+					<div id='character_sire__wrapper'>
+						Sire:<br/>
+						<input/>
+					</div>
+					<div id='character_predator_type__wrapper'>
+						Predator Type:<br/>
+						<select id='add_predator_type'>
+							<option selected disabled>Select Predator Type</option>
+						</select>
+					</div>
+					<div id='character_bio__wrapper'>Bio:<br/><textarea></textarea></div>
+					<div class='toolbar-item-header header'>Disciplines</div>
+					<div id='add_disciplines__wrapper'>
+						<div id='disciplines__list__wrapper' class='clear'></div>
+						<select id='character_discipline__select'></select>
+						<div id='btn-add_discipline' class='btn disabled'>Add</div>
+					</div>
+					<div class='toolbar-item-header header'>Advantages & Flaws</div>
+					<div id='advantages_flaws__wrapper'>
+						<div class='toolbar-item-header'>Advantages</div>
+						<div id='advantages__wrapper'>
+							<div id='advantages__list' class='clear'></div>
+							<div class='detail_add__wrapper'>
+								<input />
+								<div class='btn_detail__add btn has_level disabled'>Add</div>
+							</div>
+						</div>
+						<div class='toolbar-item-header'>Flaws</div>
+						<div id='flaws__wrapper'>
+							<div id='flaws__list' class='clear'></div>
+							<div class='detail_add__wrapper'>
+								<input />
+								<div class='btn_detail__add btn has_level disabled'>Add</div>
+							</div>
+						</div>
+					</div>
+					<div class='toolbar-item-header header'>Convictions & Touchstones</div>
+					<div id='touchstones_convictions__wrapper'>
+						<div class='toolbar-item-header'>Convictions</div>
+						<div id='convictions__wrapper'>
+							<div id='convictions__list' class='clear'></div>
+							<div class='detail_add__wrapper'>
+								<input />
+								<div class='btn_detail__add btn disabled'>Add</div>
+							</div>
+						</div>
+						<div class='toolbar-item-header'>Touchstones</div>
+						<div id='touchstones__wrapper'>
+							<div id='touchstones__list' class='clear'></div>
+							<div class='detail_add__wrapper'>
+								<input />
+								<div class='btn_detail__add btn disabled'>Add</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class='flex'>
+					<div id='character_sheet_save' class='btn'>Save</div>
+					<div id='character_sheet_cancel' class='btn'>Cancel</div>
+				</div>
+			</div>
+			<div id='character_sheet_data'>
+				<div id='attr_stats__wrapper'></div>
+				<div id='add_trackers__wrapper'>
+					<div id='add_health__wrapper'>
+						<div class='header'>Health</div>
+						<input id='add_health' type='number' step='1' min='3' value='3' disabled />
+					</div>
+					<div id='add_willpower__wrapper'>
+						<div class='header'>Willpower</div>
+						<input id='add_willpower' type='number' step='1' min='0' value='0' disabled />
+					</div>
+					<div id='add_humanity__wrapper'>
+						<div class='header'>Humanity</div>
+						<input id='add_humanity' type='number' step='1' min='1' max='10' value='7'/>
+					</div>
+				</div>
+				<div id='add_other__wrapper'>
+					<div id='add_blood_potency__wrapper'>
+						<div class='header'>Blood Potency</div>
+						<input id='add_blood_potency' type='number' step='1' min='0' value='1' />
+					</div>
+					<div id='add_experience__wrapper'>
+						<div class='header'>Experience</div>
+						<input id='add_experience' type='number' step='1' min='0' value='0' />
+					</div>
+				</div>
+			</div>
+			<div id='attr_edit__wrapper' class='hidden'>
+				<div id='attr_edit__window'>
+					<div id='attr-title'></div>
+					<div id='attr_level__wrapper' class='flex'>
+						<div id='remove__level' class='btn'>Remove</div>
+						<div id='attr_level' class='level level0'></div>
+					</div>
+					<div id='attr_specialty'><input placeholder="specialty" /></div>
+					<div id='attr_btn__wrapper' class='flex'>
+						<div id='attr_save' class='btn'>Save</div>
+						<div id='attr_cancel' class='btn'>Cancel</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='location_add' class='hidden'>
+		<div id='location_add__wrapper'>
+			<div id='location_add_data'>
+				<div class='flex'>
+					<div id='location_add_name__wrapper'>
+						Name:<br/>
+						<input id='location_add_name'/>
+					</div>
+					<div id='location_add_visible__wrapper'>
+						Visible:<br/>
+						<input type='checkbox' id='location_add_visible'/>
+					</div>
+					<div id='location_add_haven__wrapper'>
+						Haven For:<br/>
+						<select id='location_add_haven'></select>
+					</div>
+				</div>
+				<div id='location_add_address__wrapper'>
+					Address:<br/>
+					<input id='location_add_address'/>
+				</div>
+				<div id='location_add_description__wrapper'>
+					Description:<br/>
+					<textarea id='location_add_decription'></textarea>
+				</div>
+				<div id='location_add_storyteller_notes__wrapper'>
+					Storyteller Notes:<br/>
+					<textarea id='location_add_storyteller_notes'></textarea>
+				</div>
+			</div>
+			<div id='locations_btn__wrapper' class='flex'>
+				<div class='location_btn__wrapper'>
+					<div id='btn__save_location' class='btn'>Save</div>
+				</div>
+				<div class='location_btn__wrapper'>
+					<div id='btn__cancel_location' class='btn'>Cancel</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<footer>
 		<div id='dark-pack-logo' class='img'></div>
@@ -1454,6 +1705,12 @@
 		</div>
 	</footer>
 </div>
+<audio preload="auto" class='roll-effect' id='effect__dice-roll_1' src="static/sound-effects/dice-roll_1.mp3" type="audio/mpeg"></audio>
+<audio preload='auto' class='roll-effect' id='effect__dice-roll_2' src="static/sound-effects/dice-roll_2.mp3" type="audio/mpeg"></audio>
+<audio preload='auto' class='roll-effect' id='effect__dice-roll_3' src="static/sound-effects/dice-roll_3.mp3" type="audio/mpeg">
+</audio>
+<audio preload='auto' class='notification' id='notification_effect' src="static/sound-effects/notification.mp3" type="audio/mpeg">
+</audio>
 </body>
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 <script src='https://cdn.socket.io/3.1.3/socket.io.min.js'></script>
@@ -1468,3 +1725,5 @@
 <script src='static/javascript/app.js' type='text/javascript'></script>
 <script src='static/javascript/socket.js' type='text/javascript'></script>
 <script src='static/javascript/dice.js' type='text/javascript'></script>
+<script src='static/javascript/settings.js' type='text/javascript'></script>
+<script src='static/javascript/serialize.js' type='text/javascript'></script>

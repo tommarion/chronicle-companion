@@ -85,7 +85,25 @@ $( '#chapters__wrapper' ).on( 'click', '.chapter', function() {
 		$( '.chapter.active' ).removeClass( 'active' );
 		$( this ).addClass( 'active' );
 		processChapter( $( this ).index() );
+		$( '#story-text__wrapper' )[0].scrollTop = 0;
 	}
+});
+
+$( '#story-toolbar-content' ).on( 'click', '.btn-character', function() {
+	if (! $( this ).hasClass( 'active' ) ) {
+		$( '.btn-character.active' ).removeClass( 'active' );
+		$( '.btn-location.active' ).removeClass( 'active' );
+		$( this ).addClass( 'active' );
+		let characterId = $( this ).find( 'div' ).data( 'id' );
+		processCharacterData( characterId );
+		$( '#character__wrapper' )[0].scrollTop = 0;
+		storyToolbarClick();
+	}
+});
+
+$( '#btn-relationship_map' ).on( 'click', function() {
+	$( this ).toggleClass( 'active' );
+	$( '#relationship__wrapper' ).toggleClass( 'active' );
 });
 
 function storyToolbarClick() {

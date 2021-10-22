@@ -14,7 +14,7 @@
     z-index: 200;
 }
 #toolbar__wrapper:not(.slideLeft) {
-	width: 250px;
+	width: 297px;
     padding-left: 20px;
 }
 #toolbar__wrapper.slideLeft {

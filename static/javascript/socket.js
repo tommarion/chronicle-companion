@@ -7,7 +7,7 @@ socket.on( 'connect', function() {
 /*
  EXAMPLE
 	socket.emit( 'data update', {
-		'type' : 'tracker',					tracker | skill | attribute
+		'type' : 'tracker',					tracker | skill | attribute | notes
 		'tracker' : 'willpower',			(for tracker) willpower | health | humanity | hunger
 		'damage_type' : 'superficial',		(for tracker) superficial | aggravated
 		'skill_name' : ''					(for skill) strength | dexterity...
@@ -24,6 +24,8 @@ socket.on( 'data updated', function( data ) {
 	console.log( "DATA UPDATED!", data);
 	if (data.id == getUrlVariable('character=')) {
 		$( '#character__wrapper' ).html( assembleCharacterData( data ) );
+	} else {
+		console.log(data.id, getUrlVariable('character='))
 	}
 });
 
@@ -40,15 +42,14 @@ socket.on( 'roll results', function( data ) {
 function processHandRaises() {
 	if (user == 'Storyteller') {
 		socket.on( 'hand raised', function( data ) {
-			console.log( "HAND RAISED!", data);
 			var elems = $( '#hand__wrapper:contains(' + data.character + ')');
 			if (elems.length > 0 && elems.find('.btn').hasClass('btn_hand-raised')) {
 				$( '.btn_hand-raised:contains(' + data.character + ')' ).addClass('remind');
 			} else {
-				console.log(elems.find('.btn'));
 				$( '#hand__wrapper>div' ).append( '<div class="btn btn_hand-raised">' + data.character + '</div>' );
 				resizeHandWrapper();
 			}
+			$( '#notification_effect' )[0].play();
 		});
 
 		$( '#hand__wrapper' ).on( 'click', '.btn_hand-raised', function() {

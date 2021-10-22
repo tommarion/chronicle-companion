@@ -2,9 +2,10 @@ function loadChronicleSettings( chronicleId ) {
 	$.getJSON(base + 'chronicle/' + chronicleId + '/', function( chronicleData ){
 		chronicleSettings = chronicleData;
 		$( '#loading__wrapper' ).addClass( 'hidden' );
+		populateChronicleSettings(chronicleSettings);
 		promptForUser();
-	}).fail( function(){
-	    console.log("An error has occurred loading chronicle file: " + chronicleSettingsFilename);
+	}).fail( function( xhr, status, error ){
+	    console.log("An error has occurred loading chronicle settings for: " + chronicleId);
 	});
 }
 function loadCharacterById( characterId ) {
@@ -13,13 +14,13 @@ function loadCharacterById( characterId ) {
 		$( '#character__wrapper' ).html( assembleCharacterData( characterData ) );
 		$( '#story-text__wrapper' ).fadeOut();
 		$( '#story-toolbar' ).fadeOut();
-	}).fail( function(){
-	    console.log("An error has occurred loading chronicle file: " + chronicleSettingsFilename);
+	}).fail( function( xhr, status, error ){
+	    console.log("An error has occurred loading character data for: " + characterId);
 	});
 }
 
 function postDiceRoll( postData ) {
-	postData.timestamp = getTimestamp();
+	postData.timestamp = new Date().toUTCString();
 	$.ajax({
 		url: base + 'roll/',
 		type: 'POST',
@@ -28,25 +29,61 @@ function postDiceRoll( postData ) {
 	});
 }
 
-function getTimestamp() {
-	date = new Date();
-	hours = date.getHours();
-	mins = date.getMinutes();
-	secs = date.getSeconds();
-	if (mins < 10) {
-		mins = '0' + mins;
+function saveCharacter( postData, chronicleId ) {
+	$.ajax({
+		url: base + 'chronicle/' + chronicleId + '/characters/',
+		type: 'POST',
+		data: JSON.stringify(postData),
+		contentType: 'application/json'
+	}).done(function( data, status, xhr ) {
+		console.log( "ADD RESPONSE: ", data )
+		chronicleSettings = data;
+		$( '#pc_list' ).html( getChronicleSettingsCharacters( data.characters.pc ) );
+		$( '#npc_list' ).html( getChronicleSettingsCharacters( data.characters.npc ) );
+		clearAndCloseCharacterSheetForm();
+	}).fail( function( xhr, status, error ) {
+		console.log(xhr);
+	    const response = JSON.parse(xhr.responseText);
+	    console.log( "An error has occurred saving character data for: " + postData.name, response );
+	    alert( "There was a problem saving the character sheet data: " + response.message );
+	    return false;
+	});
+}
+
+function saveLocation( postData, chronicleId ) {
+	$.ajax({
+		url: base + 'chronicle/' + chronicleId + '/locations/',
+		type: 'POST',
+		data: JSON.stringify(postData),
+		contentType: 'application/json'
+	}).done(function( data, status, xhr ) {
+		chronicleSettings = data;
+		alert();
+		$( '#locations_list' ).html( getChronicleSettingsLocations( data.locations ) );
+		clearAndCloseLocationForm();
+		alert();
+	}).fail( function( xhr, status, error ) {
+		console.log(xhr);
+	    const response = JSON.parse(xhr.responseText);
+	    console.log( "An error has occurred saving character data for: " + postData.name, response );
+	    alert( "There was a problem saving the character sheet data: " + response.message );
+	    return false;
+	});
+}
+
+function toggleChronicleEnabled( chronicleId, enabled ) {
+	let url = base + 'chronicle/' + chronicleId;
+	if (enabled == ENABLE) {
+		url += '/enable/';
+	} else {
+		url += '/disable/';
 	}
-	if (secs < 10) {
-		secs = '0' + secs;
-	}
-	amPm = hours > 12 ? 'PM' : 'AM';
-	if (hours == 0) {
-		hours = 12;
-	}
-	if (hours > 12) {
-		hours = hours % 12;
-	}
-	return hours + ':' + mins + ':' + secs + ' ' + amPm;
+	$.ajax({
+		url: url,
+		type: 'GET',
+	}).done(function( data, status, xhr ) {
+		handleToggleEnabledResponse( data );
+	});
 }
 
 // function saveChronicleSettings( fileType ) {

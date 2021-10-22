@@ -1,5 +1,4 @@
 function handleRollResults( data ) {
-	console.log( data );
 	if ($( '#dice-results' ).children().length > 0) {
 		$( '#dice-results' ).prepend( '<hr>' );
 	}
@@ -10,12 +9,35 @@ function handleRollResults( data ) {
 	if (data.reroll) {
 		classMod += ' reroll';
 	}
-	if (data.roll.regular.length == 0 && data.roll.hunger.length == 1) {
+	if (data.roll.regular.length == 0) {
 		classMod += ' rouse';
 	}
 	$( '#dice-results' ).prepend( '<div class="dice-roll' + classMod + '">' + data.player + 
-		' <span class="sub-text">(' + data.timestamp + ')</span>' + assembleRoll( data.roll ) +
+		'<br/><span class="sub-text">(' + getTimestamp(data.timestamp) + ')</span>' + assembleRoll( data.roll ) +
 		'</div></div>' );
+	playRandomDiceRollEffect();
+	$( '#clear_dice-results' ).removeClass( 'active' );
+}
+
+function getTimestamp( timestamp ) {
+	date = new Date(timestamp);
+	hours = date.getHours();
+	mins = date.getMinutes();
+	secs = date.getSeconds();
+	if (mins < 10) {
+		mins = '0' + mins;
+	}
+	if (secs < 10) {
+		secs = '0' + secs;
+	}
+	amPm = hours > 12 ? 'PM' : 'AM';
+	if (hours == 0) {
+		hours = 12;
+	}
+	if (hours > 12) {
+		hours = hours % 12;
+	}
+	return hours + ':' + mins + ':' + secs + ' ' + amPm;
 }
 
 function assembleRoll( roll ) {
@@ -180,19 +202,28 @@ $( '.roll-type__option' ).on( 'click', function() {
 				updateDiceInputs( 1, 1 );
 				break;
 			case DEX_ATH:
-				updateDiceInputs( getStatValue( 'dexterity' ) + getStatValue( 'athletics' ), null );
+				updateDiceInputs( getStatValue( 'dexterity', false ) + getStatValue( 'athletics', false ), null );
 				break;
 			case STR_BRW:
-				updateDiceInputs( getStatValue( 'strength' ) + getStatValue( 'brawl' ), null );
+				updateDiceInputs( getStatValue( 'strength', false ) + getStatValue( 'brawl', false ), null );
 				break;
 			case WTS_AWR:
-				updateDiceInputs( getStatValue( 'wits' ) + getStatValue( 'awareness' ), null );
+				updateDiceInputs( getStatValue( 'wits', false ) + getStatValue( 'awareness', false ), null );
 				break;
 			case WILL:
-				updateDiceInputs( getStatValue( 'dexterity' ), null );
+				updateDiceInputs( getStatValue( 'willpower', true ), null );
 				break;
 		}
 	}
+});
+
+$( '#clear_dice-results' ).on( 'click', function() {
+	if ( $( this ).hasClass( 'active' ) ) {
+		$( '#dice-results>*' ).removeClass( 'hidden' );
+	} else {
+		$( '#dice-results>*' ).addClass( 'hidden' );
+	}
+	$( this ).toggleClass( 'active' );
 });
 
 function updateDiceInputs( total, hunger ) {
@@ -202,7 +233,30 @@ function updateDiceInputs( total, hunger ) {
 	}
 }
 
-function getStatValue( stat ) {
-	return parseInt($( '.' + stat + ' .level' ).attr( 'class' ).replace( 'level level', '' ))
+function getStatValue( stat, isTracker ) {
+	if (isTracker) {
+		let tracker = $( '#' + stat + '-tracker' );
+		let max = getTrackerTypeValue( tracker, 'maxlevel' );
+		let superficial = getTrackerTypeValue( tracker, 'superficial' );
+		let aggravated = getTrackerTypeValue( tracker, 'aggravated' );
+		return max - (superficial + aggravated);
+	}
+	return parseInt($( '.' + stat + ' .level' ).attr( 'class' ).replace( 'level level', '' ));
+}
+
+function getTrackerTypeValue( elem, type ) {
+	console.log( elem.attr( 'class' ) );
+	let classes = elem.attr( 'class' ).split( ' ' );
+	for ( className in classes ) {
+		if ( classes[className].includes( type ) ) {
+			return parseInt( classes[className].replace( type, '' ) );
+		}
+	}
+	return null
+}
+
+function playRandomDiceRollEffect() {
+	const rollEffectIndex = Math.floor(Math.random() * ($( 'audio.roll-effect' ).length)) + 1;
+	$( '#effect__dice-roll_' + rollEffectIndex )[0].play();
 }
 

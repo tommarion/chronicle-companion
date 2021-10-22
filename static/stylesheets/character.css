@@ -79,12 +79,25 @@
 #skills__wrapper .attr__wrapper {
 	flex: 0 0 33%;
 }
+
+/*************************************/
+/*           DISCIPLINES             */
+/*************************************/
+#disciplines__wrapper {
+	margin-top: 20px;
+}
+.discipline__wrapper .level {
+	margin-top: -15px;
+}
+
+
 #value-modifier__background {
 	height: 100vh;
 	width: 100vw;
 	position: fixed;
 	top: 0;
 	left: 0;
+	background-color: #00000088;
 }
 #value-modifier__dialog {
 	height: 200px;
@@ -143,10 +156,21 @@
 	opacity: 0.8;
 	cursor: pointer;
 }
+#character-notes__wrapper {
+    margin-top: 20px;
+}
 .note {
-	font-size: 1.3em;
-    font-weight: bold;
-    font-family: 'Modern Antiqua', cursive;
+    font-size: 0.75em;
+    width: calc( 100% - 30px );
+}
+.btn_remove-note {
+	width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.btn_remove-note:before {
+    content: "\2715";
+    color: #A2091E;
 }
 .note:before {
     content: "\e907";
@@ -156,6 +180,37 @@
 .characterName {
 	margin-left: 50px;
 }
+#btn_add-note__wrapper {
+    margin-top: 15px;
+}
+#add-note__input {
+    width: 100%;
+    font-size: 20px;
+    background: #A2091E;
+    color: #C5C5C5;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: 2px solid;
+    margin-bottom: -2px;
+    padding: 4px 2px;
+    outline: none !important;
+}
+#btn_add-note {
+	font-size: 2em;
+    line-height: 0.9;
+    height: 37px;
+    background: #A2091E;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 2px solid #C5C5C5;
+    text-align: center;
+}
+
+
+
+/*************************************/
+/*             CLAN LOGOS            */
+/*************************************/
 #clan {
     height: 60px;
     width: 60px;

@@ -27,6 +27,7 @@
 #content__wrapper:not(.active) {
 	display: none;
 }
+#relationship__wrapper,
 #character__wrapper,
 #chronicles__wrapper {
     width: calc( 100% - 40px );
@@ -35,13 +36,18 @@
 	flex-wrap: wrap;
 	overflow: auto;
 }
+#relationship__wrapper,
 #character__wrapper {
     height: 0px;
 	transition: height 0.5s ease;
 }
 #chronicles__wrapper,
-#character__wrapper.active {
+#character__wrapper.active,
+#relationship__wrapper.active {
     height: calc( 100% - 180px );
+}
+#relationship_map {
+	width: 100%;
 }
 #story-text__wrapper {
 	position: absolute;
@@ -61,6 +67,14 @@
     padding-right: 20px;
     height: calc( 100% - 40px );
 }
+#story-text__none__wrapper {
+	height: 100%;
+	width: 100%;
+}
+#story-text__none {
+	text-align: center;
+    padding-top: 28vh;
+}
 #story-text p {
     text-indent: 40px;
     text-align: justify;
@@ -77,6 +91,9 @@
 #location-header {
 	flex: 0 0 20px;
 	text-align: center;
+}
+#chapters__wrapper {
+	margin-left: -15px;
 }
 .chapter {
 	text-align: center;

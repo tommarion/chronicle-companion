@@ -16,6 +16,8 @@ $( '#story-toolbar-content' ).on( 'click', '.btn-location', function() {
 		$( '.btn-location.active' ).removeClass( 'active' );
 		$( this ).addClass( 'active' );
 		processLocationData( $( this ) );
+		$( '#story-text__wrapper' ).fadeOut();
+		$( '#story-toolbar' ).fadeOut();
 		storyToolbarClick();
 	}
 });
@@ -39,6 +41,10 @@ function assembleLocationData( locationName, locationInfo ) {
 	if (locationInfo.description) {
 		locationSheetStr += '<div id="location-description">' + 
 			locationInfo.description + '</div>';
+	}
+	if ( user == STORYTELLER && locationInfo.storyteller_notes) {
+		locationSheetStr += '<div id="location-storyteller_notes">' + 
+			locationInfo.storyteller_notes + '</div>';
 	}
 	locationSheetStr += '</div>';
 

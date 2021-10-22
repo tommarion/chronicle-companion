@@ -1,3 +1,27 @@
+#dice-results {
+	margin: 20px 0;
+}
+#clear_dice-results {
+	margin: 5px 0 0 5px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+}
+#clear_dice-results.active {
+	opacity: 0.5;
+}
+#clear_dice-results:not(.active):hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+#clear_dice-results:not(.active):active {
+	transform: scale( 0.9 );
+}
+#clear_dice-results>svg {
+	fill: #A2091E;
+    padding: 5px;
+}
+
 .dice-result {
 	font-size: 3em;
 	font-family: 'chronicle-companion-10' !important;
@@ -16,7 +40,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-.dice-roll.own-roll:not(.rerolled):not(.reroll) .dice-result:hover {
+.dice-roll.own-roll:not(.rerolled):not(.reroll):not(.rouse) .dice-result:hover {
 	cursor: pointer;
 	background: #8c0013;
 }
@@ -29,13 +53,32 @@
 }
 
 #btn_roll-dice__wrapper {
-    width: 300px;
+    width: 312px;
     height: 80px;
     top: 20px;
     position: absolute;
 }
+#btn_roll-dice {
+	left: 264px;
+    top: 58px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: fixed;
+    background: #a2091E;
+    color: black;
+    font-weight: bold;
+    padding: 2px 10px 7px 5px;
+    text-align: center;
+    border-left: 2px solid #C5C5C5;
+    border-top: 2px solid #C5C5C5;
+    border-right: 2px solid #C5C5C5;
+}
+#btn_roll-dice>svg {
+	height: 36px;
+    margin-bottom: -5px;
+    margin-right: -7px;
+}
 #roll-dice__input__wrapper {
-    width: 180px;
     margin-left: 60px;
 }
 #roll-type {
@@ -45,7 +88,8 @@
     font-size: 1.25em;
     text-align: center;
     border-radius: 6px;
-    padding: 7px;
+    padding: 5px;
+    border: 2px solid #C5C5C5;
 }
 #roll-type:hover {
 	cursor: pointer;
@@ -53,7 +97,7 @@
 }
 #btn_roll-type {
     position: absolute;
-    right: 74px;
+    right: 10px;
 }
 #roll-type:not(.active) #btn_roll-type:after {
     content: "\22C1";
@@ -64,22 +108,22 @@
 #roll-type__dropdown {
 	transition: height 0.5s ease;
     width: 170px;
-    margin-left: 3px;
+    margin-left: 75px;
     background: #A2091E;
     position: absolute;
     z-index: 200;
-    border: 2px solid black;
+    border: 2px solid #C5C5C5;
     overflow-y: auto;
+    margin-top: -2px;
 }
 #roll-type__dropdown:not(.active) {
 	transition: height 0.5s ease, border 0s ease 0.5s;
 	height: 0px;
-	border-top: none;
 	border-bottom: none;
 }
 #roll-type__dropdown.active {
 	transition: height 0.5s ease;
-	height: 400px;
+	height: 192px;
 }
 .roll-type__option {
     padding: 5px 7px;
@@ -144,17 +188,19 @@
 	position: fixed;
     top: 100px;
     left: 0;
-    width: 320px;
-    height: calc( 100% - 180px);
+    width: 315px;
+    height: calc( 100% - 185px);
     overflow: hidden;
-    background-color: #000000aa;
+    background-color: black;
+    border-radius: 6px;
+    border: 1px solid #610000;
 }
 #dice-roll__window {
+	color: #c5c5c5;
 	width: 100%;
     height: calc( 100% - 4px );
     overflow: auto;
     border-radius: 10px;
-    border: 1px solid #610000;
 }
 #dice-roll__window hr {
 	width: 80%;
@@ -165,15 +211,19 @@
     width: 300px;
     margin: 0 auto;
 }
-.die {    
-	background: #5d000d;
-    margin: 0 5px 5px;
+.die {
+	color: #c5c5c5;
+	border: 2px solid #333;
+    margin: 0 3px 5px;
     border-radius: 10px;
     padding: 5px 0 5px 13px;
     height: 48px;
 }
+.die.hunger {
+	background: #5d000d;
+}
 .die:not(.hunger) {
-	color: black;
+	background-color: black;
 }
 
 .icon_book:before {

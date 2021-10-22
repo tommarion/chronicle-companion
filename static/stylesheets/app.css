@@ -48,6 +48,7 @@ body {
 #version__wrapper {
 	margin-top: 63px;
     margin-left: 5px;
+    font-weight: bold;
 }
 #loading__wrapper {
     height: 100%;
@@ -128,21 +129,6 @@ ul {
 .btn_hand-raised.remind {
 	animation: pulse-harder 1s infinite;
 }
-#btn_roll-dice {
-	left: 250px;
-    top: 48px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    position: fixed;
-    background: #a2091E;
-    color: black;
-    font-weight: bold;
-    padding: 5px 15px 10px 10px;
-    text-align: center;
-    border-left: 2px solid black;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-}
 #btn_raise-hand {
     position: fixed;
     right: 0;
@@ -152,14 +138,9 @@ ul {
     font-weight: bold;
     padding: 15px 25px;
     text-align: center;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
+    border-bottom: 2px solid #C5C5C5;
+    border-left: 2px solid #C5C5C5;
     border-bottom-left-radius: 10px;
-}
-#btn_roll-dice>svg {
-	height: 40px;
-    margin-bottom: -5px;
-    margin-right: -7px;
 }
 #btn_raise-hand>svg {
 	height: 30px;

@@ -1,0 +1,474 @@
+#app_settings__wrapper,
+#chronicle_settings__wrapper {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+#app_settings {
+    height: 210px;
+    width: 500px;
+    background-color: black;
+    border: 1px solid #A2091E;
+    border-radius: 10px;
+    margin: 30vh auto;
+}
+
+#btn__close-app-settings,
+#btn__close-chronicle-settings {
+    height: 40px;
+    width: 40px;
+    font-size: 2em;
+    text-align: center;
+    position: absolute;
+}
+#btn__close-app-settings {
+    right: calc( 50vw - 250px );
+
+}
+#btn__close-chronicle-settings {
+    right: calc( 50vw - 290px );
+}
+
+#label_app_settings,
+#label_chronicle_settings,
+.settings_label {
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 10px;
+    font-family: 'Modern Antiqua';
+}
+
+#chronicles_list__wrapper {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 173px;
+}
+
+#pc_list, #npc_list, #locations_list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.btn-chronicle-enabled,
+#chronicles_add {
+    background-color: #A2091E;
+    padding: 20px;
+    width: 160px;
+    border-radius: 10px;
+    margin: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-chronicle-enabled.disabled {
+	opacity: 0.7;
+}
+
+input.chronicle-name__input {
+    background-color: transparent;
+    outline: none !important;
+    border: none !important;
+}
+#chronicles_add {
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+#chronicle_settings {
+    background-color: black;
+    width: 600px;
+    border: 1px solid #A2091E;
+    border-radius: 10px;
+    margin: calc( 50vh - 185px ) auto 0;
+    height: 370px;
+}
+
+#settings__wrapper {
+	padding: 0 20px;
+	margin: 0 auto;
+	height: 317px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.chapter__wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+.chapter__wrapper:not(.add) {
+    display: none;
+}
+
+.scene__wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+.scene__wrapper:not(.add) {
+    display: none;
+}
+
+textarea {
+    background-color: transparent;
+    color: #A2091E;
+    border: 2px solid;
+	width: 100%;
+	border-radius: 5px;
+}
+
+.btn__remove-scene {
+	margin-top: -50px;
+    margin-bottom: -20px;
+    margin-right: -50px;
+    float: right;
+    font-size: 2em;
+    padding: 0 20px;
+}
+.btn_settings_character,
+.btn_settings_location {
+    flex: 0 0 150px;
+    text-align: center;
+    background-color: #A2091E;
+    color: black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    display: table;
+    height: 50px;
+}
+
+.btn_settings_character>div,
+.btn_settings_location>div {
+	display: table-cell;
+    vertical-align: middle;
+}
+
+
+.btn_settings_character.add, .btn_settings_location.add {
+    font-size: 1.5em;
+}
+
+#chronicle_settings input,
+#player_sheet__wrapper input,
+#location_add__wrapper input {
+    background-color: transparent;
+    color: #A2091E;
+    border: 2px solid !important;
+    font-size: 1.25em;
+    border-radius: 5px;
+}
+#player_sheet__wrapper select,
+#location_add__wrapper select {
+    background-color: transparent;
+    color: #A2091E;
+    border: 2px solid;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+#player_sheet__wrapper textarea,
+#location_add__wrapper textarea {
+    height: 275px;
+}
+
+#player_sheet_add {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+}
+
+#character_info__pane {
+    flex: 0 0 50%;
+}
+#character_info__wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 30px;
+    height: calc( 100% - 15px );
+}
+#character_name__wrapper {
+	width: 350px;
+    margin: 0 auto 7px;
+}
+#character_name__wrapper input {
+	width: 350px;
+	font-size: 2em;
+	text-align: center;
+}
+#player_sheet__wrapper input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #A2091E99;
+  opacity: 1; /* Firefox */
+}
+#player_sheet__wrapper input::-ms-input-placeholder { /* Edge */
+  color: #A2091E99;
+}
+
+#player_sheet__wrapper {
+    width: 950px;
+    height: 64vh;
+    margin: calc( 18vh - 30px ) auto 0;
+    background-color: black;
+    border-radius: 10px;
+    border: 2px solid;
+    padding: 20px;
+    display: flex;
+}
+
+#character_sheet_data {
+	overflow-y: auto;
+}
+
+#character_sheet_save {
+    position: absolute;
+    top: calc( 70vh + 65px );
+    margin-left: 100px;
+}
+
+#character_sheet_cancel {
+	position: absolute;
+    top: calc( 70vh + 65px );
+    margin-left: 300px;
+}
+
+#attr_edit__wrapper {
+	position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+}
+
+#attr_edit__window {
+    width: 280px;
+    height: 150px;
+    background-color: black;
+    border: 2px solid;
+    border-radius: 10px;
+    margin: 220px auto;
+}
+#attr-title {
+	text-transform: capitalize;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+#attr_level__wrapper {
+	width: 90px;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+}
+#remove__level {
+    padding: 5px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    background-color: #A2091E;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: -65px;
+    font-size: 0.75em;
+}
+#attr_level {
+	width: 90px;
+	cursor: pointer;
+}
+
+#attr_specialty {
+	width: 200px;
+	margin: 0 auto;
+}
+#attr_specialty input {
+	width: 200px;
+	text-align: center
+}
+
+#btn-add_discipline {
+    margin-right: 10%;
+    margin-top: 7px;
+}
+
+.discipline_add__wrapper,
+#advantages_flaws__wrapper,
+#touchstones_convictions__wrapper,
+.powers_list, .rituals__list {
+    width: 80%;
+    margin: 15px auto;
+}
+#advantages__wrapper,
+#flaws__wrapper,
+#convictions__wrapper,
+#touchstones__wrapper {
+    margin: 15px auto;
+}
+#advantages__wrapper>div,
+#flaws__wrapper>div,
+#convictions__wrapper>div,
+#touchstones__wrapper>div {
+	margin: 10px 0;
+}
+#advantages__wrapper .level,
+#flaws__wrapper .level,
+#convictions__wrapper .level,
+#touchstones__wrapper .level {
+	font-size: 1.5em;
+    margin-left: 10px;
+    margin-top: -1px;
+    cursor: pointer;
+}
+#character_discipline__select {
+    margin-left: 10%;
+}
+
+.discipline_add__wrapper .level {
+	float: right;
+    margin-top: -30px;
+    cursor: pointer;
+}
+#character_info__wrapper .header {
+    margin: 15px 0;
+}
+
+.detail_add__wrapper input {
+	width: 250px;
+}
+.btn_detail__add {
+	float: right;
+}
+
+.btn_detail__add,
+#btn-add_discipline,
+.btn_ritual_add {
+    float: right;
+    background-color: #A2091E;
+    border-radius: 10px;
+    padding: 2px 7px;
+    color: black;
+    font-size: 0.8em;
+}
+
+.btn_ritual_add {
+    float: right;
+    margin-top: 7px;
+}
+
+.btn_detail__add {
+    margin-top: 3px;
+}
+
+.remove_detail {
+	margin-right: -20px;
+    margin-left: 7px;
+    margin-top: -12px;
+    font-size: 1.5em;
+}
+#convictions__wrapper input.wide,
+#touchstones__wrapper input.wide {
+	width: 295px;
+}
+
+#add_trackers__wrapper,
+#add_other__wrapper {
+	margin-top: 15px;
+	text-align: center;
+}
+#add_trackers__wrapper input,
+#add_other__wrapper input {
+    font-size: 2em;
+    width: 60px;
+    text-align: center;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+#attr_save, #attr_cancel {
+    margin: 7px 0 0 51px;
+    background-color: #A2091E;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: black;
+}
+.disc_remove.btn {
+    float: right;
+    margin-right: -15px;
+    margin-top: -35px;
+    font-size: 1.25em;
+}
+.add_scene__wrapper,
+.add_chapter__wrapper {
+    background-color: #A2091E;
+    border-radius: 5px;
+    color: black;
+    margin-top: 10px;
+    padding: 5px 5px 10px;
+    margin-bottom: 40px;
+}
+
+.btn__add-scene,
+.btn__add-chapter {
+    background-color: #A2091E;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 4px 7px;
+    margin-top: 10px;
+    float: right;
+}
+
+.add_scene__wrapper input,
+.add_chapter__wrapper input,
+.add_scene__wrapper textarea,
+.add_chapter__wrapper textarea {
+	color: black !important;
+}
+.scene-story__text {
+	height: 225px;
+}
+
+.scene-header {
+	margin: 5px 0;
+}
+#location_add__wrapper {
+    height: 390px;
+    width: 590px;
+    background: black;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid;
+    margin: 130px auto;
+}
+div#location_data {
+    overflow-y: auto;
+    height: 100%;
+}
+
+#location_add {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+#location_add_data {
+	height: calc( 100% - 40px );
+	overflow-y: auto;
+}
+#location_add_name__wrapper {
+    flex: 0 0 50%;
+}
+#location_add_address {
+	width: 100%;
+}
+.location_btn__wrapper {
+    flex: 0 0 50%;
+}
+#btn__save_location,
+#btn__cancel_location {
+    width: 70px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #A2091E;
+    border-radius: 5px;
+    color: black;
+    padding: 5px 0;
+    margin-top: 8px;
+}
+#location_add_visible__wrapper {
+    flex: 0 0 15%;
+}
+
