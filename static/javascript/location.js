@@ -7,7 +7,7 @@ function processLocations() {
 			locationsList[locationName] + '</div></div>';
 	}
 	locationBtnStr += '<div class="spacer"></div>';
-	$( '#story-toolbar-content' ).html(locationBtnStr);
+	return locationBtnStr;
 }
 
 $( '#story-toolbar-content' ).on( 'click', '.btn-location', function() {
@@ -25,13 +25,18 @@ $( '#story-toolbar-content' ).on( 'click', '.btn-location', function() {
 function processLocationData( locationBtn ) {
 	let locationName = locationBtn.find( 'div' ).html();
 	let locationInfo = chronicleSettings.locations[locationName];
-	$( '#character__wrapper' ).html( assembleLocationData( locationName, locationInfo ) );
+	$( '#character__wrapper' ).html( assembleLocationData( locationName, locationInfo ) )
+		.attr( 'class', 'active' );
 }
 
 function assembleLocationData( locationName, locationInfo ) {
 	console.log( locationInfo );
 	let locationSheetStr = '<div><div id="location-header"><span class="header">' + locationName + '</span>';
 	if (locationInfo.address) {
+		locationSheetStr += '<br/><iframe class="location-map"\
+			  frameborder="0" style="border:0"\
+			  src="//maps.google.com/maps?q=' + locationInfo.address.replaceAll( ' ', '+' ) + '&z=13&output=embed">\
+			</iframe>'
 		locationSheetStr += '<br/><span class="sub-text">' + locationInfo.address + '</span>';
 	}
 	locationSheetStr += '</div>';

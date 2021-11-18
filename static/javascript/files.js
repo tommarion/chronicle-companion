@@ -8,12 +8,24 @@ function loadChronicleSettings( chronicleId ) {
 	    console.log("An error has occurred loading chronicle settings for: " + chronicleId);
 	});
 }
-function loadCharacterById( characterId ) {
+function loadCharacterById( characterId, main ) {
 	$.getJSON(base + 'character/' + characterId + '/', function( characterData ){
+		let sheetStyle = characterData.clan;
+		if ( sheetStyle == undefined || sheetStyle == null ) {
+			sheetStyle = characterData.being;
+		}
+
 		$( '#loading__wrapper' ).addClass( 'hidden' );
-		$( '#character__wrapper' ).html( assembleCharacterData( characterData ) );
-		$( '#story-text__wrapper' ).fadeOut();
-		$( '#story-toolbar' ).fadeOut();
+		if ( main ) {
+			$( '#character__wrapper' ).html( assembleCharacterData( characterData ) )
+				.attr( 'class', 'active ' + sheetStyle );
+			$( '#story-text__wrapper' ).fadeOut();
+			$( '#story-toolbar' ).fadeOut();
+		} else {
+			$( '#character_sub__wrapper' ).removeClass( 'hidden' );
+			$( '#character_sub_sheet' ).html( assembleCharacterData( characterData ) )
+				.attr( 'class', sheetStyle );
+		}
 	}).fail( function( xhr, status, error ){
 	    console.log("An error has occurred loading character data for: " + characterId);
 	});
@@ -29,10 +41,10 @@ function postDiceRoll( postData ) {
 	});
 }
 
-function saveCharacter( postData, chronicleId ) {
+function saveCharacter( type, postData, chronicleId ) {
 	$.ajax({
 		url: base + 'chronicle/' + chronicleId + '/characters/',
-		type: 'POST',
+		type: type,
 		data: JSON.stringify(postData),
 		contentType: 'application/json'
 	}).done(function( data, status, xhr ) {
@@ -50,10 +62,10 @@ function saveCharacter( postData, chronicleId ) {
 	});
 }
 
-function saveLocation( postData, chronicleId ) {
+function saveLocation( type, postData, chronicleId ) {
 	$.ajax({
 		url: base + 'chronicle/' + chronicleId + '/locations/',
-		type: 'POST',
+		type: type,
 		data: JSON.stringify(postData),
 		contentType: 'application/json'
 	}).done(function( data, status, xhr ) {
@@ -65,7 +77,6 @@ function saveLocation( postData, chronicleId ) {
 	    const response = JSON.parse(xhr.responseText);
 	    console.log( "An error has occurred saving character data for: " + postData.name, response );
 	    alert( "There was a problem saving the character sheet data: " + response.message );
-	    return false;
 	});
 }
 
@@ -92,10 +103,11 @@ function updateStory( type, postData, chronicleId ) {
 		data: JSON.stringify(postData),
 		contentType: 'application/json'
 	}).done(function( data, status, xhr ) {
+		$( '#loading__wrapper' ).addClass( 'hidden' );
 		chronicleSettings = data;
 		$( '#story_list' ).html( getChronicleSettingsStory( data.chapters ) );
-		// clearAndCloseLocationForm();
 	}).fail( function( xhr, status, error ) {
+		$( '#loading__wrapper' ).addClass( 'hidden' );
 		console.log(xhr);
 	    const response = JSON.parse(xhr.responseText);
 	    console.log( "An error has occurred saving character data for: " + postData.name, response );

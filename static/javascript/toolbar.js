@@ -30,6 +30,9 @@ $( '.hover-link' ).on( 'mouseleave', function(){
 $( '.toolbar-item-header, .clan-compulsion-header' ).on( 'click', function() {
 	$( this ).next().slideToggle();
 });
+$( '#character__wrapper' ).on( 'click', '.toolbar-item-header', function() {
+	$( this ).next().slideToggle();
+});
 
 // SHOW / HIDE TOOLBAR
 
@@ -63,20 +66,10 @@ $( '#story-toolbar' ).on( 'click', '.btn', function(){
 	if ( !$( this ).hasClass( 'active' ) ) {
 		$( '#story-toolbar .btn.active' ).removeClass( 'active' );
 		$( this ).addClass( 'active' );
-		if ( $( this ).hasClass( 'characters' ) ) {
-			let type = $( this ).html().toLowerCase();
-			processCharacterList( type.substring(0, type.length-1) );
-		} else if ( $( this ).hasClass( 'locations' ) ) {
-			processLocations();
-		}
-		if (!$( 'story-toolbar-overlay' ).hasClass('active' ) ) {
-			$( '#story-toolbar-overlay' ).addClass( 'active' );
-		}
-		$( '#story-text__wrapper' ).addClass( 'min' );
+		// $( '#story-text__wrapper' ).addClass( 'min' );
 	} else {
 		$( this ).removeClass( 'active' );
-		$( '#story-toolbar-overlay' ).removeClass( 'active' );
-		$( '#story-text__wrapper' ).removeClass( 'min' );
+		// $( '#story-text__wrapper' ).removeClass( 'min' );
 	}
 });
 
@@ -89,7 +82,7 @@ $( '#chapters__wrapper' ).on( 'click', '.chapter', function() {
 	}
 });
 
-$( '#story-toolbar-content' ).on( 'click', '.btn-character', function() {
+$( '#character__btns' ).on( 'click', '.btn-character', function() {
 	if (! $( this ).hasClass( 'active' ) ) {
 		$( '.btn-character.active' ).removeClass( 'active' );
 		$( '.btn-location.active' ).removeClass( 'active' );
@@ -108,8 +101,7 @@ $( '#btn-relationship_map' ).on( 'click', function() {
 
 function storyToolbarClick() {
 	$( '#character__wrapper' ).addClass( 'active' );
-	$( '#story-toolbar-overlay' ).removeClass( 'active' );
-	$( '#story-text__wrapper' ).removeClass( 'min' );
+	// $( '#story-text__wrapper' ).removeClass( 'min' );
 	$( '#btn__show-hide-character' ).removeClass( 'hidden' );
 	$( '#btn__show-hide-character' ).addClass( 'active' );
 	$( '#notes.active, .characters.active, .locations.active' ).removeClass( 'active' );

@@ -9,11 +9,64 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'Amethyst';
+  src: url('../fonts/Amethyst.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Catull';
+  src: url('../fonts/Catull.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Feral-Regular';
+  src: url('../fonts/Feral-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Rosemary Roman';
+  src: url('../fonts/Rosemary Roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+
+@font-face {
+  font-family: 'Vampire Calligraphy';
+  src:
+    url('../fonts/Vampire Calligraphy.ttf') format('truetype'),
+    url('../fonts/Vampire Calligraphy.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Wilkli';
+  src:
+    url('../fonts/Wilkli.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 body {
-    font-family: 'Open Sans', serif;
+    font-family: 'Catull', serif;
     user-select: none;
     background-color: black;
-    color: #A2091E;
+    /*color: #A2091E;*/
+    color: #c5c5c5;
     height: 100vh;
     width: 100vw;
     top: 0;
@@ -21,9 +74,9 @@ body {
     position: absolute;
     margin: 0;
     overflow: hidden;
-    background-image: url(../img/background.jpg);
+    background-image: url(../img/background2.jpg);
     background-size: cover;
-    backdrop-filter: blur(5px);
+    /*backdrop-filter: blur(5px);*/
 }
 
 /*************************************/
@@ -41,12 +94,14 @@ body {
     line-height: 0.85em;
 }
 #vtm-logo {
-	height: 100px;
-	width: 260px;
-	background-image: url('../img/vtm_logo_red.png');
+    height: 55px;
+    width: 168px;
+    background-image: url('../img/vtm_logo_red.png');
+    margin-left: 20px;
+    margin-top: 5px;
 }
 #version__wrapper {
-	margin-top: 63px;
+    margin-top: 40px;
     margin-left: 5px;
     font-weight: bold;
 }
@@ -99,7 +154,7 @@ ul {
     position: fixed;
     top: 0;
     right: 0;
-    background: #A2091E;
+    background: #5d000d;
     width: 300px;
     border-bottom-left-radius: 10px;
     border-bottom: 2px solid black;
@@ -133,7 +188,7 @@ ul {
     position: fixed;
     right: 0;
     top: 0;
-    background: #a2091E;
+    background: #5d000d;
     color: black;
     font-weight: bold;
     padding: 15px 25px;
@@ -156,32 +211,44 @@ ul {
 	padding-top: 150px;
 }
 #password_entry__wrapper>div {
-	width: 290px;
+	width: 328px;
     margin: calc( 30vh - 120px ) auto 0;
     font-size: 1.5em;
 }
-#pass_submit {
-	margin-top: 15px;
+#user_password__wrapper {
+	width: 250px;
+}
+#pass_submit,
+#pass_cancel {
+	margin-top: 45px;
 }
 #pass_submit:after {
-    color: black;
-    background: #A2091E;
+    color: #c5c5c5;
+    background: #5d000d;
     padding: 0 3px 0 7px;
     border-radius: 7px;
     content: '\21E8';
     margin-left: 5px;
 }
+#pass_cancel:after {
+    color: #c5c5c5;
+    background: #5d000d;
+    padding: 0 3px 0 7px;
+    border-radius: 7px;
+    content: '\21E6';
+    margin-right: 5px;
+}
 .btn.btn-user {
     text-align: center;
     width: 250px;
     padding: 10px 5px;
-    background: #A2091E;
-    color: black;
+    background: #5d000d;
+    color: #c5c5c5;
     border-radius: 10px;
     margin: 10px auto;
 }
 input#user_password {
-    background: #A2091E;
+    background: #5d000d;
     color: black;
     border-radius: 10px;
     padding: 10px;
@@ -190,6 +257,25 @@ input#user_password {
     font-size: 1.5em;
     width: 250px;
     text-align: center;
+}
+
+#tooltip {
+    position: fixed;
+    z-index: 2;
+    background-color: black;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 30px;
+}
+#discord__wrapper {
+    width: calc( 100vw - 1440px );
+    float: right;
+    height: calc( 100vh - 185px );
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    margin-top: 100px;
 }
 /*************************************/
 /*             SCROLLBAR             */
@@ -232,18 +318,18 @@ a:hover {
 	display: none !important;
 }
 .info {
-	display:  none;
-	background-color: black;
+    display: none;
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+    padding: 0 10px 10px;
 }
 .header {
 	text-align: center;
 	font-size: 2em;
-	font-family: 'Modern Antiqua', cursive;
 }
 .subheader {
-	/*text-align: center;*/
-	font-size: 1.5em;
-	font-family: 'Modern Antiqua', cursive;
+	font-size: 2em;
+	font-family: 'Amethyst', cursive;
 }
 .flex {
 	display: flex;
@@ -255,7 +341,6 @@ a:hover {
 span.title {
 	font-size: 1.3em;
 	font-weight: bold;
-	font-family: 'Modern Antiqua', cursive;
 }
 span.sub-text {
 	font-size: 0.7em;
@@ -276,11 +361,12 @@ span.sub-text {
 /*              FOOTER               */
 /*************************************/
 footer {
-	color: #7D1916;
+	color: #c5c5c5;
 	display: flex;
 	position: absolute;
 	bottom: 0;
     background: #000000aa;
+    width: 100vw;
 }
 #dark-pack-logo {
 	flex: 0 0 90px;

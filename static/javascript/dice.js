@@ -41,24 +41,74 @@ function getTimestamp( timestamp ) {
 }
 
 function assembleRoll( roll ) {
+	rollValue = {
+		'successes' : 0,
+		'crits' : 0,
+		'hungerCrits' : 0,
+		'hungerCritFail': false
+	}
 	result = '<div class="dice-result flex"';
-	diceStr = '';
 	count = 0;
+	diceStr = '';
 	for (die in roll.regular) {
-		diceStr += '<div class="die">' + getDie(roll.regular[die], false) + '</div>';
+		let dieValue = roll.regular[die];
+		diceStr += '<div class="die">' + getDie(dieValue, false) + '</div>';
 		count++;
+		if ( dieValue == 10 ) {
+			rollValue['crits']++;
+		} else if ( dieValue > 5 ) {
+			rollValue['successes']++;
+		}
 	}
 	for (die in roll.hunger) {
-		diceStr += '<div class="die hunger">' + getDie(roll.hunger[die], true) + '</div>';
+		let dieValue = roll.hunger[die];
+		diceStr += '<div class="die hunger">' + getDie(dieValue, true) + '</div>';
 		count++;
+		console.log("DIE VALUE: ", dieValue);
+		if ( dieValue == 10 ) {
+			rollValue['hungerCrits']++;
+		} else if ( dieValue > 5 ) {
+			rollValue['successes']++;
+		} else if ( dieValue == 1 ) {
+			rollValue['hungerCritFail'] = true;
+		}
 	}
 	if (count > 5) {
 		count = 5;
 	}
 	result += ' style="width:' + (count * 58) + 'px;'
 	result += '">' + diceStr + '</div>';
-
+	result += '<div class="dice-result__tooltip">' + calculateRollResults( rollValue ) + '</div>';
 	return result;
+}
+
+function calculateRollResults( rollValue ) {
+	evaluatedResults = {
+		'successes' : rollValue['successes'],
+		'isCrit' : false,
+		'isMessyCrit' : false
+	}
+	if ( rollValue.crits > 0 && rollValue.hungerCrits > 0 ||
+			rollValue.hungerCrits > 1 ) {
+		evaluatedResults['isMessyCrit'] = true;
+	} else if ( rollValue.crits > 1 ) {
+		evaluatedResults['isCrit'] = true;
+	}
+	evaluatedResults['successes'] += Math.floor((rollValue.crits + rollValue.hungerCrits) / 2) * 4;
+	evaluatedResults['successes'] += (rollValue.crits + rollValue.hungerCrits) % 2;
+	resultStr = evaluatedResults['successes'] + ' Success';
+	if ( evaluatedResults['successes'] > 1 || evaluatedResults['successes'] == 0 ) {
+		resultStr += 'es';
+	}
+	if ( evaluatedResults['isMessyCrit'] ) {
+		resultStr += ' with a Messy Crit';
+	} else if ( evaluatedResults['isCrit'] ) {
+		resultStr += ' with a Crit';
+	}
+	if ( evaluatedResults['successes'] == 0 && rollValue['hungerCritFail'] ) {
+		return 'BESTIAL FAILURE!';
+	}
+	return resultStr;
 }
 
 function getDie( value, isHunger ) {
@@ -71,7 +121,7 @@ function getDie( value, isHunger ) {
 		}
 	} else if( isHunger && value == 1) {
 		dieStr += 'icon_bestial-failure';
-	} else if ( value > 5 && value < 10 ) {
+	} else if ( value > 5 ) {
 		dieStr += 'icon_success';
 	} else {
 		dieStr += 'icon_failure';
@@ -89,17 +139,17 @@ $( '#roll-type' ).on( 'click', function() {
 	$( '#roll-type__dropdown' ).toggleClass( 'active' );
 });
 $( '#btn_roll-dice' ).on( 'click', function() {
-	total = $( '#dice-pool__input' ).val();
-	hunger = $( '#hunger-dice__input' ).val();
 	includeHunger = $( '#hunger-dice__input-div' ).hasClass( 'selected' );
-	if (isEmpty(total) || isEmpty(hunger) || hunger > total) {
+	total = parseInt($( '#dice-pool__input' ).val());
+	hunger = includeHunger ? parseInt($( '#hunger-dice__input' ).val()) : 0;
+	if (isEmpty(total) || isEmpty(hunger) || hunger > total ) {
 		alert( "Please enter values for total and hunger, and ensure the total value is larger and try again!");
 		return;
 	}
 	let postData = {
 		'player' 	: user,
-		'total' 	: parseInt(total),
-		'hunger'	: includeHunger ? parseInt(hunger) : 0,
+		'total' 	: total,
+		'hunger'	: hunger,
 		'notify'	: 'everyone'
 	};
 	postDiceRoll( postData );
@@ -115,10 +165,15 @@ $( '#dice-roll__window' ).on( 'click', '.dice-roll.own-roll .dice-result', funct
 			$( this ).parent().hasClass( 'rouse' )) ) {
 		$( '.rerolling' ).removeClass( 'rerolling' );
 		$( this ).addClass( 'rerolling' );
-		const classes = $( '#willpower-tracker' ).attr( 'class' ).split( ' ' );
-		const maxLevel = getValueFromElementInArray( classes, TRACKER_MAX );
-		const aggravated = getValueFromElementInArray( classes, DAMAGE_AGGRAVATED );
-		const enabled = aggravated < maxLevel;
+		let enabled = false;
+		if ( user == STORYTELLER ) {
+			enabled = true;
+		} else {
+			const classes = $( '#willpower-tracker' ).attr( 'class' ).split( ' ' );
+			const maxLevel = getValueFromElementInArray( classes, TRACKER_MAX );
+			const aggravated = getValueFromElementInArray( classes, DAMAGE_AGGRAVATED );
+			enabled = aggravated < maxLevel;
+		}
 		openContextMenu([{ 
 			'name' 		: REROLL_FAILURE,
 			'class' 	: 'willpower-tracker addSuperficial reroll ',
@@ -202,16 +257,16 @@ $( '.roll-type__option' ).on( 'click', function() {
 				updateDiceInputs( 1, 1 );
 				break;
 			case DEX_ATH:
-				updateDiceInputs( getStatValue( 'dexterity', false ) + getStatValue( 'athletics', false ), null );
+				updateDiceInputs( getSheetStatValue( 'dexterity', false ) + getSheetStatValue( 'athletics', false ), null );
 				break;
 			case STR_BRW:
-				updateDiceInputs( getStatValue( 'strength', false ) + getStatValue( 'brawl', false ), null );
+				updateDiceInputs( getSheetStatValue( 'strength', false ) + getSheetStatValue( 'brawl', false ), null );
 				break;
 			case WTS_AWR:
-				updateDiceInputs( getStatValue( 'wits', false ) + getStatValue( 'awareness', false ), null );
+				updateDiceInputs( getSheetStatValue( 'wits', false ) + getSheetStatValue( 'awareness', false ), null );
 				break;
 			case WILL:
-				updateDiceInputs( getStatValue( 'willpower', true ), null );
+				updateDiceInputs( getSheetStatValue( 'willpower', true ), null );
 				break;
 		}
 	}
@@ -233,7 +288,7 @@ function updateDiceInputs( total, hunger ) {
 	}
 }
 
-function getStatValue( stat, isTracker ) {
+function getSheetStatValue( stat, isTracker ) {
 	if (isTracker) {
 		let tracker = $( '#' + stat + '-tracker' );
 		let max = getTrackerTypeValue( tracker, 'maxlevel' );

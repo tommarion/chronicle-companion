@@ -17,17 +17,12 @@
 <div>
 	<div id='title__wrapper'>
 		<div id='vtm-logo' class='img'></div>
-		<span class='header'>
-			Chronicle<br/>
-			Companion
-		</span>
-		<div id='version__wrapper'>
-			<span class='sub-text'>(v1.0.0)</span>
-		</div>
+		<span class='header'>Chronicle Companion</span>
+		<div id='version__wrapper'><span class='sub-text'>v1.2.0</span></div>
 	</div>
 	<div id='reference__wrapper'>
-		<div id='btn-chronicle__settings' class='btn'></div>
-		<div id='btn-relationship_map' class='btn hidden'></div>
+		<div id='btn-chronicle__settings' class='btn settings_btn'></div>
+		<div id='btn-relationship_map' class='btn hidden settings_btn'></div>
 		<div id='story__wrapper'>
 			<div id='story-content'>
 				<div id='story-text__wrapper'>
@@ -43,9 +38,20 @@
 						<div id='chapter-header'></div>
 						<ul id='chapters__wrapper'></ul>
 					</div>
-					<div id='btn_pc' class='btn characters'>PCs</div>
-					<div id='btn_npc' class='btn characters'>NPCs</div>
-					<div id='btn_locations' class='btn locations'></div>
+					<div id='character__btns'>
+						<div id='pc__btns'>
+							<div class='header'>PCs</div>
+							<div id='pc__btns__wrapper'></div>
+						</div>
+						<div id='npc__btns'>
+							<div class='header'>NPCs</div>
+							<div id='npc__btns__wrapper'></div>
+						</div>
+					</div>
+					<div id='location__btns'>
+						<div class='header'>Locations</div>
+						<div id='locations__btns__wrapper'></div>
+					</div>
 					<div id='notes' class='btn'></div>
 				</div>
 				<div id='chronicles__wrapper'>
@@ -61,14 +67,16 @@
 					 	{% endif %}
 					{% endfor %}
 				</div>
-				<div id="btn__show-hide-character" class="active hidden"><div></div></div>
+				<div id="btn__show-hide-character" class="active hidden"><div><div></div></div></div>
 				<div id='character__wrapper'></div>
+				<div id='character_sub__wrapper' class='hidden'>
+					<div id='character_sub_sheet'></div>
+					<div id='btn_char_sheet__close' class='btn'>×</div>
+				</div>
 				<div id='relationship__wrapper'>
 					<iframe id='relationship_map'></iframe>
 				</div>
-				<div id='story-toolbar-overlay'>
-					<div id='story-toolbar-content'></div>
-				</div>
+				<div id='tooltip' class='hidden'></div>
 			</div>
 		</div>
 		<div id='content__wrapper' class='hidden'>
@@ -873,7 +881,7 @@
 					<div class='info' id='animalism'>
 						<div class='header'>Animalism</div>
 						<div>Masquerade Threat: Low - Medium</div>
-						<div class ='level level1'></div>
+						<div class='level level1'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Bound Famulus</span>: The vampire can form a bond with an animal facilitating the use of other Animalism powers.
@@ -892,12 +900,194 @@
 								</ul>
 							</li>
 						</ul>
+						<div class='level level2'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Feral Whispers</span>: The vampire can summon and have two-way communication with an area-appropriate animal. With high enough skill, the animal can even be pursuaded to perform simple tasks.
+								<ul>
+									<li>Cost: One Rouse Check per type of animal per scene. Allows one summoning and unlimited communication (famulus is free).</li>
+									<li>Dice Pool: Manipulation + Animalism (persuasion)<br/>
+									Charisma + Animalism (summoning)</li>
+								</ul>
+							</li>
+						</ul>
+						<div class='level level3'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Animal Succulence</span>: The vampire can slake additional Hunger when feeding from animals. The vampire may also consume their famulus for a large amount of nourishment as well as absorbing some of its powers.
+								<ul>
+									<li>Cost: Free</li>
+									<li>Feeding slakes one additional Hunger, and the vampire may count their Blood Potency as 2 less in terms of feeding penalties from animals. Consuming the famulus slakes 4 hunger (but never the final point) and gains 2 extra dots in one relevant attribute until hunger 5 or the next feeding.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Quell the Beast</span>: By locking eyes with a target, the vampire is able to subdue their inner beast into temporary slumber. Mortals become apathetic becoming unable to do anything other than simply survive whereas vampires' bestial urges temporarily abate, for better or worse.
+								<ul>
+									<li>Cost: One Rouse Check</li>
+									<li>Dice Pool: Charisma + Animalism vs Stamina + Resolve</li>
+									<li>System: A win against a mortal incapacitates them for the scene. A win against a vampire prevents Blood Surges and Messy Crits lasting the number of turns as the margin of success of the roll, and can end a Frenzy on a Critical Win.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Unliving Hive</span>: Most often used by the Nosferatu animal powers can extend to swarms of insects like flies and roaches. They may even become famulus and dwell within the folds of their malformed flesh.
+								<ul>
+									<li>Amalgam: Obfuscate 2</li>
+									<li>Cost: Free</li>
+									<li>System: This power allows other animal powers to extend to swarms of insects, treating them as a single animal. They have Health 5 and can resist an attack with a pool of 8. They are useful for spying and incapacitating enemies. They take aggravated damage from flames and insecticide.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+					<div class='info' id='auspex'>
+						<div class='header'>Auspex</div>
+						<div>Masquerade Threat: Very Low</div>
+						<div class='level level1'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Heightened Senses</span>: The vampire can sharpen their senses to a preternatural degree, giving them the ability to see in pitch darkness, hear ultrasonic frequencies, smell the cowering fear of prey, etc.
+								<ul>
+									<li>Cost: Free</li>
+									<li>Dice Pool: Wits + Resolve</li>
+									<li>System: User can add Auspex rating to all relevant perception rolls. If there is an intense sensation relevant to the boosted sense, they must make a Wits + Resolve roll to dampen their senses in time, otherwise take a -3 penalty to all perception rolls for the rest of the scene.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Sense the Unseen</span>: The senses of the vampire become attuned to dimensions beyond the mundane, allowing them to sense presences otherwise hidden from the naken eye. This can be vampires using Obfuscate, ghosts, and even latent Blood Sorcery.
+								<ul>
+									<li>Cost: Free</li>
+									<li>Dice Pool: Wits + Auspex or Resolve + Auspex</li>
+									<li>System: The storyteller can call for a blind roll of Wits + Auspex against Wits + Obfuscate for an entity actively trying to stay hidden. If the User is actively searching, use Resolve + Auspex.</li>
+								</ul>
+							</li>
+						</ul>
+						<div class='level level2'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Premonition</span>: The vampire experiences flashes of insight. They may take the form of raised hackles, sudden inspiration or even vivid visions. While never exactly precise, they can nudge the user out of harms way or to the solution of an elusive problem.
+								<ul>
+									<li>Cost: One Rouse Check when actively used</li>
+									<li>Dice Pool: Wits + Resolve</li>
+									<li>System: The vampire may randomly get flashes of some kind at story-appropriate moments. They may also actively provoke a premonition by focusing on a subject, making a Rouse Check, and then rolling Resolve + Auspex to determine the level of insight on the subject.</li>
+								</ul>
+							</li>
+						</ul>
+						<div class='level level3'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Scry the Soul</span>: By focusing on a person, the vampire can perceive the state of the person's psyche as a shifting aura of colors. Auras reveal little precise information but do provide clues regarding many subjects. The vampire can scan a crowd if looking for a specific condition; size of crows determines difficulty.
+								<ul>
+									<li>Cost: One Rouse Check</li>
+									<li>Dice Pool: Intelligence + Auspex vs Composure + Subterfuge</li>
+									<li>System: Answer a number of questions (equal to the margin of success):
+										<ul>
+											<li>Emotional state of subject</li>
+											<li>Resonance of subjects blood</li>
+											<li>Whether the subject is a Vampire, Werewolf, Ghoul, or any other supernatural being</li>
+											<li>Whether the subject is under the influence of any Blood Sorcery or other magic</li>
+											<li>Whether the subject has committed diablerie within the past year</li>
+											<li>A Critical Win reveals something unexpected</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Share the Senses</span>: The vampire can tap into the senses of another mortal or vampire, seeing, hearing, and feeling what they do. The user also retains their own senses as well. They can choose which senses they wish to tap into. When used on a stranger it requires line-of-sight, but can be used over longer distances on someone with the user's blood in their body.
+								<ul>
+									<li>Cost: Free</li>
+									<li>Dice Pool: Resolve + Auspex</li>
+									<li>System: Roll Resolve + Auspex with Difficulty 3. This can change depending on distractions, distance and other circumstances. This effect usually goes unnotices on the target but can be noticed with Sense the Unseen. Wits + Resolve match can kick out the user, in which case they cannot be targeted until the next night.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+					<div class='info' id='blood-sorcery'>
+						<div class='header'>Blood Sorcery</div>
+						<div>Masquerade Threat: High</div>
+						<div class='level level1'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Corrosive Vitae</span>: The vampire can call upon the power of their Blood to make their Vitae turn into a corrosive acid once it leaves their body.
+								<ul>
+									<li>Cost: An appropriate amount of Rouse Checks for the amount desired.</li>
+									<li>System: Each Rouse Check gives about 35 cubic cm worth of material to burn. Usually from a self-inflicted wound, the user spills blood onto a surface they wish to corrode. Softer metals take several minutes, while harder metals may not corrode completely but may possibly weaken.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>A Taste for Blood</span>: 
+								<ul>
+									<li>Cost: Free</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+					<div class='info' id='blood-sorcery-rituals'>
+						<div class='header'>Blood Sorcery Rituals</div>
+						<div>Masquerade Threat: High</div>
+						<br/>
+						<div>
+							Ritual Roll: Intelligence + Blood Sorcery<br/>
+							(with difficulty = Ritual Level + 1)
+						</div>
+						<div class='level level1'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Blood Walk</span>: Expands the power of A Taste for Blood allowing the user to learn more details about the subject studied, assuming the subject is a vampire.
+								<ul>
+									<li>Ingredients: A silver cup filled with Blood from the subject. (One Rouse Check's worth)</li>
+									<li>Process: The user mixes their vitae with the subject's and repeats an incantation over the cup, spending roughly an hour.</li>
+									<li>Dice Pool: Ritual Roll</li>
+									<li>System: Allows the user to learn the generation, and name of subject, as well as the subject's sire and clan. A Critical Win also informs the user of any blood bonds or effective Blood Sorcery involving the subject.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Clinging of the Insect</span>: The vampire gains the ability to cling to walls like a grotesque insect or spider.
+								<ul>
+									<li>Ingredients: A living spider.</li>
+									<li>Process: The caster fills a vial with their own vitae and crushes the spider into it, mixing the ground bits with the vitae before ingesting it. This does not slake any hunger. This ritual only works for the caster, others gain no benefit</li>
+									<li>System: A successful ritual roll gives the ability to cling to walls for an entire scene. A Critical Win grants the effect for the entire night. Must cling with both hands and feet and move at about half speed.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Craft Bloodstone</span>: A bloodstone is a magical tracker in which the creator always knows the direction and general distance of.
+								<ul>
+									<li>Ingredients: A small pebble of iron or a small magnet, as well as a liter of blood from any source in a silver bowl.</li>
+									<li>Process: The user spills their vitae into the blood in the bowl and then recites a chant over it for an hour, repeating the chant over the next two nights. The pebble, or magnet, absorbs the blood over the 3 nights; upon successful completion the liquid appears translucent.</li>
+									<li>System: Make the Ritual Roll at the end of the 3rd night. On a win, the caster attunes their mind to the Bloodstone. This lasts for a week or until the Bloodstone is destroyed. The user can have as many Bloodstones as their Resolve value.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Wake with Evening's Freshness</span>: Performed before dawn, this ritual allows the caster to awake at any sign of danger, fully alert as if awake during the night.
+								<ul>
+									<li>Ingredients: Burnt bones and feathers of a rooster.</li>
+									<li>Process: The caster mixes the ashes with their vitae drawing a circle around their place of sleep.</li>
+									<li>System: Ritual roll only when in danger. Ignore daytime penalties. Effect lasts until following dawn on Critical Win.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Ward Against Ghouls</span>: Warding rules on p275
+								<ul>
+									<li>Cost: Caster's blood and an object to set the ward to.</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 
 					<div class='info' id='celerity'>
 						<div class='header'>Celerity</div>
 						<div>Masquerade Threat: Medium - High</div>
-						<div class ='level level1'></div>
+						<div class='level level1'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Cat's Grace</span>: The vampire can automatically pass checks to keep their balance.
@@ -920,7 +1110,7 @@
 					<div class='info' id='dominate'>
 						<div class='header'>Dominate</div>
 						<div>Masquerade Threat: Low</div>
-						<div class ='level level1'></div>
+						<div class='level level1'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Cloud Memory</span>: The vampire can make the target forget the past few minutes.
@@ -941,7 +1131,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level2'></div>
+						<div class='level level2'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Mesmerize</span>: The vampire can issue a longer, more complicated command to the target.
@@ -953,7 +1143,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level3'></div>
+						<div class='level level3'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>The Forgetful Mind</span>: The vampire can rewrite previous memories in the target.
@@ -974,10 +1164,50 @@
 						</ul>
 					</div>
 
+				<div class='info' id='fortitude'>
+						<div class='header'>Fortitude</div>
+						<div>Masquerade Threat: Medium - High</div>
+					</div>
+
+					<div class='info' id='obfuscate'>
+						<div class='header'>Obfuscate</div>
+						<div>Masquerade Threat: Very Low</div>
+						<div class='level level1'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Cloak of Shadows</span>: Standing perfectly still, the vampire can blend into their surroundings. As long as they are not in an unavoidable spot, don't move, and make no sound, they will remain hidden unless detected by supernatural means.
+								<ul>
+									<li>Cost: Free</li>
+									<li>System: User is undetectable by the naked eye until they move or speak.</li>
+								</ul>
+							</li>
+							<br/>
+							<li class='no-bullet'>
+								<span class='title'>Silence of Death</span>: This power completely silences all sounds the user makes. This only works within earshot, and not on microphones or other electronics. Only works on hearing but is much more robustly than other powers.
+								<ul>
+									<li>Cost: Free</li>
+									<li>System: Silences their footsteps, clothing, minor collisions, and other sounds of their person. Does not affect throwing objects, slamming doors, etc. Can still be detected with Sense the Unseen (Auspex).</li>
+									<li>Lasts the scene.</li>
+								</ul>
+							</li>
+						</ul>
+						<div class='level level2'></div>
+						<ul>
+							<li class='no-bullet'>
+								<span class='title'>Unseen Passage</span>: This power allows the user to remain hidden while moving around. They can still be detected if they make noise, touch or move something (other than successful pickpocketing).
+								<ul>
+									<li>Cost: One Rouse Check</li>
+									<li>System: User is undetectable by the naked eye unless they move an object or make a loud noise. It cannot be used while actively being observed. Can still be seen with Sense the Unseen (Auspex).</li>
+									<li>Lasts the scene or until cancelled or detected.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
 					<div class='info' id='potence'>
 						<div class='header'>Potence</div>
 						<div>Masquerade Threat: Medium - High</div>
-						<div class ='level level1'></div>
+						<div class='level level1'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Lethal Body</span>: The Kindred can cause serious physical damage to a mortal, capable of tearing skin and breaking bone.
@@ -996,7 +1226,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level2'></div>
+						<div class='level level2'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Prowess</span>: The Kindred gains an overall increase in strength.
@@ -1011,7 +1241,7 @@
 					<div class='info' id='presence'>
 						<div class='header'>Presence</div>
 						<div>Masquerade Threat: Low - Medium</div>
-						<div class ='level level1'></div>
+						<div class='level level1'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Awe</span>: The vampire can add their Presence rating to their Persuasion and Performance checks
@@ -1031,7 +1261,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level2'></div>
+						<div class='level level2'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Lingering Kiss</span>: The vampire can gain bonuses to their Social pools against targets that they have Kissed.
@@ -1042,7 +1272,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level3'></div>
+						<div class='level level3'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Dread Gaze</span>: The vampire can inflict terror in their target by displaying their fangs.
@@ -1074,7 +1304,7 @@
 					<div class='info' id='protean'>
 						<div class='header'>Protean</div>
 						<div>Masquerade Threat: High</div>
-						<div class ='level level1'></div>
+						<div class='level level1'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Eyes of the Beast</span>: The vampire can will a supernatural red gleam into their eyes, giving them sight even in the total absence of light.
@@ -1094,7 +1324,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level2'></div>
+						<div class='level level2'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Feral Weapons</span>: The vampire can extend their natural weapons to monstrous proportions. This usually takes the form of fingernails extending into wicked talons but can also come in other forms such as fangs elongating into veritable daggers, as from a gigantic serpent.
@@ -1105,7 +1335,7 @@
 							</li>
 						</ul>
 						<br/>
-						<div class ='level level3'></div>
+						<div class='level level3'></div>
 						<ul>
 							<li class='no-bullet'>
 								<span class='title'>Earth Meld</span>: Becoming one with the soil, the vampire sinks into the earth. Unless in torpor, the vampire rises again the following night.
@@ -1315,6 +1545,11 @@
 				</div>
 				<!-- TODO: Animal reference -->
 				<div>
+					<div class='info' id='animals'>
+						<div class='header'>Animals Reference</div>
+					</div>
+				</div>
+				<div>
 					<div class='info' id='settings'>
 						<div class='btn' id='btn_clear-cache'>Clear Cache</div>
 						<div class='btn' id='btn_save-settings'>Save Settings</div>
@@ -1332,14 +1567,6 @@
 			<div id='roll-type'>
 				<span id='roll-type__text'>Custom Roll</span>
 				<span id='btn_roll-type'></span>
-			</div>
-			<div id='roll-type__dropdown'>
-				<div class='roll-type__option btn active'>Custom Roll</div>
-				<div class='roll-type__option btn'>Rouse</div>
-				<div class='roll-type__option btn'>Dex + Athletics</div>
-				<div class='roll-type__option btn'>Str + Brawl</div>
-				<div class='roll-type__option btn'>Wits + Awareness</div>
-				<div class='roll-type__option btn'>Willpower</div>
 			</div>
 			<div class='flex' style='margin-top: 3px;'>
 				<input id='dice-pool__input' type='number' min='1' max='25' step='1' value='1'/>
@@ -1394,6 +1621,14 @@
 			<div id='dice-results'></div>
 		</div>
 	</div>
+	<div id='roll-type__dropdown' class='hidden'>
+		<div class='roll-type__option btn active'>Custom Roll</div>
+		<div class='roll-type__option btn'>Rouse</div>
+		<div class='roll-type__option btn'>Dex + Athletics</div>
+		<div class='roll-type__option btn'>Str + Brawl</div>
+		<div class='roll-type__option btn'>Wits + Awareness</div>
+		<div class='roll-type__option btn'>Willpower</div>
+	</div>
 	<div id='toolbar__wrapper' class='slideLeft'>
 		<div id='toolbar'>
 			<div class='toolbar-item-header'>General</div>
@@ -1411,8 +1646,13 @@
 			<div class='toolbar-item-header'>Disciplines</div>
 			<ul class='toolbar-item'>
 				<li class='hover-link'>Animalism</li>
+				<li class='hover-link'>Auspex</li>
+				<li class='hover-link'>Blood Sorcery</li>
+				<li class='hover-link'>Blood Sorcery Rituals</li>
 				<li class='hover-link'>Celerity</li>
 				<li class='hover-link'>Dominate</li>
+				<!-- <li class='hover-link'>Fortitude</li> -->
+				<li class='hover-link'>Obfuscate</li>
 				<li class='hover-link'>Potence</li>
 				<li class='hover-link'>Presence</li>
 				<li class='hover-link'>Protean</li>
@@ -1438,9 +1678,12 @@
 	<div id='users__wrapper' class='hidden'></div>
 	<div id='password_entry__wrapper' class='hidden'>
 		<div>
-			Enter Password:
 			<div class='flex'>
-				<input id='user_password' type='password'/>
+				<div id='pass_cancel' class='btn btn-pass-cancel'></div>
+				<div id='user_password__wrapper'>
+					Enter Password:
+					<input id='user_password' type='password'/>
+				</div>
 				<div id='pass_submit' class='btn btn-pass'></div>
 			</div>
 		</div>
@@ -1532,11 +1775,19 @@
 					<div id='character_name__wrapper'>
 						<input placeholder="Character Name" />
 					</div>
-					<div id='character_clan__wrapper'>
-						<select id='character_clan'>
-							<option selected disabled>Select Clan</option>
+					<div id='being__wrapper'>
+						<select id='being__select'>
+							<option selected>Kindred</option>
+							<option>Mortal</option>
+							<option>Ghoul</option>
+							<option>Animal</option>
+							<option>Hunter</option>
+							<option>Wraith</option>
+							<option>Werewolf</option>
+							<option>Mage</option>
 						</select>
 					</div>
+
 					<div id='character_age__wrapper'>
 						Apparent Age:<br/>
 						<input type='number' min='18' max='120' step='1' />
@@ -1545,33 +1796,45 @@
 						Born:<br/>
 						<input type='number' max='2000' step='1' />
 					</div>
-					<div id='character_embraced__wrapper'>
+					<div id='character_bio__wrapper'>Bio:<br/><textarea></textarea></div>
+
+					<!-- Kindred Info -->
+					<div id='character_embraced__wrapper' class='optional kindred'>
 						Embraced:<br/>
 						<input type='number' max='2021' step='1' />
 					</div>
-					<div id='character_generation__wrapper'>
+					<div id='character_generation__wrapper' class='optional kindred'>
 						Generation:<br/>
 						<input type='number' min='6' max='15' step='1' />
 					</div>
-					<div id='character_sire__wrapper'>
+					<div id='character_sire__wrapper' class='optional kindred'>
 						Sire:<br/>
 						<input/>
 					</div>
-					<div id='character_predator_type__wrapper'>
+					<div id='character_clan__wrapper' class='optional kindred'>
+						<select id='character_clan'>
+							<option selected disabled>Select Clan</option>
+						</select>
+					</div>
+					<div id='character_house__wrapper' class='optional tremere'>
+						<select id='character_house'>
+							<option selected disabled>Select House</option>
+						</select>
+					</div>
+					<div id='character_predator_type__wrapper' class='optional kindred'>
 						Predator Type:<br/>
 						<select id='add_predator_type'>
 							<option selected disabled>Select Predator Type</option>
 						</select>
 					</div>
-					<div id='character_bio__wrapper'>Bio:<br/><textarea></textarea></div>
-					<div class='toolbar-item-header header'>Disciplines</div>
-					<div id='add_disciplines__wrapper'>
+					<div class='toolbar-item-header header optional kindred ghoul'>Disciplines</div>
+					<div id='add_disciplines__wrapper' class='optional kindred ghoul'>
 						<div id='disciplines__list__wrapper' class='clear'></div>
 						<select id='character_discipline__select'></select>
 						<div id='btn-add_discipline' class='btn disabled'>Add</div>
 					</div>
-					<div class='toolbar-item-header header'>Advantages & Flaws</div>
-					<div id='advantages_flaws__wrapper'>
+					<div class='toolbar-item-header header optional kindred'>Advantages & Flaws</div>
+					<div id='advantages_flaws__wrapper' class='optional kindred'>
 						<div class='toolbar-item-header'>Advantages</div>
 						<div id='advantages__wrapper'>
 							<div id='advantages__list' class='clear'></div>
@@ -1589,8 +1852,8 @@
 							</div>
 						</div>
 					</div>
-					<div class='toolbar-item-header header'>Convictions & Touchstones</div>
-					<div id='touchstones_convictions__wrapper'>
+					<div class='toolbar-item-header header optional kindred'>Convictions & Touchstones</div>
+					<div id='touchstones_convictions__wrapper' class='optional kindred'>
 						<div class='toolbar-item-header'>Convictions</div>
 						<div id='convictions__wrapper'>
 							<div id='convictions__list' class='clear'></div>
@@ -1608,10 +1871,50 @@
 							</div>
 						</div>
 					</div>
+
+					<!-- Kindred/Ghoul/Mortal/Animal Info -->
+					<div id='character_bound_to__wrapper' class='optional kindred ghoul mortal animal'>
+						Bound to:<br/>
+						<select id='character_bound_to__select'></select>
+					</div>
+					<!-- Ghoul Info -->
+					<div id='character_ghouled__wrapper' class='optional ghoul'>
+						Ghouled:<br/>
+						<input type='number' max='2021' step='1' />
+					</div>
+
+					<!-- Ghoul/Mortal Info -->
+					<div id='character_retainer_for__wrapper' class='optional ghoul mortal'>
+						Retainer For:<br/>
+						<select id='character_retainer_for'></select>
+					</div>
+
+					<!-- Mortal Info -->
+					<div id='character_touchstone_for__wrapper' class='optional mortal'>
+						Touchstone For:<br/>
+						<select id='character_touchstone_for'></select>
+					</div>
+					
+					<!-- Werewolf Info -->
+					<div id='character_tribe__wrapper' class='optional werewolf'>
+						Tribe:<br/>
+						<select id='character_tribe'>
+							<option selected disabled>Select Tribe</option>
+						</select>
+					</div>
+					<!-- Animal Info -->
+					<div id='character_animal__wrapper' class='optional animal'>
+						Animal Type:<br/>
+						<input />
+					</div>
 				</div>
-				<div class='flex'>
-					<div id='character_sheet_save' class='btn'>Save</div>
-					<div id='character_sheet_cancel' class='btn'>Cancel</div>
+				<div class='flex' id='character_sheet_btn__wrapper'>
+					<div>
+						<div id='character_sheet_save' class='btn'>Save</div>
+					</div>
+					<div>
+						<div id='character_sheet_cancel' class='btn'>Cancel</div>
+					</div>
 				</div>
 			</div>
 			<div id='character_sheet_data'>
@@ -1619,19 +1922,21 @@
 				<div id='add_trackers__wrapper'>
 					<div id='add_health__wrapper'>
 						<div class='header'>Health</div>
+						<div class='sub-text'>(automatically calculated: Stamina + 3)</div>
 						<input id='add_health' type='number' step='1' min='3' value='3' disabled />
 					</div>
 					<div id='add_willpower__wrapper'>
 						<div class='header'>Willpower</div>
+						<div class='sub-text'>(automatically calculated: Composure + Resolve)</div>
 						<input id='add_willpower' type='number' step='1' min='0' value='0' disabled />
 					</div>
-					<div id='add_humanity__wrapper'>
+					<div id='add_humanity__wrapper' class='optional kindred'>
 						<div class='header'>Humanity</div>
 						<input id='add_humanity' type='number' step='1' min='1' max='10' value='7'/>
 					</div>
 				</div>
 				<div id='add_other__wrapper'>
-					<div id='add_blood_potency__wrapper'>
+					<div id='add_blood_potency__wrapper' class='optional kindred'>
 						<div class='header'>Blood Potency</div>
 						<input id='add_blood_potency' type='number' step='1' min='0' value='1' />
 					</div>
@@ -1671,7 +1976,7 @@
 					</div>
 					<div id='location_add_haven__wrapper'>
 						Haven For:<br/>
-						<select id='location_add_haven'></select>
+						<select id='location_add_haven' multiple></select>
 					</div>
 				</div>
 				<div id='location_add_address__wrapper'>
@@ -1680,7 +1985,7 @@
 				</div>
 				<div id='location_add_description__wrapper'>
 					Description:<br/>
-					<textarea id='location_add_decription'></textarea>
+					<textarea id='location_add_description'></textarea>
 				</div>
 				<div id='location_add_storyteller_notes__wrapper'>
 					Storyteller Notes:<br/>
@@ -1700,8 +2005,7 @@
 	<footer>
 		<div id='dark-pack-logo' class='img'></div>
 		<div id='dark-pack-text'>
-			<p>Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved.<wbr>
-			For more information please visit <a href='worldofdarkness.com'>worldofdarkness.com</a></p>
+			<p>Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved. For more information please visit <a href='https://www.worldofdarkness.com'>worldofdarkness.com</a></p>
 		</div>
 	</footer>
 </div>

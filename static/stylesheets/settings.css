@@ -8,7 +8,7 @@
     height: 210px;
     width: 500px;
     background-color: black;
-    border: 1px solid #A2091E;
+    border: 2px solid #c5c5c5;
     border-radius: 10px;
     margin: 30vh auto;
 }
@@ -35,7 +35,7 @@
     text-align: center;
     font-size: 1.5em;
     padding-top: 10px;
-    font-family: 'Modern Antiqua';
+    font-family: 'Catull';
 }
 
 #chronicles_list__wrapper {
@@ -77,7 +77,7 @@ input.chronicle-name__input {
 #chronicle_settings {
     background-color: black;
     width: 600px;
-    border: 1px solid #A2091E;
+    border: 2px solid #c5c5c5;
     border-radius: 10px;
     margin: calc( 50vh - 185px ) auto 0;
     height: 370px;
@@ -109,16 +109,16 @@ input.chronicle-name__input {
 
 textarea {
     background-color: transparent;
-    color: #A2091E;
+    color: #c5c5c5;
     border: 2px solid;
 	width: 100%;
 	border-radius: 5px;
 }
 
 .btn__remove-scene {
-	margin-top: -50px;
+    margin-top: -10px;
     margin-bottom: -20px;
-    margin-right: -50px;
+    margin-right: -20px;
     float: right;
     font-size: 2em;
     padding: 0 20px;
@@ -128,7 +128,7 @@ textarea {
     flex: 0 0 150px;
     text-align: center;
     background-color: #A2091E;
-    color: black;
+    color: #c5c5c5;
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
@@ -147,23 +147,30 @@ textarea {
     font-size: 1.5em;
 }
 
+.chapter-header {
+    margin-bottom: 5px;
+}
+
 #chronicle_settings input,
 #player_sheet__wrapper input,
 #location_add__wrapper input {
     background-color: transparent;
-    color: #A2091E;
+    color: #c5c5c5;
     border: 2px solid !important;
     font-size: 1.25em;
     border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
 }
 #player_sheet__wrapper select,
 #location_add__wrapper select {
     background-color: transparent;
-    color: #A2091E;
+    color: #c5c5c5;
     border: 2px solid;
     font-size: 1.1em;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
 }
 #player_sheet__wrapper textarea,
 #location_add__wrapper textarea {
@@ -182,8 +189,8 @@ textarea {
 #character_info__wrapper {
     overflow-x: hidden;
     overflow-y: auto;
-    margin-bottom: 30px;
-    height: calc( 100% - 15px );
+    margin-bottom: 45px;
+    height: calc( 100% - 25px );
 }
 #character_name__wrapper {
 	width: 350px;
@@ -195,11 +202,11 @@ textarea {
 	text-align: center;
 }
 #player_sheet__wrapper input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #A2091E99;
+  color: #c5c5c599;
   opacity: 1; /* Firefox */
 }
 #player_sheet__wrapper input::-ms-input-placeholder { /* Edge */
-  color: #A2091E99;
+  color: #c5c5c599;
 }
 
 #player_sheet__wrapper {
@@ -218,15 +225,20 @@ textarea {
 }
 
 #character_sheet_save {
-    position: absolute;
-    top: calc( 70vh + 65px );
     margin-left: 100px;
 }
 
 #character_sheet_cancel {
-	position: absolute;
-    top: calc( 70vh + 65px );
     margin-left: 300px;
+}
+#character_sheet_save,
+#character_sheet_cancel {
+    background-color: #A2091E;
+    border-radius: 15px;
+    padding: 5px 10px;
+    width: 50px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 #attr_edit__wrapper {
@@ -269,8 +281,13 @@ textarea {
     font-size: 0.75em;
 }
 #attr_level {
-	width: 90px;
 	cursor: pointer;
+}
+#attr_level:not(.expanded) {
+    width: 90px;
+}
+#attr_level.expanded {
+    width: 185;
 }
 
 #attr_specialty {
@@ -384,7 +401,7 @@ textarea {
     background-color: #A2091E;
     border-radius: 10px;
     padding: 5px 10px;
-    color: black;
+    color: #c5c5c5;
 }
 .disc_remove.btn {
     float: right;
@@ -405,11 +422,16 @@ textarea {
 .btn__add-scene,
 .btn__add-chapter {
     background-color: #A2091E;
+    color: #c5c5c5;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 4px 7px;
     margin-top: 10px;
     float: right;
+}
+.btn__add-scene.disabled,
+.btn__add-chapter.disabled {
+    opacity: 0.4;
 }
 
 .add_scene__wrapper input,
@@ -472,3 +494,30 @@ div#location_data {
     flex: 0 0 15%;
 }
 
+#player_sheet_add input:focus,
+#chronicle_settings input:focus,
+#player_sheet_add select:focus,
+#chronicle_settings select:focus,
+#player_sheet_add textarea:focus,
+#chronicle_settings textarea:focus {
+    color: #A2091E !important;
+    outline: none !important;
+}
+
+#chronicle_settings .add_chapter__wrapper input:focus,
+#chronicle_settings .add_scene__wrapper input:focus,
+#chronicle_settings .add_chapter__wrapper textarea:focus,
+#chronicle_settings .add_scene__wrapper textarea:focus {
+    color: #c5c5c5 !important;
+}
+
+#character_sheet_btn__wrapper {
+    margin-top: -40px;
+}
+#character_sheet_btn__wrapper>div {
+    flex: 0 0 50%;
+}
+
+.optional:not(.kindred) {
+    display: none;
+}

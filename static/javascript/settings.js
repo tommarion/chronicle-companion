@@ -4,7 +4,7 @@ $( '#story-text__none' ).on( 'click', function() {
 });
 
 $( '#btn-chronicle__settings' ).on( 'click', function(){
-	if (settingsMode == SETTINGS_MODE_APP) {
+	if ( settingsMode == SETTINGS_MODE_APP ) {
 		if ( authenticated ) {
 			$( '#value-modifier__background' ).removeClass( 'hidden' );
 			$( '#app_settings__wrapper' ).removeClass( 'hidden' );
@@ -66,7 +66,7 @@ function getChronicleSettingsStory( chapters ) {
 		storyStr += '<div class="chapter__wrapper">';
 		for (scene in chapterObj.scenes) {
 			let sceneObj = chapterObj.scenes[scene];
-			storyStr += getSceneStr( sceneCount, sceneObj.name, sceneObj.story, scene > 0, true, false );
+			storyStr += getSceneStr( sceneCount, sceneObj.name, sceneObj.story, chapterObj.scenes.length > 1, true, false );
 			sceneCount++;
 		}
 		storyStr += getSceneStr( sceneCount, '', '', false, false, true );
@@ -99,7 +99,11 @@ function getSceneStr( num, name, story, isRemoveable, isCollapsible, isAdd ) {
 		sceneStr += '<div class="header">Add Scene</div>';
 	}
 	sceneStr += '<div class="scene-header' + headerDivClass + '">Scene <span class="number">' + num + '</span> ~ ';
-	sceneStr += "<input class='scene-name' value='" + name + "'/></div>";
+	sceneStr += "<input class='scene-name' value='" + name + "'/>";
+	if ( isRemoveable ) {
+		sceneStr += '<div class="btn btn__remove-scene">&times;</div>';
+	}
+	sceneStr += '</div>';
 	sceneStr += '<div class="scene__wrapper' + wrapperDivClass + '">';
 	
 
@@ -107,8 +111,6 @@ function getSceneStr( num, name, story, isRemoveable, isCollapsible, isAdd ) {
 	
 	if ( isAdd ) {
 		sceneStr += '<div class="btn btn__add-scene disabled">Add scene</div>';
-	} else if ( isRemoveable ) {
-		sceneStr += '<div class="btn btn__remove-scene">&times;</div>';
 	}
 	sceneStr += '</div>';
 	return sceneStr;
@@ -125,10 +127,10 @@ function getChronicleSettingsCharacters( characters ) {
 }
 
 function getChronicleSettingsLocations( locations ) {
-	console.log( locations );
 	let locationsStr = '';
 	for ( locationVal in locations ) {
-		locationsStr += '<div class="btn btn_settings_location"><div>' + locationVal + '</div></div>';
+		locationsStr += '<div class="btn btn_settings_location" data-id="' + locations[locationVal].rowid + 
+			'"><div>' + locationVal + '</div></div>';
 	}
 	locationsStr += '<div class="btn btn_settings_location add"><div>+</div></div>';
 	return locationsStr;
@@ -136,10 +138,17 @@ function getChronicleSettingsLocations( locations ) {
 
 $( '#story_list' ).on( 'click', '.btn__remove-scene', function() {
 	if (confirm( "Are you sure you want to remove this scene?")) {
-		let sceneNum = parseInt($( this ).parent().find( 'span.number' ).html());
-		$( this ).parent().parent()
-		$( this ).parent().prev().remove();
-		$( this ).parent().remove();
+		const sceneWrapper = $( this ).parent().parent();
+		const chapterWrapper = sceneWrapper.parent().parent();
+
+		const loc = window.location.href;
+		const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
+		let postData = {
+			'sceneIndex' : parseInt(sceneWrapper.index()),
+			'chapterIndex' : parseInt(chapterWrapper.index())
+		}
+		updateStory( 'DELETE', postData, chronicleId );
+		
 	}
 });
 
@@ -155,14 +164,14 @@ $( '#chronicle_settings' ).on( 'click', '.btn_settings_character', function() {
 		type = 'pc';
 	}
 	$( '#player_sheet_add' ).data( 'type', type );
-	let sheetData = {};
-	$( '#attr_stats__wrapper' ).html( assembleCharacterSheetData( sheetData ) );
+	loadSheet()
 
 	if ( $( this ).hasClass( 'add' ) ) {
 		$( '#player_sheet_add' ).data( 'function', 'add' );
 	} else {
-		populateCharacterSheetSettings(  );
+		populateCharacterSheetSettings( $( this ).find( 'div' ).html(), $( this ).parent().attr( 'id' ).replace( '_list', '' ) );
 		$( '#player_sheet_add' ).data( 'function', 'edit' );
+		$( '#player_sheet_add' ).data( 'id', $( this ).data( 'id' ) );
 	}
 
 	$( '#character_discipline__select' ).html( '<option selected disabled>' + DISCIPLINE_OPTION_DEFAULT + '</option>' );
@@ -172,12 +181,22 @@ $( '#chronicle_settings' ).on( 'click', '.btn_settings_character', function() {
 		}
 		$( '#character_discipline__select' ).append( '<option>' + discipline + '</option>' );
 	}
+	updateTrackers();
+	populateCharacterEntryData();
+	$( '#character_name__wrapper>input' ).focus();
 });
 
 $( '#chronicle_settings' ).on( 'click', '.btn_settings_location', function() {
 	$( '#location_add' ).removeClass( 'hidden' );
 	$( '#value-modifier__dialog' ).removeClass( 'hidden' );
 	populateHavenSelect();
+	if ( $( this ).hasClass( 'add' ) ) {
+		$( '#location_add__wrapper' ).data( 'function', 'add' );
+	} else {
+		$( '#location_add__wrapper' ).data( 'function', 'edit' );
+		$( '#location_add__wrapper' ).data( 'id',  $( this ).data( 'id' ) );
+		populateLocationForm( $( this ).find( 'div' ).html() );
+	}
 });
 
 $( '#character_sheet_cancel' ).on( 'click', function() {
@@ -191,8 +210,16 @@ $( '#character_sheet_save' ).on( 'click', function() {
 		const characterObj = serializeSheet();
 		if ( characterObj ) {
 			const loc = window.location.href;
-			const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
-			saveCharacter( characterObj, chronicleId );
+			let chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
+			if ( chronicleId.indexOf( '&' ) != -1 ) {
+				chronicleId = chronicleId.substring( 0, chronicleId.indexOf( '&' ) );
+			}
+			if ( $( '#player_sheet_add' ).data( 'function' ) == 'edit' ) {
+				characterObj['id'] = $( '#player_sheet_add' ).data( 'id' );
+				saveCharacter( 'PUT', characterObj, chronicleId );
+			} else {
+				saveCharacter( 'POST', characterObj, chronicleId );
+			}
 		}
 	}
 });
@@ -204,16 +231,27 @@ $( '#btn__cancel_location' ).on( 'click', function() {
 $( '#btn__save_location' ).on( 'click', function() {
 	if ( confirm("Are you sure you want to save this location?\nYou will be able to edit it later") ) {
 		const locationObj = serializeLocation();
+		const loc = window.location.href;
+		const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
 		if ( locationObj ) {
-			const loc = window.location.href;
-			const chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
-			saveLocation( locationObj, chronicleId );
+			if ( $( '#location_add__wrapper' ).data( 'function' ) == 'edit' ) {
+				locationObj['id'] = $( '#location_add__wrapper' ).data( 'id' );
+				saveLocation( 'PUT', locationObj, chronicleId );
+			} else {
+				saveLocation( 'POST', locationObj, chronicleId );
+			}
 		}
+	}
+});
+$( '#location_add__wrapper' ).on( 'change', '#location_add_haven', function() {
+	if ( $( '#location_add_haven' ).val().includes( 'None' ) ) {
+		$( '#location_add_haven' ).val( 'None' );
 	}
 });
 
 function populateHavenSelect() {
 	$( '#location_add_haven' ).html( '<option selected>None</option>' );
+	
 	for ( character in chronicleSettings.characters.pc ) {
 		$( '#location_add_haven' ).append( '<option value="' + chronicleSettings.characters.pc[character].id +
 			'">' + character + '</option>' );
@@ -224,6 +262,24 @@ function populateHavenSelect() {
 	}
 }
 
+function populateCharacterEntryData() {
+	const selectClasses = $( '#character_bound_to__select, #character_touchstone_for, #character_retainer_for' );
+	selectClasses.html( '<option selected>None</option>' );
+	
+	for ( character in chronicleSettings.characters.pc ) {
+		if (chronicleSettings.characters.pc[character].being == KINDRED ) {
+			selectClasses.append( '<option value="' + chronicleSettings.characters.pc[character].id +
+				'">' + character + '</option>' );
+		}
+	}
+	for ( character in chronicleSettings.characters.npc ) {
+		if (chronicleSettings.characters.npc[character].being == KINDRED ) {
+			selectClasses.append( '<option value="' + chronicleSettings.characters.npc[character].id +
+				'">' + character + '</option>' );
+		}
+	}
+}
+
 function clearAndCloseCharacterSheetForm() {
 	$( '#player_sheet_add' ).addClass( 'hidden' );
 	$( '#value-modifier__dialog' ).addClass( 'hidden' );
@@ -231,11 +287,19 @@ function clearAndCloseCharacterSheetForm() {
 	$( '#player_sheet_add .clear' ).html( '' );
 	$( '#character_clan' ).val( 'Select Clan' );
 	$( '#player_sheet_add' ).removeData( 'type' );
+	$( '#player_sheet_add' ).removeData( 'function' );
+	$( '#player_sheet_add' ).removeData( 'id' );
+	$( '#add_humanity' ).val(7);
+	$( '#add_blood_potency' ).val(1);
+	$( '#add_experience' ).val(0);
 }
 function clearAndCloseLocationForm() {
 	$( '#location_add' ).addClass( 'hidden' );
 	$( '#value-modifier__dialog' ).addClass( 'hidden' );
 	$( '#location_add__wrapper input, #location_add__wrapper textarea' ).val( '' );
+	$( '#location_add_visible' ).prop( "checked", false );
+	$( '#location_add__wrapper' ).removeData( 'function' );
+	$( '#location_add__wrapper' ).removeData( 'id' );
 }
 
 $( '#player_sheet__wrapper' ).on( 'click', '.attr__wrapper', function() {
@@ -252,9 +316,9 @@ $( '#attr_cancel' ).on( 'click', function() {
 });
 
 $( '#attr_save' ).on( 'click', function() {
-	attrObj = $( '#attr_stats__wrapper' ).find( '.' + $( '#attr-title' ).html().replace( ' ', '_' ) );
+	const attrObj = $( '#attr_stats__wrapper' ).find( '.' + $( '#attr-title' ).html().replace( ' ', '_' ) );
 	attrObj.find( '.level' ).attr( 'class', $( '#attr_level' ).attr( 'class' ) );
-	specialty = $( '#attr_specialty>input' ).val();
+	const specialty = $( '#attr_specialty>input' ).val();
 	if ( specialty == '' ) {
 		attrObj.find( '.sub-text' ).remove();
 		attrObj.remove( 'br' );
@@ -265,11 +329,23 @@ $( '#attr_save' ).on( 'click', function() {
 			attrObj.find( '.level' ).before( '<br/><span class="sub-text">(' + specialty + ')</span>' );
 		}
 	}
-	$( '#add_health' ).val( parseInt( getStatValue( 'stamina' ) ) + 3 );
-	$( '#add_willpower' ).val( parseInt( getStatValue( 'composure' ) ) + 
-		parseInt( getStatValue( 'resolve' ) ) );
+	updateTrackers();
 	closeAndClearAttrWindow();
 });
+
+function updateTrackers() {
+	let healthStat = 'stamina';
+	let willpowerStat1 = 'composure';
+	let willpowerStat2 = 'resolve';
+	if ( $( '#attr_stats__wrapper' ).find( '.stamina' ).length == 0 ) {
+		healthStat = 'physical'
+		willpowerStat1 = 'social';
+		willpowerStat2 = 'mental';
+	}
+	$( '#add_health' ).val( parseInt( getStatValue( healthStat ) ) + 3 );
+	$( '#add_willpower' ).val( parseInt( getStatValue( willpowerStat1 ) ) + 
+		parseInt( getStatValue( willpowerStat2 ) ) );
+}
 
 function closeAndClearAttrWindow() {
 	$( '#attr_edit__wrapper' ).addClass( 'hidden' );
@@ -278,8 +354,12 @@ function closeAndClearAttrWindow() {
 }
 
 $( '#attr_level' ).on( 'click', function( event ) {
-	levelWidth = parseInt( $( '#attr_level' ).width() );
-	$( this ).attr( 'class', 'level level' + Math.ceil( event.offsetX / ( levelWidth / 5 ) ) );
+	const expanded = $( this ).hasClass( 'expanded' );
+	const levelWidth = parseInt( $( '#attr_level' ).width() );
+	const maxValue = expanded ? 10 : 5;
+	const classValue = expanded ? 'level expanded level' : 'level level';
+	$( this ).attr( 'class', classValue + Math.ceil( event.offsetX / ( levelWidth / maxValue ) ) );
+
 });
 
 $( '#remove__level' ).on( 'click', function() {
@@ -288,38 +368,47 @@ $( '#remove__level' ).on( 'click', function() {
 
 $( '#btn-add_discipline' ).on( 'click', function() {
 	let selected = $( '#character_discipline__select' ).find( ':selected' );
+
 	if ( selected.text() != DISCIPLINE_OPTION_DEFAULT && !$( this ).hasClass( 'disabled' ) ) {
-		discString = '<div class="discipline_add__wrapper ' + selected.text().replace( ' ', '_' ) + 
-			'"><div class="discipline-name">' + selected.text() + '</div><div class="disc_remove btn">&times;</div>';
-		if ( selected.text() == BLOOD_SORCERY_RITUALS ) {
-			const bloodSorceryLevel = parseInt( $( '.Blood_Sorcery' ).find( '.level' ).attr( 'class' ).replace( 'level level', '' ) );
-			if ( bloodSorceryLevel == 0 ) {
-				return;
-			}
-			discString += '<div class="rituals__list"></div><div class="ritual_add__wrapper"><select class="ritual add">';
-			discString += '<option selected disabled>Select Ritual</option>';
-			discString += getBloodSorceryRitualOptions( bloodSorceryLevel );
-			discString += '</select><div class="btn_ritual_add btn">Add</div></div>';
-		} else {
-			if ( selected.text() == "Blood Sorcery" ) {
-				$( '#character_discipline__select' ).append( '<option>' + BLOOD_SORCERY_RITUALS + '</option>' );
-			}
-			discString += '<div class="level level0"></div>';
-		}
-		discString += '<div class="powers_list"></div></div>';
-		$( '#disciplines__list__wrapper' ).append( discString );
-		selected.remove();
+		addDiscipline( selected.text() );
 		$( '#character_discipline__select' ).val( DISCIPLINE_OPTION_DEFAULT );
 		$( this ).addClass( 'disabled' );
 	}
 });
 
+function addDiscipline( discipline ) {
+	discString = '<div class="discipline_add__wrapper ' + discipline.replace( ' ', '_' ).replace( ' ', '_' ) + 
+		'"><div class="discipline-name">' + discipline + '</div><div class="disc_remove btn">&times;</div>';
+	if ( discipline == BLOOD_SORCERY_RITUALS ) {
+		const bloodSorceryLevel = parseInt( $( '.Blood_Sorcery' ).find( '.level' ).attr( 'class' ).replace( 'level level', '' ) );
+		if ( bloodSorceryLevel == 0 ) {
+			return;
+		}
+		discString += '<div class="rituals__list"></div><div class="ritual_add__wrapper"><select class="ritual add">';
+		discString += '<option selected disabled>Select Ritual</option>';
+		discString += getBloodSorceryRitualOptions( bloodSorceryLevel );
+		discString += '</select><div class="btn_ritual_add btn">Add</div></div>';
+	} else {
+		if ( discipline == "Blood Sorcery" ) {
+			$( '#character_discipline__select' ).append( '<option>' + BLOOD_SORCERY_RITUALS + '</option>' );
+		}
+		discString += '<div class="level level0"></div>';
+	}
+	discString += '<div class="powers_list"></div></div>';
+	$( '#disciplines__list__wrapper' ).append( discString );
+	$( '#character_discipline__select' ).find( 'option[value="' + discipline + '"]' ).remove();
+}
+
 $( '#add_disciplines__wrapper' ).on( 'click', '.btn_ritual_add', function() {
+	addRitual();
+});
+
+function addRitual() {
 	$( '.rituals__list' ).append( '<select class="ritual">' + $( '.ritual.add' ).html() + '</select>' );
 	$( '.rituals__list .ritual:last-child' ).val( $( '.ritual.add' ).find( ':selected' ).html() );
 	$( '.ritual.add' ).find( ':selected' ).remove();
 	$( '.ritual.add' ).val( 'Select Ritual' );
-});
+}
 
 function getBloodSorceryRitualOptions( level ) {
 	let ritualsStr = '';
@@ -339,13 +428,21 @@ $( '#disciplines__list__wrapper' ).on( 'click', '.level', function( event ) {
 	const levelWidth = parseInt( $( '#attr_level' ).width() );
 	const level = Math.ceil( event.offsetX / ( levelWidth / 5 ) );
 	$( this ).attr( 'class', 'level level' + level );
-	let powersString = '';
-	for (let i=0; i<level; i++) {
-		if ( i > 0 ) {
-			powersString += '<br/>';
+	addPowers( $( this ).next(), $( this ).prev().prev().text(), level );
+});
+
+function addPowers( container, discipline, level ) {
+	let currentPowerIndex = 0;
+	container.find( '.power__wrapper' ).each(function() {
+		currentPowerIndex++;
+		if (currentPowerIndex > level) {
+			$( this ).remove();
 		}
-		powersString += '<select><option selected disabled>Select Power</option>';
-		const disciplineValues = DISCIPLINES[$( this ).prev().prev().text()];
+	});
+
+	for (let i=currentPowerIndex; i<level; i++) {
+		let powersString = '<div class="power__wrapper"><select><option selected disabled>Select Power</option>';
+		const disciplineValues = DISCIPLINES[discipline];
 		for (powerLevel in disciplineValues) {
 			if (powerLevel <= i) {
 				for (power in disciplineValues[powerLevel]) {
@@ -353,13 +450,14 @@ $( '#disciplines__list__wrapper' ).on( 'click', '.level', function( event ) {
 				}
 			}
 		}
-		powersString += '</select>';
+		powersString += '</select></div>';
+		container.append( powersString );
 	}
-	$( this ).next().html( powersString );
-});
+}
 
 function getStatValue( stat ) {
-	return $( '#attr_stats__wrapper' ).find( '.' + stat ).find( '.level' ).attr( 'class' ).replace( 'level level', '' );
+	console.log( 'Getting value for stat: ' + stat );
+	return $( '#attr_stats__wrapper' ).find( '.' + stat ).find( '.level' ).attr( 'class' ).replace( 'level level', '' ).replace( 'level expanded level', '' );
 }
 
 function getSpecialty( stat ) {
@@ -389,17 +487,21 @@ $( '.detail_add__wrapper input' ).on( 'keyup', function() {
 $( '.btn_detail__add' ).on( 'click', function() {
 	if ( !$( this ).hasClass( 'disabled' ) ) {
 		let value = $( this ).prev().val();
-		let detailStr = '<div class="flex">';
-		if ( $( this ).hasClass( 'has_level' ) ) {
-			detailStr += '<input value="' + value + '"/><div class="level level0"></div>';
-		} else {
-			detailStr += '<input class="wide" value="' + value + '"/>';
-		}
-		detailStr += '<div class="remove_detail btn">&times;</div></div>'
-		$( this ).parent().prev().append( detailStr );
+		$( this ).parent().prev().append( getDetailStr( value, $( this ).hasClass( 'has_level' ) ? 0 : null ) );
 		$( this ).prev().val( '' );
 	}
 });
+
+function getDetailStr( value, level ) {
+	let detailStr = '<div class="flex">';
+	if ( level ) {
+		detailStr += '<input value="' + value + '"/><div class="level level' + level + '""></div>';
+	} else {
+		detailStr += '<input class="wide" value="' + value + '"/>';
+	}
+	detailStr += '<div class="remove_detail btn">&times;</div></div>';
+	return detailStr;
+}
 
 $( '#character_info__wrapper' ).on( 'click', '.remove_detail', function() {
 	$( this ).parent().remove();
@@ -427,6 +529,7 @@ $( '#story_list' ).on( 'blur', 'input, textarea', function() {
 		};
 		switch ( $( this ).attr( 'class' ) ) {
 			case 'chapter-name':
+				$( '#loading__wrapper' ).removeClass( 'hidden' );
 				postData['chapterIndex'] = $( this ).parent().parent().index();
 				if ( chronicleSettings.chapters[postData['chapterIndex']].name != postData['value'] ) {
 					if ( postData['value'] == '' ) {
@@ -438,6 +541,7 @@ $( '#story_list' ).on( 'blur', 'input, textarea', function() {
 				}
 				break;
 			case 'scene-name':
+				$( '#loading__wrapper' ).removeClass( 'hidden' );
 				postData['sceneIndex'] = $( this ).parent().parent().index();
 				postData['chapterIndex'] = $( this ).parent().parent().parent().parent().index();
 				if ( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].name != postData['value'] ) {
@@ -451,13 +555,16 @@ $( '#story_list' ).on( 'blur', 'input, textarea', function() {
 				}
 				break;
 			case 'scene-story__text':
+				$( '#loading__wrapper' ).removeClass( 'hidden' );
 				postData['sceneIndex'] = $( this ).parent().parent().index();
 				postData['chapterIndex'] = $( this ).parent().parent().parent().parent().index();
 				postData['value'] = assembleStoryText( postData['value'] )
 				if ( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].story != postData['value'] ) {
+					console.log(postData, chronicleSettings.chapters);
 					if ( postData['value'] == '' ) {
 						$( this ).val( chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].story );
 					} else {
+						console.log(chronicleSettings.chapters[postData['chapterIndex']].scenes[postData['sceneIndex']].story, postData['value']);
 						postData['mode'] = 'story';
 						updateStory( 'PUT', postData, chronicleId );	
 					}
@@ -521,6 +628,9 @@ $( '#story_list' ).on( 'click', '.btn__add-chapter', function() {
 });
 
 function assembleStoryText( text ) {
+	if ( text.indexOf( '<p>') != -1 ) {
+		return text;
+	}
 	let textList = text.split( '\n\n' );
 	let textStr = '';
 	for ( index in textList ) {
@@ -528,3 +638,33 @@ function assembleStoryText( text ) {
 	}
 	return textStr;
 }
+
+$( '#disciplines__list__wrapper' ).on( 'click', '.disc_remove', function() {
+	const discipline = $( this ).parent().find( '.discipline-name' ).html();
+	if ( discipline == "Blood Sorcery" ) {
+		$( '.discipline_add__wrapper.Blood_Sorcery_Rituals' ).remove();
+		$( '#character_discipline__select option[value="' + BLOOD_SORCERY_RITUALS + '"]' ).remove();
+	}
+	$( this ).parent().remove();
+});
+
+$( '#being__select' ).on( 'change', function() {
+	loadSheet( $( this ).val() );
+	showHideBeingEntries();
+});
+
+function showHideBeingEntries() {
+	const beingVal = $( '#being__select' ).val().toLowerCase();
+	$( '#player_sheet__wrapper .optional' ).each(function() {
+		if ( $( this ).hasClass( beingVal ) ) {
+			$( this ).show();
+		} else {
+			$( this ).hide();
+		}
+	});
+}
+
+function loadSheet( being ) {
+	$( '#attr_stats__wrapper' ).html( assembleCharacterSheetData( {}, LIMITED_SHEET.includes( being ) ) );
+}
+

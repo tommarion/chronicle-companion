@@ -36,6 +36,12 @@ const DEX_ATH = 'Dex + Athletics';
 const STR_BRW = 'Strength + Brawl';
 const WTS_AWR = 'Wits + Awareness';
 const WILL = 'Willpower';
+const KINDRED = 'Kindred';
+const GHOUL = 'Ghoul';
+const MORTAL = 'Mortal';
+const WEREWOLF = 'Werewolf';
+const TREMERE = 'Tremere';
+const ANIMAL = 'Animal';
 
 const BLOOD_SORCERY_RITUALS = 'Blood Sorcery Rituals';
 
@@ -51,9 +57,11 @@ for ( index in PREDATOR_TYPES ) {
 const ENABLE = 'enable';
 const DISABLE = 'disable';
 
+const LIMITED_SHEET = [ 'Mortal', 'Ghoul', 'Animal', 'Hunter' ];
+
 const CHARACTER_SKILLS = ["athletics", "animal ken", "academics", "brawl", "etiquette", "awareness", 
 	"craft", "insight", "finance", "drive", "intimidation", "investigation", "firearms", "leadership", 
-	"medicine", "melee", "performance", "occult", "larceny", "persuasion", "politics", "stealth",
+	"medicine", "larceny", "performance", "occult", "melee", "persuasion", "politics", "stealth",
 	"streetwise", "science", "survival", "subterfuge", "technology"];
 const CHARACTER_ATTRIBUTES = [
 	{
@@ -590,4 +598,6 @@ function getUrlVariable( variable ) {
 	}
 	return value;
 }
+
+$( '#story__wrapper' ).addClass( navigator.platform );
 

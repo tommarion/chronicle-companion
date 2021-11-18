@@ -12,6 +12,8 @@
 	transition: width 0.5s ease, padding-left 0.5s ease;
     background-color: black;
     z-index: 200;
+    background-image: url(../img/background3.jpeg);
+    background-size: cover;
 }
 #toolbar__wrapper:not(.slideLeft) {
 	width: 297px;
@@ -40,6 +42,10 @@
 .hover-link.active {
 	background-color: #7D191660;
 }
+#toolbar .toolbar-item-header {
+    font-size: 2em;
+    font-family: 'Amethyst';
+}
 
 /*************************************/
 /*           STORY TOOLBAR           */
@@ -48,10 +54,18 @@
 	position: absolute;
     right: 0;
     top: 0;
-    color: #A2091E;
-    padding: 30px 20px 0 0;
+    background-color: #5d000d;
+    margin: 30px 20px 0 0;
+    padding:10px;
+    border-radius: 5px;
     font-size: 1.25em;
     font-family: 'Modern Antiqua', cursive;
+    opacity: 0.1;
+    max-height: calc( 100vh - 260px );
+    overflow-y: auto;
+}
+#story-toolbar:hover {
+    opacity: 0.85;
 }
 .chapter:not(.active):hover {
 	cursor: pointer;
@@ -82,24 +96,35 @@
     font-family: 'chronicle-companion-10';
     position: absolute;
 }
-#btn_pc:before {
+#character__btns:before {
     content: "\e923";
     font-family: 'chronicle-companion-10';
+    position: absolute;
 }
-#btn_npc:before {
-    content: "\e923";
-    font-family: 'chronicle-companion-10';
-}
-#btn_locations:before {
+#location__btns:before {
     content: "\e903";
     font-family: 'chronicle-companion-10';
+    position: absolute;
 }
 #notes:before {
     content: "\e907";
     font-family: 'chronicle-companion-10';
     line-height: 1.5;
 }
-
+#pc__btns div.header,
+#npc__btns div.header,
+#location__btns div.header {
+    font-size: 0.75em;
+    text-align: center;
+}
+#pc__btns__wrapper,
+#npc__btns__wrapper,
+#locations__btns__wrapper {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
 
 
 .spacer {

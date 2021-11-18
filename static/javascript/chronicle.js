@@ -9,11 +9,7 @@ function promptForUser() {
 
 $( '#users__wrapper' ).on( 'click', '.btn-user', function() {
 	let value = $( this ).html();
-	$( '#users__wrapper' ).remove();
-	if ( chronicleSettings.embed_link ) {
-		$( '#btn-relationship_map' ).removeClass( 'hidden' );
-		$( '#relationship_map' ).attr( 'src', chronicleSettings.embed_link );
-	}
+	$( '#users__wrapper' ).addClass( 'hidden' );
 	if ( value == STORYTELLER ) {
 		if ( authenticated ) {
 			handleChronicleForStoryteller();
@@ -23,13 +19,17 @@ $( '#users__wrapper' ).on( 'click', '.btn-user', function() {
 		}
 	} else {
 		user = value;
-		$( '#password_entry__wrapper' ).remove();
 		$( '#btn_raise-hand' ).removeClass( 'hidden' );
-		$( '#btn_roll-dice__wrapper' ).removeClass( 'hidden' );
-		$( '#dice-roll__wrapper' ).removeClass( 'hidden' );
+		showDiceDivs();
 		processChronicle( chronicleSettings );
 	}
 });
+
+$( '#pass_cancel' ).on( 'click', function() {
+	$( '#password_entry__wrapper' ).addClass( 'hidden' );
+	$( '#users__wrapper' ).addClass( 'hidden' );
+});
+
 $( '#pass_submit' ).on( 'click', function() {
 	if ($( '#user_password' ).val() == 'schrecknet' ) {
 		user = STORYTELLER;
@@ -49,10 +49,14 @@ $( '#pass_submit' ).on( 'click', function() {
 });
 
 function handleChronicleForStoryteller() {
+	showDiceDivs();
+	processChronicle( chronicleSettings );
+}
+
+function showDiceDivs() {
 	$( '#btn_roll-dice__wrapper' ).removeClass( 'hidden' );
 	$( '#dice-roll__wrapper' ).removeClass( 'hidden' );
-	processChronicle( chronicleSettings );
-
+	$( '#roll-type__dropdown' ).removeClass( 'hidden' );
 }
 $( '#users__wrapper' ).on( 'click', '.close_users', function() {
 	$( '#users__wrapper' ).addClass( 'hidden' );
@@ -68,6 +72,10 @@ function processChronicle( chronicleData ) {
 	settingsMode = SETTINGS_MODE_CHRONICLE;
     $( '#chronicles__wrapper' ).hide();
 	$( '#story-toolbar' ).removeClass( 'hidden' );
+	if ( chronicleSettings.embed_link ) {
+		$( '#btn-relationship_map' ).removeClass( 'hidden' );
+		$( '#relationship_map' ).attr( 'src', chronicleSettings.embed_link );
+	}
 
     if ( user == 'Storyteller' ) {
 		if (chronicleData.chapters.length == 0) {
@@ -89,6 +97,7 @@ function processChronicle( chronicleData ) {
 		processCharacterData( chronicleSettings.characters.pc[user].id );
 	}
 	processHandRaises();
+	loadToolbarData();
 }
 
 function processChapter( index ) {
@@ -96,12 +105,19 @@ function processChapter( index ) {
 	let chapterText = '<div class="header">Chapter ' + (index + 1) + ' ~ ' + chapter.name + '</div><br/>';
 	
 	for (scene in chapter.scenes) {
+		chapterText += '<div class="scene-view__wrapper">';
 		chapterText += '<div class="subheader">Scene ' + (parseInt(scene) + 1) + ' ~ ' + chapter.scenes[scene].name + '</div>' + 
-		'<p>' + chapter.scenes[scene].story + '</p><br/>';
+		chapter.scenes[scene].story + '</div>';
 	}
 	
 	$( '#story-text' ).html(chapterText);
 	$( '#story-text' ).show();
+}
+
+function loadToolbarData() {
+	$( '#pc__btns__wrapper' ).html( processCharacterList( 'pc' ));
+	$( '#npc__btns__wrapper' ).html( processCharacterList( 'npc' ));
+	$( '#locations__btns__wrapper' ).html( processLocations() );
 }
 
 // LOAD CHRONICLE FILE, CHARACTERS FILE, & LOCATIONS FROM DB

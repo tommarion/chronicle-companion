@@ -31,10 +31,10 @@
 	cursor: pointer;
 	opacity: 0.5;
 }
-#btn__show-hide-character>div {
+#btn__show-hide-character>div>div {
 	height: 100%;
     width: 100%;
-    border: solid #A2091E;
+    border: solid #5d000d;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -47,12 +47,12 @@
     content: "\232A";
 }
 
-#btn__show-hide-character:not(.active)>div {
+#btn__show-hide-character:not(.active)>div>div {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
 
-#btn__show-hide-character.active>div {
+#btn__show-hide-character.active>div>div {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
@@ -68,37 +68,44 @@
 	transform: scale(0.9);
 }
 
+.MacIntel .btn-chronicle {
+    height: 110px;
+}
+.Win32 .btn-chronicle {
+    height: 70px;
+}
 .btn-chronicle {
-	height: 110px;
     width: 180px;
     display: table;
     text-align: center;
-    background-color: #A2091E;
-    color: black;
-	font-family: 'Modern Antiqua', cursive;
-	font-size: 1.5em;
+    background-color: #5d000d;
+    color: #c5c5c5;
+	font-family: 'Amethyst', cursive;
+	font-size: 2em;
 	border-radius: 5px;
 	margin: 10px;
 	padding: 5px 20px;
 }
 .btn-chronicle.disabled {
     opacity: 0.5;
-
 }
 .btn-chronicle>div {
 	display: table-cell;
 	vertical-align: middle;
 }
+.Win32 .btn-chronicle>div {
+    padding-bottom: 20px;
+}
 .btn-location,
 .btn-character {
-	background-color: #A2091E;
-    color: black;
-    padding: 10px 20px;
-    margin: 20px 20px 0;
+    background-color: #5d000d;
+    color: #c5c5c5;
     flex: 0 0 160px;
     text-align: center;
     display: table;
     border-radius: 5px;
+    font-size: 0.75em;
+    padding: 5px 0;
 }
 .btn-location>div,
 .btn-character>div {
@@ -107,8 +114,8 @@
 }
 
 .close_users {
-    background-color: #A2091E;
-    color: black;
+    background-color: #5d000d;
+    color: #c5c5c5;
     text-align: center;
     border-radius: 5px;
     padding: 5px;
@@ -131,11 +138,18 @@
     border-left: 2px solid #c5c5c5;
     border-right: 2px solid #c5c5c5;
     position: absolute;
-    background-color: #A2091E;
+    background-color: #5d000d;
 }
 #btn-chronicle__settings {
+    background-image: url('../img/settings.svg');
     right: 70px;
 }
 #btn-relationship_map {
-    right: 170px;
+    background-image: url('../img/kumu_logo.png');
+    right: 140px;
+}
+.settings_btn {
+    background-position: 5px;
+    background-size: 40px;
+    background-repeat: no-repeat;
 }

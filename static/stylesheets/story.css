@@ -8,11 +8,17 @@
 	height: calc( 100vh - 225px );
 	overflow-y: auto;
 	font-size: 1.25em;
-	border: 1px solid #610000;
+	/*border: 1px solid #610000;*/
 	border-radius: 5px;
 	padding: 20px;
-	background-color: #000000aa;
     color: #c5c5c5;
+}
+#content {    
+	background-image: url(../img/background.jpg);
+    background-size: cover;
+}
+#story-content {
+	background-color: #000000aa;
 }
 #content__wrapper,
 #story__wrapper {
@@ -23,11 +29,11 @@
 	left: 0;
 	margin:  100px 50px 0 320px;
 	position: absolute;
+	max-width: 1110px;
 }
 #content__wrapper:not(.active) {
 	display: none;
 }
-#relationship__wrapper,
 #character__wrapper,
 #chronicles__wrapper {
     width: calc( 100% - 40px );
@@ -42,17 +48,30 @@
 	transition: height 0.5s ease;
 }
 #chronicles__wrapper,
-#character__wrapper.active,
-#relationship__wrapper.active {
+#character__wrapper.active {
     height: calc( 100% - 180px );
 }
+
+#relationship__wrapper {
+	width: 100%;
+	top: 0;
+	left: 0;
+    position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: auto;
+}
+#relationship__wrapper.active {
+	height: calc( 100% - 130px );
+}
+
 #relationship_map {
 	width: 100%;
 }
 #story-text__wrapper {
 	position: absolute;
     overflow-y: auto;
-    width: calc( 100% - 145px );
+    width: calc( 100% - 45px );
     transition: height 0.5s ease;
 }
 #story-text__wrapper:not(.min) {
@@ -76,7 +95,6 @@
     padding-top: 28vh;
 }
 #story-text p {
-    text-indent: 40px;
     text-align: justify;
 }
 #location-description {
@@ -85,12 +103,17 @@
 }
 
 #location-description p {
-    text-indent: 40px;
     text-align: justify;
 }
 #location-header {
 	flex: 0 0 20px;
 	text-align: center;
+}
+.location-map {
+    height: 250px;
+    width: 450px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 #chapters__wrapper {
 	margin-left: -15px;
@@ -98,4 +121,19 @@
 .chapter {
 	text-align: center;
     width: 30px;
+}
+#story-content p:first-of-type::first-letter {
+    font-family: 'Wilkli';
+    font-size: 5em;
+    float: left;
+    margin-bottom: -30px;
+}
+.info .header {
+    font-family: 'Amethyst';
+    font-size: 2.5em;
+    padding: 0 10px;
+}
+
+.Win32 #story-content p:first-of-type::first-letter {
+	margin-top: -20px;
 }
