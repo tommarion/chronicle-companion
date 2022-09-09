@@ -1,0 +1,636 @@
+/*************************************/
+/*            LEVEL METERS           */
+/*************************************/
+.level {
+	font-family: auto;
+	font-size: 2em;
+}
+.level:not(.expanded).level0:after {
+	content: "\25CB\25CB\25CB\25CB\25CB";
+}
+.level:not(.expanded).level1:after {
+	content: "\25CF\25CB\25CB\25CB\25CB";
+}
+.level:not(.expanded).level2:after {
+	content: "\25CF\25CF\25CB\25CB\25CB";
+}
+.level:not(.expanded).level3:after {
+	content: "\25CF\25CF\25CF\25CB\25CB";
+}
+.level:not(.expanded).level4:after {
+	content: "\25CF\25CF\25CF\25CF\25CB";
+}
+.level:not(.expanded).level5:after {
+	content: "\25CF\25CF\25CF\25CF\25CF";
+}
+
+.level.expanded.level0:after {
+    content: "\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level1:after {
+    content: "\25CF\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level2:after {
+    content: "\25CF\25CF\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level3:after {
+    content: "\25CF\25CF\25CF\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level4:after {
+    content: "\25CF\25CF\25CF\25CF\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level5:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level6:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level7:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CB\25CB\25CB";
+}
+.level.expanded.level8:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CB\25CB";
+}
+.level.expanded.level9:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CB";
+}
+.level.expanded.level10:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF";
+}
+
+/*************************************/
+/*        ATTRIBUTES & SKILLS        */
+/*************************************/
+.character_data {
+    background-color: #5D000D;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 450px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+.pad-top {
+    margin-top: 30px;
+}
+.character_data table {
+    font-size: 1em !important;
+        width: 100%;
+}
+@media screen and (min-width: 875px) and (max-width: 1499px) {
+    .character_data {
+        width: 370px;
+        margin: 10px auto 0;
+    }
+}
+@media screen and (min-width: 950px) {
+    .sheet_flex__wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    .sheet_flex__wrapper>div {
+        flex: 0 0 50%;
+    }
+}
+@media screen and (min-width: 1500px) {
+    #character-sheet__wrapper {
+        display: flex;
+        justify-content: center;
+    }
+}
+#character-bio p {
+    text-align: justify;
+}
+#character-bio li:first-letter {
+    margin-left: -20px;
+}
+#character-sheet {
+	flex: 0 0 500px;
+}
+#attribute__wrapper {
+	display: flex;
+	text-align: center;
+    margin-bottom: 10px;
+}
+#aka {
+	text-align: center;
+}
+#attribute__wrapper>div {
+    flex: 0 0 calc( 33% - 9px );
+    background-color: #5D000D;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#attribute__wrapper>div:nth-child(2) {
+    margin: 0 10px;
+}
+#skills__wrapper {
+    background: #5D000D;
+    border-radius: 5px;
+}
+#trackers__wrapper {
+    background: #5D000D;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+}
+#skills__wrapper .title:not(.sub-text),
+#attribute__wrapper .title:not(.sub-text) {
+	font-size: 1em;
+}
+#skills__wrapper .level,
+#attribute__wrapper .level {
+	margin-top: -10px;
+	font-size: 1.3em;
+}
+.attr__wrapper {
+	padding-top: 10px;
+	border-radius: 4px;
+}
+.attr__wrapper:hover {
+	cursor: pointer;
+	background-color: #A2091E77;
+}
+.attr__wrapper .sub-text {
+    font-size: 0.5em;
+    height: 17px;
+    margin-top: -5px;
+}
+#skills__wrapper {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-right: 10px;
+}
+#skills__wrapper .attr__wrapper {
+	flex: 0 0 33%;
+}
+.inv-item-mod {
+    font-size: 1.5em;
+    margin-top: -6px;
+    margin-left: 10px;
+    flex: 0 0 50px;
+    text-align: center;
+}
+.inventory__wrapper {
+    background-color: rgb(93, 0, 13);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+#weapon-type>label {
+    width: unset;
+}
+#inventory-add__wrapper.weapon .item-name {
+    width: calc( 100% - 410px );
+}
+#inventory-add__wrapper.armor .item-name {
+    width: calc( 100% - 260px );
+}
+#inventory-add__wrapper:not(.weapon):not(.armor) .item-name {
+    width: calc( 100% - 180px );
+}
+#inventory-add__wrapper .item-name {
+    margin-right: 10px;
+}
+#inventory-add__wrapper input {
+    width: unset;
+}
+#inventory-add__wrapper label {
+    font-size: 0.75em;
+    margin-right: 10px;
+}
+#inventory-add__wrapper:not(.weapon) #weapon-type,
+#inventory-add__wrapper:not(.armor):not(.weapon) #modifier {
+    display: none;
+}
+#modifier {
+    margin: 0 10px;
+    width: 50px !important;
+}
+#modifier__wrapper.positive #modifier {
+    padding-left: 10px;
+}
+#inventory-add__wrapper.weapon #modifier__wrapper.positive::after,
+#inventory-add__wrapper.armor #modifier__wrapper.positive::after {
+    content: "+";
+}
+
+#inventory-add__wrapper.weapon #modifier__wrapper.positive::after, 
+#inventory-add__wrapper.armor #modifier__wrapper.positive::after {
+    margin-left: -56px;
+    margin-top: -3px;
+    position: absolute;
+    z-index: 200;
+    color: black;
+    font-size: 0.75em;
+}
+.btn__inventory-add {
+    position: absolute;
+    background: #5d000d;
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-size: 0.75em;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 30px;
+    float: right;
+}
+#character-bio {
+    margin-right: 10px;
+}
+.inv-item .on_person {
+    content: "";
+    background-image: url(../../img/on-person_icon.png);
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    margin-top: -2px;
+    margin-right: -35px;
+}
+
+.inv-item .on_person:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.on_person:not(.active) {
+    opacity: 0.2;
+}
+.inv-item-desc {
+    flex: 0 0 calc( 100% - 95px );
+}
+.inventory__wrapper ul {
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 649px) {
+    #character-sheet__wrapper {
+        font-size: 0.5em;
+    }
+}
+
+#player_sheet_randomize {
+    background-color: #5d000d;
+}
+#btn_player_sheet_randomize {
+    background-color: #5d000d;
+    background-image: url('../../img/random-white.png');
+}
+
+/*************************************/
+/*           DISCIPLINES             */
+/*************************************/
+#disciplines__wrapper,
+.character_lore__wrapper,
+.character_relationships__wrapper {
+    margin: 20px 5px 0;
+    background: #5D000D;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+}
+.discipline__wrapper .level {
+	margin-top: -15px;
+}
+
+
+#value-modifier__background {
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #00000088;
+}
+#value-modifier__dialog {
+	height: 200px;
+    width: 600px;
+    position: fixed;
+    top: calc( 50vh - 100px );
+    left: calc( 50vw - 300px );
+    background: black;
+    border: 1px solid;
+    border-radius: 4px;
+}
+#btn__dialog-close {
+    position: absolute;
+    right: 10px;
+    font-size: 2em;
+    top: -3px;
+}
+#btn__dialog-close:hover {
+	cursor: pointer;
+	opacity: 0.6;
+}
+#dialog-value__wrapper {
+    font-size: 2em;
+    text-align: center;
+    width: 124px;
+    margin: 25px auto 35px;
+}
+#dialog-value {
+    width: 60px;
+    font-family: 'Catull';
+    font-size: 1.4em;
+}
+#dialog-text {
+
+}
+#options__wrapper {
+	margin-left: 10px;
+}
+.btn-option {
+	height: 45px;
+    width: 75px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: 3px solid #A2091E;
+}
+.btn-option.disabled {
+	opacity: 0.35;
+}
+.btn-option:not(.active) {
+	color: black;
+    background-color: #A2091E;
+}
+.btn-option:not(.disabled):not(.active):hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+.note {
+    font-size: 0.75em;
+    width: calc( 100% - 30px );
+}
+.btn_remove-note {
+	width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.btn_remove-note:before {
+    content: "\2715";
+    color: #A2091E;
+}
+.note:before {
+    content: "\e907";
+    font-family: 'chronicle-companion-10';
+    margin-right: 10px;
+}
+.characterName {
+	margin-left: 80px;
+    font-size: 3em;
+    text-align: left;
+}
+
+/*************************************/
+/*             CLAN LOGOS            */
+/*************************************/
+#clan {
+    height: 160px;
+    width: 160px;
+    margin: -10px;
+    position: absolute;
+    top: 0;
+    opacity: 0.25;
+    pointer-events: none;
+}
+#clan.human:after {
+    content: "\e90b";
+    font-family: 'chronicle-companion-10';
+    font-size: 4.5em;
+    line-height: 1.5;
+}
+#clan.human {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+#clan.Thin-Blood:after {
+    content: "\25D1";
+    font-family: 'chronicle-companion-10';
+    font-size: 5.5em;
+    line-height: 1.5;
+    margin-left: 20px;
+}
+
+#clan.Banu-Haqim {
+    background-image: url(../../img/clan-logos/banu-haqim-white.png);
+}
+#clan.Brujah {
+    background-image: url(../../img/clan-logos/brujah-white.png);
+}
+#clan.Caitiff {
+    background-image: url(../../img/clan-logos/caitiff-white.png);
+    margin: 20px 0 0;
+    width: 120px;
+    height: 120px;
+}
+#clan.Gangrel {
+    background-image: url(../../img/clan-logos/gangrel-white.png);
+    margin: 10px 0  0 -5px;
+    width: 140px;
+    height: 140px;
+}
+#clan.Hecata {
+    background-image: url(../../img/clan-logos/hecata-white.png);
+}
+#clan.Lasombra {
+    background-image: url(../../img/clan-logos/lasombra-white.png);
+}
+#clan.Malkavian {
+    background-image: url(../../img/clan-logos/malkavian-white.png);
+}
+#clan.Ministry {
+    background-image: url(../../img/clan-logos/ministry-white.png);
+}
+#clan.Nosferatu {
+    background-image: url(../../img/clan-logos/nosferatu-white.png);
+    margin-top: 5px;
+    margin-left: -15px;
+}
+#clan.Ravnos {
+    background-image: url(../../img/clan-logos/ravnos-white.png);
+}
+#clan.Salubri {
+    background-image: url(../../img/clan-logos/salubri-white.png);
+}
+#clan.Toreador {
+    background-image: url(../../img/clan-logos/toreador-white.png);
+}
+#clan.Tremere {
+    background-image: url(../../img/clan-logos/tremere-white.png);
+}
+#clan.Tzimisce {
+    background-image: url(../../img/clan-logos/tzimisce-white.png);
+}
+#clan.Ventrue {
+    background-image: url(../../img/clan-logos/ventrue-white.png);
+}
+
+
+#clan.Caitiff {
+	
+}
+#clan.Hunter {
+	
+}
+#clan.Wraith {
+
+}
+#clan.Werewolf {
+
+}
+#clan.Ghoul {
+
+}
+#character-sheet__wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+#character_sub__wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #000000CC;
+    z-index: 50;
+}
+#character_sub_sheet {
+    position: relative;
+    background-color: #5d000d;
+    height: calc( 100% - 235px );
+    top: 110px;
+    left: 320px;
+    border-radius: 10px;
+    overflow-y: auto;
+    padding: 20px;
+}
+#btn_char_sheet__close {
+    position: absolute;
+    font-size: 2em;
+    top: calc( 10vh - 5px );
+    right: 13px;
+    top: 92px;
+}
+@media screen and (min-width:  1100px ) {
+    #character_sub_sheet {
+        left: 320px;
+        width: calc( 100% - 360px );
+    }
+}
+@media screen and (max-width:  1099px ) {
+    #character_sub_sheet {
+        left: 50px;
+        width: calc( 100% - 90px );
+    }
+}
+#character__wrapper li:not(.session-note__wrapper) {
+    list-style-type: none;
+}
+.notes__wrapper {
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: #5d000d;
+    margin-bottom: 40px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+.notes__wrapper>ul {
+    margin-bottom: 0;
+}
+.notes-view__wrapper {
+    display: flex;
+}
+.notes-view__wrapper>div {
+    flex: 0 0 50px;
+    text-align: center;
+    background-color: #5d000d;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-left: 5px;
+}
+.btn-notes_view-authored::after {
+    content: "\e907";
+    font-family: 'chronicle-companion-10';
+    font-size: 0.9em;
+    top: 2px;
+    position: relative;
+}
+.notes-authored__wrapper {
+    display: none;
+}
+#character-sheet__wrapper
+li.session-note__wrapper {
+    padding-left: 20px;
+    margin-left: -30px;
+}
+
+li.session-note__wrapper {
+    margin-bottom: 5px;
+}
+#character__wrapper.Toreador .header,
+#character__wrapper.Toreador .title,
+#character__wrapper.Tremere .header,
+#character__wrapper.Tremere .title {
+    font-family: 'Vampire Calligraphy' !important;
+}
+#character__wrapper.Ventrue .header,
+#character__wrapper.Ventrue .title,
+#character__wrapper.Caitiff .header,
+#character__wrapper.Caitiff .title {
+    font-family: 'Wilkli' !important;
+}
+#character__wrapper.Nosferatu .header,
+#character__wrapper.Nosferatu .title,
+#character__wrapper.Malkavian .header,
+#character__wrapper.Malkavian .title {
+    font-family: 'Rosemary Roman' !important;
+}
+#character__wrapper.Gangrel .header,
+#character__wrapper.Gangrel .title,
+#character__wrapper.Brujah .header,
+#character__wrapper.Brujah .title {
+    font-family: 'Feral-Regular' !important;
+}
+#character__wrapper .attr__wrapper .title {
+    font-family: 'Catull' !important;
+}
+.discipline_power:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.btn.btn_roll_as,
+.btn.btn_edit {
+    position: absolute;
+    border: 2px solid;
+    background: #610000;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.btn.btn_roll_as{
+    top: 27px;
+    width: 66px;
+    right: 100px;
+}
+.btn.btn_edit {
+    top: 27px;
+    width: 33px;
+    right: 20px;
+}
+.btn.sheet_exp {
+    width: 170px;
+    text-align: center;
+    padding: 10px 5px;
+    background-color: #610000;
+    border-radius: 10px;
+}
+
+.advantage__wrapper .level,
+.flaw__wrapper .level {
+    font-size: 0.75em;
+    float: right;
+    margin-right: 30px;
+}

@@ -1,0 +1,36 @@
+#roll-type {
+    background: #4a2932;
+    color: #cec2ae;
+}
+
+#btn_roll-dice {
+    background: #4a2932;
+}
+
+#container.iPhone #roll-type__text {
+    font-size: 0.6em;
+}
+#container:not(.iPhone) #roll-type__text {
+    font-size: 20px;
+}
+#dice-preview__wrapper {
+    margin-top: 4px;
+    height: 40px;
+    width: 215px;
+    display: flex;
+    justify-content: center;
+}
+.dice-preview input {
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+    width: calc( 100% - 4px);
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #4a2932;
+    color: #cec2ae;
+    border: 2px solid;
+}
+.dnd-dice {
+    
+}

@@ -1,0 +1,68 @@
+#add-character,
+#add_general,
+#start_session,
+#add-location,
+#search_notes,
+.btn.add-note__btn,
+.no-tags,
+.btn.btn-filter,
+.session-name,
+.btn.btn-note,
+#add_map,
+#btn__encounter-ping,
+#btn__encounter-measure,
+#btn__encounter-move,
+.encounter-character-insert__btn,
+#btn__encounter-save,
+#btn__encounter-live,
+#encounter-name,
+#cursor-pos,
+#grid-scale {
+    background-color: #4a2932;
+}
+.btn-note {
+	text-align: center;
+    display: table;
+    border-radius: 5px;
+    font-size: 0.75em;
+    padding: 5px 0;
+    margin: 0 auto 5px;
+    width: 180px;
+}
+#btn_roll-dice {
+    margin-top: 18.5px !important;
+    margin-right: -15px !important;
+}
+.btn {
+	user-select: none;
+}
+.btn.active {
+	opacity: 0.5;
+}
+.btn:not(.active):not(.disabled):hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+.btn:not(.active):not(.disabled):active {
+	transform: scale(0.9);
+}
+.btn-encounter-op_spacer {
+    background-color: #cec2ae;
+}
+#cursor-pos,
+#grid-scale {
+	color: #cec2ae;
+}
+#campaign_settings input,
+#player_sheet__wrapper input,
+#location_add__wrapper input {
+    background-color: transparent;
+    color: #cec2ae;
+    border: 2px solid !important;
+    font-size: 1.25em;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
