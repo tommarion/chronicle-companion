@@ -1,0 +1,27 @@
+{
+    "name": "@types/react-autocomplete",
+    "version": "1.8.6",
+    "description": "TypeScript definitions for react-autocomplete",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-autocomplete",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Lee Standen",
+            "url": "https://github.com/lstanden",
+            "githubUsername": "lstanden"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/react-autocomplete"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/react": "*"
+    },
+    "typesPublisherContentHash": "e289576aa98444508011ab1f3524bf7c3a5ea1d6e2aabe013dbc3f70524263c2",
+    "typeScriptVersion": "3.6"
+}

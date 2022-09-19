@@ -1,9 +1,5 @@
 <head>
     <link href='/stylesheets/app.css' rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-    <link href='/stylesheets/common/slider.css' rel="stylesheet">
-    <link href='/stylesheets/common/book.css' rel="stylesheet">
-    <link href='/stylesheets/vampire/loader.css' rel="stylesheet">
     <meta name='viewport' content="width=device-width, initial-scale=0.5">
     <title>Chronicle Companion</title>
 </head>
@@ -16,35 +12,36 @@
                 <input type='text' name='username' id='username'/>
                 <label for="password">Password</label>
                 <input type='password' name='password' id='password'/>
+                <div id="password-confirm__wrapper" class="hidden">
+                    <label for="password-confirm">Password</label>
+                    <input type='password' name='password-confirm' id='password-confirm'/>
+                </div>
                 <div>
-                    <button id='register-toggle'>Register</button>
+                    <button type='button' id='register-toggle' onclick="registerHandler()">Register</button>
+                    <button type='button' id='login-toggle' onclick="loginHandler()">Login</button>
                     <button type="submit">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-    <div id='campaign-books__wrapper' class='hidden'>
-        <div id='campaign-books'></div>
-        <div id='campaign-books-left' class='btn btn-book-pos disabled'><</div>
-        <div id='campaign-books-right' class='btn btn-book-pos'>></div>
-    </div>
 </div>
-<div id='loading__wrapper' class='hidden'>
-    <div class='lds-heart'><div></div></div>
-</div>
-<div id='tooltip' class='hidden'></div>
-<!-- 	<div id='games-container'>
-		<a href='/dnd?login'>
-			<div class='btn__wrapper'><div id='btn-dnd' class='btn'></div></div>
-		</a>
-		<a href='/vampire?login'>
-			<div class='btn__wrapper'><div id='btn-vampire' class='btn'></div></div>
-		</a>
-	</div> -->
 </body>
-<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-<script src='https://cdn.socket.io/4.1.1/socket.io.min.js'></script>
-<script src='/javascript/common/login.js' type='module'></script>
-<script src='/javascript/common/book.js' type='module'></script>
-<script src='/javascript/common/cache.js' type='module'></script>
+<script>
+    if (window.location.href.includes("?failure")) {
+        document.getElementById('username').classList.add('error');
+        document.getElementById('password').classList.add('error');
+    }
+
+    function registerHandler() {
+        document.getElementById('register-toggle').classList.add('hidden');
+        document.getElementById('login-toggle').classList.remove('hidden');
+        document.getElementById('password-confirm__wrapper').classList.remove('hidden');
+        return false;
+    }
+    function loginHandler() {
+        document.getElementById('register-toggle').classList.remove('hidden');
+        document.getElementById('login-toggle').classList.add('hidden');
+        document.getElementById('password-confirm__wrapper').classList.add('hidden');
+        return false;
+    }
+</script>

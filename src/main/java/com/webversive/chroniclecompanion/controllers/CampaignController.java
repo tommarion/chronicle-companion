@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -25,7 +25,7 @@ public class CampaignController {
     }
 
     @GetMapping("/campaigns")
-    public ResponseEntity<Map<String, CampaignBook>> getCampaigns(@AuthenticationPrincipal User user) {
+    public ResponseEntity<List<CampaignBook>> getCampaigns(@AuthenticationPrincipal User user) {
         return new ResponseEntity<>(campaignService.getCampaignsForAccount(user.getUsername()), HttpStatus.OK);
     }
 

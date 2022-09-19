@@ -5,6 +5,7 @@ import com.webversive.chroniclecompanion.data.mappers.SessionDTOMapper;
 import com.webversive.chroniclecompanion.data.sqlite.NoteDTO;
 import com.webversive.chroniclecompanion.data.sqlite.NoteTagDTO;
 import com.webversive.chroniclecompanion.data.sqlite.SessionDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import static com.webversive.chroniclecompanion.util.DateUtil.getCurrentDate;
 import static java.util.UUID.randomUUID;
 
 @Service
+@Slf4j
 public class NotesSQLService {
     private final JdbcTemplate jdbcTemplate;
     private final AccountSQLService accountSqlService;

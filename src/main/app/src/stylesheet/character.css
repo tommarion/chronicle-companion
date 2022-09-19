@@ -1,0 +1,219 @@
+@font-face {
+    font-family: 'Feral-Regular';
+    src: url(../fonts/Feral-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Rosemary Roman';
+    src: url(../fonts/Rosemary-Roman.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+
+@font-face {
+    font-family: 'Vampire Calligraphy';
+    src:
+            url(../fonts/Vampire-Calligraphy.ttf) format('truetype'),
+            url(../fonts/Vampire-Calligraphy.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Wilkli';
+    src:
+            url(../fonts/Wilkli.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.characterName {
+    margin-left: 80px;
+    text-align: left;
+}
+
+/*************************************/
+/*            LEVEL METERS           */
+/*************************************/
+.level {
+    font-family: auto;
+    font-size: 2em;
+}
+.level:not(.expanded).level0:after {
+    content: "\25CB\25CB\25CB\25CB\25CB";
+}
+.level:not(.expanded).level1:after {
+    content: "\25CF\25CB\25CB\25CB\25CB";
+}
+.level:not(.expanded).level2:after {
+    content: "\25CF\25CF\25CB\25CB\25CB";
+}
+.level:not(.expanded).level3:after {
+    content: "\25CF\25CF\25CF\25CB\25CB";
+}
+.level:not(.expanded).level4:after {
+    content: "\25CF\25CF\25CF\25CF\25CB";
+}
+.level:not(.expanded).level5:after {
+    content: "\25CF\25CF\25CF\25CF\25CF";
+}
+
+.level.expanded.level0:after {
+    content: "\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level1:after {
+    content: "\25CF\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level2:after {
+    content: "\25CF\25CF\25CB\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level3:after {
+    content: "\25CF\25CF\25CF\25CB\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level4:after {
+    content: "\25CF\25CF\25CF\25CF\25CB\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level5:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CB\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level6:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CB\25CB\25CB\25CB";
+}
+.level.expanded.level7:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CB\25CB\25CB";
+}
+.level.expanded.level8:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CB\25CB";
+}
+.level.expanded.level9:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CB";
+}
+.level.expanded.level10:after {
+    content: "\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF\25CF";
+}
+/*************************************/
+/*             CLAN LOGOS            */
+/*************************************/
+#clan {
+    height: 160px;
+    width: 160px;
+    margin: -10px;
+    position: absolute;
+    top: 20px;
+    opacity: 0.25;
+    pointer-events: none;
+}
+#character__wrapper.human #clan:after {
+    content: "\e90b";
+    font-family: 'chronicle-companion-10';
+    font-size: 4.5em;
+    line-height: 1.5;
+}
+#character__wrapper.human #clan {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+#character__wrapper.Thin-Blood #clan:after {
+    content: "\25D1";
+    font-family: 'chronicle-companion-10';
+    font-size: 5.5em;
+    line-height: 1.5;
+    margin-left: 20px;
+}
+
+#character__wrapper.Banu-Haqim #clan {
+    background-image: url(../img/clan-logos/banu-haqim-white.png);
+}
+#character__wrapper.Brujah #clan {
+    background-image: url(../img/clan-logos/brujah-white.png);
+}
+#character__wrapper.Caitiff #clan {
+    background-image: url(../img/clan-logos/caitiff-white.png);
+    margin: 20px 0 0;
+    width: 120px;
+    height: 120px;
+}
+#character__wrapper.Gangrel #clan {
+    background-image: url(../img/clan-logos/gangrel-white.png);
+    margin: 10px 0  0 -5px;
+    width: 140px;
+    height: 140px;
+}
+#character__wrapper.Hecata #clan {
+    background-image: url(../img/clan-logos/hecata-white.png);
+}
+#character__wrapper.Lasombra #clan {
+    background-image: url(../img/clan-logos/lasombra-white.png);
+}
+#character__wrapper.Malkavian #clan {
+    background-image: url(../img/clan-logos/malkavian-white.png);
+}
+#character__wrapper.Ministry #clan {
+    background-image: url(../img/clan-logos/ministry-white.png);
+}
+#character__wrapper.Nosferatu #clan {
+    background-image: url(../img/clan-logos/nosferatu-white.png);
+    margin-top: 5px;
+    margin-left: -15px;
+}
+#character__wrapper.Ravnos #clan {
+    background-image: url(../img/clan-logos/ravnos-white.png);
+}
+#character__wrapper.Salubri #clan {
+    background-image: url(../img/clan-logos/salubri-white.png);
+}
+#character__wrapper.Toreador #clan {
+    background-image: url(../img/clan-logos/toreador-white.png);
+}
+#character__wrapper.Tremere #clan {
+    background-image: url(../img/clan-logos/tremere-white.png);
+}
+#character__wrapper.Tzimisce #clan {
+    background-image: url(../img/clan-logos/tzimisce-white.png);
+}
+#character__wrapper.Ventrue #clan {
+    background-image: url(../img/clan-logos/ventrue-white.png);
+}
+
+#character__wrapper.Toreador .header,
+#character__wrapper.Toreador .title,
+#character__wrapper.Tremere .header,
+#character__wrapper.Tremere .title,
+#character__wrapper.Hecata .header,
+#character__wrapper.Hecata .title {
+    font-family: 'Vampire Calligraphy' !important;
+}
+#character__wrapper.Ventrue .header,
+#character__wrapper.Ventrue .title,
+#character__wrapper.Lasombra .header,
+#character__wrapper.Lasombra .title,
+#character__wrapper.Caitiff .header,
+#character__wrapper.Caitiff .title {
+    font-family: 'Wilkli' !important;
+}
+#character__wrapper.Nosferatu .header,
+#character__wrapper.Nosferatu .title,
+#character__wrapper.Malkavian .header,
+#character__wrapper.Malkavian .title,
+#character__wrapper.Tzimisce .header,
+#character__wrapper.Tzimisce .title{
+    font-family: 'Rosemary Roman' !important;
+}
+#character__wrapper.Gangrel .header,
+#character__wrapper.Gangrel .title,
+#character__wrapper.Brujah .header,
+#character__wrapper.Brujah .title,
+#character__wrapper.Ravnos .header,
+#character__wrapper.Ravnos .title {
+    font-family: 'Feral-Regular' !important;
+}
+#character__wrapper .attr__wrapper .title {
+    font-family: 'Catull' !important;
+}

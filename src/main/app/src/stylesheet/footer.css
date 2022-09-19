@@ -1,0 +1,28 @@
+footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    background: #000000aa;
+    width: 100vw;
+}
+#dark-pack-logo {
+    flex: 0 0 90px;
+    margin-top: 7px;
+    height: 35px;
+    background-image: url(../img/darkpack_tranparent_logo.png);
+}
+#dark-pack-text {
+    flex: 0 0 calc( 100vw - 120px );
+    display: table;
+    height: 60px;
+    font-size: 0.75em;
+}
+#dark-pack-text>p {
+    display: table-cell;
+    vertical-align: middle;
+}
+a {
+    text-decoration: none;
+    color: #7D1916;
+    font-weight: bold;
+}

@@ -533,11 +533,11 @@ $( '#close_chronicle__btn' ).on( 'click', function() {
 
 function getChronicleId() {
 	let loc = window.location.href;
-	if ( loc.indexOf( '?chronicle_id=' ) == -1 ) {
+	if ( loc.indexOf( '?chronicle_id=' ) === -1 ) {
 		return null;
 	}
 	let chronicleId = loc.substring( loc.indexOf( '?chronicle_id=' ) + 14 );
-	if ( chronicleId.indexOf( '&' ) != -1 ) {
+	if ( chronicleId.indexOf( '&' ) !== -1 ) {
 		chronicleId = chronicleId.substring( 0, chronicleId.indexOf( '&' ) );
 	}
 	return chronicleId;

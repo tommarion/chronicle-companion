@@ -133,4 +133,14 @@ public class AccountSQLService {
             throw new DatabaseException("Login credentials were not added to accounts table", ex);
         }
     }
+
+    public String getGMForCampaignId(String campaignId) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT accounts.username FROM accounts INNER JOIN dungeon_master" +
+                            " ON accounts.id=dungeon_master.account_id WHERE dungeon_master.campaign_id=?",
+                    String.class, campaignId);
+        } catch (Exception ex) {
+            throw new DatabaseException("Unable to find GM for campaignId: " + campaignId, ex);
+        }
+    }
 }

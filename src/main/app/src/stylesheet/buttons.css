@@ -1,0 +1,77 @@
+/*************************************/
+/*              BUTTONS              */
+/*************************************/
+
+.btn.active {
+	opacity: 0.5;
+}
+.btn:not(.active):not(.disabled):hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+.btn:not(.active):not(.disabled):active {
+	transform: scale(0.9);
+}
+li.btn:not(.active):not(.disabled):active {
+    display: block;
+}
+
+.btn-location,
+.btn-character,
+.btn-note {
+    background-color: var(--theme-background-color);
+    color: var(--theme-color);
+    text-align: center;
+    display: table;
+    border-radius: 5px;
+    font-size: 0.75em;
+    padding: 5px 0;
+}
+.btn-location,
+#sidebar-content .btn-character,
+.btn-note {
+    margin: 0 auto 5px;
+    width: 180px;
+}
+.btn-location>div,
+.btn-character>div {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.close_users {
+    background-color: var(--theme-background-color);
+    color: var(--theme-color);
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50px;
+}
+
+.close_users__wrapper {
+    margin: 0 auto;
+    width: 260px;
+}
+
+#btn-relationship_map {
+    background-image: url(../img/kumu_logo.png);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#btn-chronicle__settings {    
+    right: 0px;
+}
+#btn-relationship_map {
+    right: 55px;
+}
+#btn-sound_effects {
+    right: 110px;
+}
+
+.settings_btn {
+    background-position: 5px;
+    background-size: 30px;
+    background-repeat: no-repeat;
+}

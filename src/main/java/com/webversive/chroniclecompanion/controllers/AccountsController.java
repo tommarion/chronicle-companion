@@ -2,7 +2,6 @@ package com.webversive.chroniclecompanion.controllers;
 
 import com.webversive.chroniclecompanion.data.app.AccountCharacters;
 import com.webversive.chroniclecompanion.data.app.LoginCredentials;
-import com.webversive.chroniclecompanion.data.app.OnlineData;
 import com.webversive.chroniclecompanion.data.app.OnlineStatus;
 import com.webversive.chroniclecompanion.service.AccountService;
 import com.webversive.chroniclecompanion.service.OnlineService;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import java.util.List;
 
 import static java.util.Objects.isNull;
 import static org.springframework.http.HttpStatus.OK;
@@ -43,21 +42,21 @@ public class AccountsController {
         return new ResponseEntity<>(accountCharacters, OK);
     }
 
-    @PostMapping("/campaign/{campaignId}/online/token/")
-    public ResponseEntity<String> registerToken(@AuthenticationPrincipal User user,
-                                                @PathVariable("campaignId") String campaignId,
-                                                @RequestBody String token) {
-        onlineService.addTokenToSocketData(token, OnlineData.builder()
-                .accountId(accountService.getAccountIdForUsername(user.getUsername()))
-                .campaignId(campaignId)
-                .characterId(accountService.getCharacterIdForUsername(user.getUsername(), campaignId))
-                .build());
-        return new ResponseEntity<>(OK);
-    }
+//    @PostMapping("/campaign/{campaignId}/online/token/")
+//    public ResponseEntity<String> registerToken(@AuthenticationPrincipal User user,
+//                                                @PathVariable("campaignId") String campaignId,
+//                                                @RequestBody String token) {
+//        onlineService.addTokenToSocketData(token, OnlineData.builder()
+//                .accountId(accountService.getAccountIdForUsername(user.getUsername()))
+//                .campaignId(campaignId)
+//                .characterId(accountService.getCharacterIdForUsername(user.getUsername(), campaignId))
+//                .build());
+//        return new ResponseEntity<>(OK);
+//    }
 
-    @GetMapping("/campaign/{campaignId}/online/")
-    public ResponseEntity<Map<String, OnlineStatus>> getOnlineStatus(@AuthenticationPrincipal User user,
-                                                                     @PathVariable("campaignId") String campaignId) {
+    @GetMapping("/campaign/{campaignId}/online")
+    public ResponseEntity<List<OnlineStatus>> getOnlineStatus(@AuthenticationPrincipal User user,
+                                                              @PathVariable("campaignId") String campaignId) {
         return new ResponseEntity<>(onlineService.getOnlineStatus(user.getUsername(), campaignId),
                 OK);
     }

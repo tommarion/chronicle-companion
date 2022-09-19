@@ -9,9 +9,6 @@ import com.webversive.chroniclecompanion.service.sql.NotesSQLService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class CampaignService {
@@ -28,12 +25,10 @@ public class CampaignService {
         this.notesSqlService = notesSqlService;
     }
 
-    public Map<String, CampaignBook> getCampaignsForAccount(String username) {
+    public List<CampaignBook> getCampaignsForAccount(String username) {
         List<CampaignBook> campaigns = campaignSqlService.getCampaignBooksForDM(username);
         campaigns.addAll(campaignSqlService.getCampaignBooksWithPlayer(username));
-
-        return campaigns.stream().collect(
-                Collectors.toMap(CampaignBook::getName, Function.identity()));
+        return campaigns;
     }
 
     public CampaignData getCampaignDataById(String user, String campaignId) {

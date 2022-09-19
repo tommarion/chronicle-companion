@@ -69,4 +69,8 @@ public class AccountService {
                 .build());
         accountSqlService.addToAccounts(loginCredentials.getUsername(), encodedPass);
     }
+
+    public String getGMForCampaignId(String campaignId) {
+        return accountSqlService.getGMForCampaignId(campaignId);
+    }
 }

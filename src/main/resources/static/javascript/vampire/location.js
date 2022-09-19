@@ -68,7 +68,7 @@ function assembleLocationData( locationInfo ) {
 
 	if ( locationInfo.notes ) {
 		let notesLabel = document.createElement( 'div' );
-		$( notesLabel ).html( 'Notes:' ).addClass( 'header small' );
+		$( notesLabel ).html( 'NotesContent:' ).addClass( 'header small' );
 		let notesWrapper = document.createElement( 'ul' );
 		for ( let i in locationInfo.notes ) {
 			$( notesWrapper ).append( buildNoteSpan( locationInfo.notes[i].note, locationInfo.notes[i].id, locationInfo.notes[i].account_id ) );

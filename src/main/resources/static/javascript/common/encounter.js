@@ -765,7 +765,7 @@ function updateCharacterSelectedInfo( characterDragStart ) {
 	if ( admin || getAccount() == characterDragStart ) {
 		var encounterCharacterRef = document.createElement( 'div' );
 		$( encounterCharacterRef ).addClass( 'encounter-character-ref btn' )
-			.html( 'Character Ref')
+			.html( 'CharacterContent Ref')
 			.on( 'click', function() {
 				loadCharacterById( characters[characterAccountId].character_id, false, false );
 			});
@@ -848,7 +848,7 @@ function addEncounterCharacter() {
 			characters[characterId] = characterData;
 			redraw();
 		}
-		$( '.encounter-characters__select' ).val( 'Select Character' );
+		$( '.encounter-characters__select' ).val( 'Select CharacterContent' );
 		$( selectedCharacter ).attr( 'disabled', true );
 	}
 }
@@ -1005,7 +1005,7 @@ $( '.btn-encounter-op' ).on( 'click', function() {
 	} else if ( $( this ).attr( 'id' ) == 'btn__encounter-measure' ) {
 		operation = 'Measure Distance';
 	} else if ( $( this ).attr( 'id' ) == 'btn__encounter-move' ) {
-		operation = 'Move Character';
+		operation = 'Move CharacterContent';
 	}
 	$( '#tooltip' ).html( operation ).css({
 		'left': e.clientX,

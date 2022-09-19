@@ -133,7 +133,7 @@ function buildFilterWrapper( filters, activeFilterBtns ) {
 		}
 
 		let charactersOptgroup = document.createElement( 'optgroup' );
-		$( charactersOptgroup ).attr( 'label', 'Character Tags:' );
+		$( charactersOptgroup ).attr( 'label', 'CharacterContent Tags:' );
 		for ( let i=0; i<filters.characters.length; i++ ) {
 			let option = document.createElement( 'option' );
 			$( option ).html( filters.characters[i] );

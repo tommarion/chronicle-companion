@@ -38,7 +38,7 @@ public class CharacterController {
         return new ResponseEntity<>(UNAUTHORIZED);
     }
 
-    @GetMapping("/character/{characterId}/")
+    @GetMapping("/character/{characterId}")
     public ResponseEntity<Character> getCharacterById(@AuthenticationPrincipal User user,
                                                       @PathVariable("characterId") String characterId) {
         try {

@@ -73,7 +73,7 @@ public class SecurityConfig {
                 .logout()
                 .logoutSuccessUrl("/login.html")
                 .and()
-                .authorizeHttpRequests((authz) -> authz
+                .authorizeRequests((authz) -> authz
                         .antMatchers(
                                 "/stylesheets/**",
                                 "/javascript/**",
@@ -82,7 +82,11 @@ public class SecurityConfig {
                                 "/fonts/**",
                                 "/sound-effects/**",
                                 "/login.html?failure",
-                                "/register"
+                                "/register",
+                                "/secured/**/**",
+                                "/secured/success",
+                                "/secured/socket",
+                                "/secured/success"
                         )
                         .permitAll()
                         .anyRequest().authenticated()

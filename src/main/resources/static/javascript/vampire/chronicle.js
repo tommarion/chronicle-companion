@@ -106,7 +106,7 @@ function processNotesData( notes, sessions ) {
 		$( '#story-text__none__wrapper' ).removeClass( 'hidden' );
 	}
 	if ( notes.length === 0 ) {
-		$( '#general_notes__wrapper' ).html( 'No Notes Yet!' ).data( 'notes', 0 );
+		$( '#general_notes__wrapper' ).html( 'No NotesContent Yet!' ).data( 'notes', 0 );
 	} else {
 		$( '#general_notes__wrapper' ).empty();
 		for ( let index in notes ) {

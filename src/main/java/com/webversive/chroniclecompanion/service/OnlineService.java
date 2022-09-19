@@ -88,7 +88,7 @@ public class OnlineService {
         SOCKET_DATA.remove(token);
     }
 
-    public Map<String, OnlineStatus> getOnlineStatus(String username, String campaignId) {
+    public List<OnlineStatus> getOnlineStatus(String username, String campaignId) {
         final String gmTitle;
         GameType gameType = campaignSqlService.getGameTypeForCampaign(campaignId);
         switch (gameType) {
@@ -101,24 +101,40 @@ public class OnlineService {
             default:
                 gmTitle = "GM";
         }
-        Map<String, OnlineStatus> onlineStatus = new HashMap<>() {{
-            put(gmTitle, getOnlineDataByAccountId(accountSqlService.getAccountIdForUsername("storyteller"), gmTitle));
+        List<OnlineStatus> onlineStatus = new ArrayList<>() {{
+            OnlineStatus status =
+                    getOnlineDataByAccountId(accountSqlService.getAccountIdForUsername("storyteller"), gmTitle);
+            status.setName(gmTitle);
+            add(status);
         }};
         if (accountSqlService.isDungeonMaster(campaignId, username)) {
             List<AccountCharacterDTO> accountCharacters = new ArrayList<>() {{
                 addAll(accountSqlService.getCharacterAccounts(campaignId));
             }};
-            accountCharacters.forEach(c ->
-                    onlineStatus.put(characterSqlService.getCharacterNameForCharacterId(c.getCharacterId()),
-                            getOnlineDataByAccountId(c.getAccountId(), c.getCharacterId()))
+            accountCharacters.forEach(c -> {
+                        OnlineStatus status = getOnlineDataByAccountId(c.getAccountId(), c.getCharacterId());
+                        status.setName(characterSqlService.getCharacterNameForCharacterId(c.getCharacterId()));
+                        onlineStatus.add(status);
+                    }
             );
         } else {
-            onlineStatus.put(characterSqlService.getCharacterNameForUsername(username, campaignId),
-                    getOnlineDataByAccountId(accountSqlService.getAccountIdForUsername(username),
-                            accountSqlService.getCharacterIdForUsername(username, campaignId)));
+            OnlineStatus status = getOnlineDataByAccountId(accountSqlService.getAccountIdForUsername(username),
+                    accountSqlService.getCharacterIdForUsername(username, campaignId));
+            status.setName(characterSqlService.getCharacterNameForUsername(username, campaignId));
+            onlineStatus.add(status);
             return onlineStatus;
         }
         log.info("ONLINE STATUS: {}", onlineStatus);
         return onlineStatus;
+    }
+
+    public String getTokenByUsername(String username) {
+        String accountId = accountSqlService.getAccountIdForUsername(username);
+        for (String key : SOCKET_DATA.keySet()) {
+            if (SOCKET_DATA.get(key).getAccountId().equals(accountId)) {
+                return key;
+            }
+        }
+        return null;
     }
 }

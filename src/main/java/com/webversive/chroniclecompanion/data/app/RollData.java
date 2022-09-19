@@ -1,5 +1,6 @@
 package com.webversive.chroniclecompanion.data.app;
 
+import com.webversive.chroniclecompanion.enums.NotifyType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,7 +11,7 @@ public class RollData {
     private int total;
     private String player;
     private String alias;
-    private String notify;
+    private NotifyType notify;
     private String rollFor;
     private RollResults reroll;
 }

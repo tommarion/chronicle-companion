@@ -75,7 +75,9 @@ body {
 }
 
 #login__wrapper input {
-	width: 100%;
+    width: 100%;
+    padding: 0.25em 0.5em;
+    font-size: 1.25em;
 }
 
 .register {
@@ -128,4 +130,10 @@ button#register-toggle {
     border: 2px solid;
     border-radius: 5px;
     padding: 5px 10px;
+}
+
+input.error {
+    color: #C5C5C5;
+    background-color: #ff000044;
+    border: 2px solid red;
 }

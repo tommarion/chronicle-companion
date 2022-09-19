@@ -1,0 +1,333 @@
+.btn-book__wrapper {
+    flex: 0 0 50vw;
+    height: 380px;
+    margin-right: 10px;
+}
+.btn-book__wrapper.is-selected {
+    z-index: 200;
+}
+.btn-book {
+    top: 0;
+	height: 180px;
+    width: 140px;
+    border-radius: 3px;
+    background-blend-mode: multiply;
+    background-size: 100%;
+    box-shadow: 3px 3px 7px #111;
+    user-select: none;
+    position: absolute;
+    margin: 0 auto 0 calc(50% - 70px);
+}
+.btn-book.btn-chronicle {
+    background-image: linear-gradient(0.25turn, #fff 10%, #444, #777 7%, #aaa 15%, #bbb 20%, #fff 100%), url('../img/leather.jpeg');
+}
+.btn-book.btn-campaign {
+    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #351c09 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-brown.jpeg);
+    color: #cec2ae;
+}
+.btn-book.btn-adventure {
+    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #351c09 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-aquamarine.jpeg);
+    color: #ceaf51;
+}
+.btn-book.btn-fate {
+    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #351c09 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-blue.jpeg);
+    color: #ceaf51;
+}
+.btn-book.disabled {
+	opacity: 0.5;
+}
+.btn-book:not(.disabled) {
+    cursor: pointer;
+}
+.btn-book.opened {
+	margin-top: 0;
+	height: 360px;
+	width: 280px;
+    transition: height 0.25s 0.25s, width 0.25s 0.25s, margin 0.25s 0.25s, top 0.25s;
+    z-index: 2;
+    margin-left: calc( 50% - 140px );
+}
+.btn-book:not(.opened) {
+	margin-top: 10vh;
+}
+.btn-book:not(.opened):not(.disabled) {
+    transition: transform 0.25s 0.25s, -webkit-transform 0.25s 0.25s, height 0.25s, width 0.25s, margin 0.25s, top 0.25s;
+}
+.btn-book.opened>div {
+  	transition: transform 0.25s, -webkit-transform 0.25s, height 0.25s 0.25s, width 0.25s 0.25s, margin 0.25s 0.25s;
+	margin-left: 30px;
+}
+.btn-book:not(.opened):not(.disabled)>div {
+  	transition: transform 0.25s, -webkit-transform 0.25s, height 0.25s, width 0.25s, margin 0.25s;
+}
+.btn-book>div {
+  	transform-style: preserve-3d;
+  	-webkit-transform-style: preserve-3d;
+	transform-origin: 0 50%;
+	position: absolute;
+	margin-left: 15px;
+	box-shadow: 3px 3px 7px #111;
+}
+.btn-book>.book-page.flipped {
+	transform: rotateY(-180deg);
+	-webkit-transform: rotateY(-180deg);
+}
+.btn-book.opened .book-cover__wrapper {
+	transform: rotateY(-180deg);
+	-webkit-transform: rotateY(-180deg);
+	height: 360px;
+	width: 246px;
+}
+.btn-book:not(.opened):not(.disabled) .book-cover__wrapper {
+	height: 180px;
+	width: 123px;
+}
+.btn-book:not(.opened):not(.disabled):hover .book-cover__wrapper {
+	/*transition: transform 0.25s;*/
+    transform: rotateX(5deg) rotateY(30deg);
+    -webkit-transform: rotateX(5deg) rotateY(30deg);
+}
+.book-cover {
+	height: 180px;
+	width: 123px;
+    border-left: 2px solid #1b0c017a;
+    background-color: #4d311f;
+    background-size: 114%;
+    background-position-x: -17px;
+    border-radius: 3px;
+}
+.btn-chronicle .book-cover {
+    background-color: #222;
+}
+.btn-campaign .book-cover {
+    background-color: #4d311f;
+}
+.btn-adventure .book-cover {
+    background-color: #1b3f69;
+}
+.btn-fate .book-cover {
+    background-color: #1b3f69;
+}
+
+.btn-chronicle .book-cover {
+    background-image: url(../img/leather.jpeg);
+}
+.btn-campaign .book-cover {
+    background-image: url(../img/leather-brown.jpeg);
+}
+.btn-adventure .book-cover {
+    background-image: url(../img/leather-aquamarine.jpeg);
+}
+.btn-fate .book-cover {
+    background-image: url(../img/leather-blue.jpeg);
+}
+
+.book-cover::after {
+    content: "";
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 30px;
+    opacity: 0.5;
+}
+.btn-chronicle .book-cover::after {
+    width: 60px;
+    height: 120px;
+    right: calc( 50% - 30px );
+    background-image: url(../img/vampire-logo.png);
+}
+.btn-campaign .book-cover::after {
+    width: 100px;
+    height: 110px;
+    right: calc( 50% - 58px );
+    background-image: url(../img/dnd-logo.png);
+}
+.btn-adventure .book-cover::after {
+    width: 140px;
+    height: 140px;
+    right: calc( 50% - 70px );
+    background-image: url(../img/7th-sea_logo.png);
+}
+.btn-fate .book-cover::after {
+    width: 80px;
+    height: 123px;
+    right: calc( 50% - 40px );
+    background-image: url(../img/fate-logo.png);
+}
+
+.book-cover-back {
+    content: "";
+    transform-style: preserve-3d;
+  	-webkit-transform-style: preserve-3d;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    background-size: 114%;
+    background-position-x: -17px;
+    border-radius: 3px;
+}
+
+.btn-chronicle .book-cover-back {
+    background-image: url(../img/leather.jpeg);
+    background-color: #222;
+}
+.btn-campaign .book-cover-back {
+    background-image: url(../img/leather-brown.jpeg);
+    background-color: #4d311f;
+}
+.btn-adventure .book-cover-back {
+    background-image: url(../img/leather-aquamarine.jpeg);
+    background-color: #1b3f69;
+}
+.btn-fate .book-cover-back {
+    background-image: url(../img/leather-blue.jpeg);
+    background-color: #1b3f69;
+}
+
+.book-cover__wrapper>div {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+.book-cover-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+}
+.book-cover-overlay>div {
+    display: -webkit-box;
+    padding: 15px 10px;
+    text-align: center;
+    font-family: 'Amethyst', cursive;
+    font-size: 2em;
+    text-overflow: ellipsis;
+    height: 145px;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+.book-page {
+	/*background-image: linear-gradient(0.25turn, #444, #777 7%, #aaa 15%, #bbb 20%, #fff 100%), url('../img/paper.jpeg');*/
+	background-image: linear-gradient(0.25turn, #222, #777 5%, #aaa 10%, #bbb 15%, #fff 100%), url(../img/paper.jpeg);
+	background-blend-mode: multiply;
+	background-size: 100%;
+    height: 160px;
+    width: 120px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.book-page input {
+    margin: 30% 10px;
+    width: calc( 100% - 20px );
+    text-align: center;
+    padding: 5px;
+}
+.btn.btn-create {
+    font-size: 1.5em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 30px;
+    height: 29px;
+    margin: 0 auto 0 calc(50% - 42px);
+}
+.btn-campaign .btn.btn-create,
+.btn-campaign .btn-user {
+    background-color: #4a2932;
+}
+.btn-chronicle .btn.btn-create,
+.btn-chronicle .btn-user {
+    background-color: #5d000d;
+}
+.btn-adventure .btn.btn-create,
+.btn-adventure .btn-user {
+    background-color: #1b3f69;
+}
+.btn-fate .btn.btn-create,
+.btn-fate .btn-user {
+    background-color: #1b3f69;
+}
+.btn-book.opened .book-page {
+	height: 320px;
+	width: 230px;
+	margin-top: 20px;
+}
+.btn-user {
+    color: #cec2ae;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 100px auto 0;
+    width: 140px;
+    height: unset;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.chronicle-books__wrapper,
+.campaign-books__wrapper {
+    width: 50vw;
+    margin: 20vh auto 0;
+}
+
+.chronicle-books,
+.campaign-books {
+    display: flex;
+    left: 0;
+    position: relative;
+    transition: left 0.5s ease;
+}
+.flickity-viewport {
+    overflow: visible;
+}
+@media screen and (min-width: 1100px) {
+/*	#chronicle-books,
+	#campaign-books {
+		margin: 20vh 20vw 0;
+	}*/
+}
+
+.btn-book-pos {
+    position: absolute;
+    top: calc( 50% - 80px );
+    height: 160px;
+    width: 160px;
+    text-align: center;
+    font-size: 4em;
+    background: #444;
+    border-radius: 50%;
+    line-height: 2.44;
+    user-select: none;
+}
+.btn-book-pos.disabled {
+    opacity: 0.5;
+}
+.btn-book-pos:not(.disabled):hover {
+    opacity: 0.8;
+}
+.container.iPhone .btn-book-pos {
+    transform: scale(0.5);
+}
+.chronicle-books-left,
+.campaign-books-left {
+    left: 20px;
+}
+.chronicle-books-right,
+.campaign-books-right {
+    right: 20px;
+}
+.book-page textarea {
+    font-family: 'Amethyst', serif;
+    width: 100%;
+    height: calc( 100% - 80px );
+    padding: 10px 10px 10px 25px;
+    background: transparent;
+    border: none !important;
+    font-size: 3em;
+    outline: none !important;
+}
+
+

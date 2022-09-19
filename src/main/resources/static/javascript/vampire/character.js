@@ -120,7 +120,7 @@ function assembleCharacterData( characterInfo ) {
 	characterDataStr += '</div></div>';
 	characterDataStr += assembleInventory( characterInfo.inventory );
 
-	characterDataStr += '<div class="btn header pad-top toolbar-item-header">Notes</div><div>';
+	characterDataStr += '<div class="btn header pad-top toolbar-item-header">NotesContent</div><div>';
 	if ( admin ) {
 		characterDataStr += assembleCharacterNotesToggle();
 	}

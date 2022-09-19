@@ -579,14 +579,16 @@ li.session-note__wrapper {
 }
 #character__wrapper.Ventrue .header,
 #character__wrapper.Ventrue .title,
-#character__wrapper.Caitiff .header,
-#character__wrapper.Caitiff .title {
+#character__wrapper.Lasombra .header,
+#character__wrapper.Lasombra .title {
     font-family: 'Wilkli' !important;
 }
 #character__wrapper.Nosferatu .header,
 #character__wrapper.Nosferatu .title,
 #character__wrapper.Malkavian .header,
-#character__wrapper.Malkavian .title {
+#character__wrapper.Malkavian .title,
+#character__wrapper.Tzimisce .header,
+#character__wrapper.Tzimisce .title{
     font-family: 'Rosemary Roman' !important;
 }
 #character__wrapper.Gangrel .header,

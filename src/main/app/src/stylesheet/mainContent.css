@@ -1,0 +1,77 @@
+#reference__wrapper {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+#content__wrapper:not(.iPhone).sidebar, #story__wrapper:not(.iPhone).sidebar {
+    margin: 100px 50px 0 320px;
+}
+#content__wrapper:not(.iPhone), #story__wrapper:not(.iPhone) {
+    height: calc( 100% - 100px );
+}
+@media screen and (max-width: 1099px) {
+    #content__wrapper:not(.sidebar),
+    #story__wrapper:not(.sidebar) {
+        width: calc( 100vw - 50px );
+        margin:  100px 50px 0 50px;
+    }
+}
+@media screen and (min-width: 1100px) {
+    #content__wrapper, #story__wrapper {
+        width: calc(100vw - 320px);
+        margin: 100px 50px 0 320px;
+    }
+}
+#content__wrapper, #story__wrapper, #player_sheet_add, #location_add {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    transition: margin 0.5s, width 0.5s;
+}
+
+#story__wrapper:not(.iPhone) #content, #story__wrapper:not(.iPhone) #story-content {
+    font-size: 1.25em;
+}
+#content, #story-content, #encounter-name {
+    color: var(--theme-color);
+}
+#story-content, #content {
+    background-color: #000000aa;
+    height: calc( 100% - 120px );
+    overflow-y: auto;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    padding: 20px;
+    line-height: 1.5;
+}
+#content__wrapper:not(.iPhone).sidebar, #story__wrapper:not(.iPhone).sidebar {
+    margin: 100px 50px 0 320px;
+}
+@media screen and (min-width: 1100px) {
+    #content__wrapper,
+    #story__wrapper {
+        width: calc( 100vw - 320px );
+        margin:  100px 50px 0 320px;
+    }
+}
+
+@media screen and (min-width: 875px) and (max-width: 1099px) {
+    #content__wrapper:not(.iPhone).sidebar,
+    #story__wrapper:not(.iPhone).sidebar {
+        width: calc( 100vw - 320px );
+    }
+}
+
+@media screen and (max-width: 874px) {
+    #content__wrapper:not(.iPhone).sidebar,
+    #story__wrapper:not(.iPhone).sidebar {
+        width: 555px;
+    }
+}
+
+#content__wrapper:not(.iPhone), #story__wrapper:not(.iPhone) {
+    height: calc( 100% - 100px );
+}

@@ -1,5 +1,6 @@
 package com.webversive.chroniclecompanion.data.app;
 
+import com.webversive.chroniclecompanion.enums.NotifyType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,7 +11,7 @@ import java.util.Date;
 public class RollResultsData {
     private String player;
     private String alias;
-    private String notify;
+    private NotifyType notify;
     private Date timestamp;
     private String rollFor;
     private RollResults roll;

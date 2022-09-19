@@ -85,7 +85,7 @@ function processCharacterAccountData( data ) {
 
 	let encounterCharacters = document.createElement( 'select' );
 	let defaultOption = document.createElement( 'option' );
-	$( defaultOption ).prop( 'selected', true ).prop( 'disabled', true ).html( 'Select Character' );
+	$( defaultOption ).prop( 'selected', true ).prop( 'disabled', true ).html( 'Select CharacterContent' );
 	$( encounterCharacters ).addClass( 'encounter-characters__select' )
 		.append( defaultOption )
 		.append( encounterPlayerGroup )

@@ -7,5 +7,6 @@ import lombok.Data;
 @Builder
 public class OnlineStatus {
     private String id;
+    private String name;
     private boolean status;
 }
