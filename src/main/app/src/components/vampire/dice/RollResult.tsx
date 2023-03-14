@@ -2,7 +2,7 @@ import Die from "./Die";
 import * as React from "react";
 import {Component} from "react";
 import {DieType} from '../../../data/enum/DieType'
-import DateUtil from "../../../util/DateUtil";
+import ReactTimeAgo from "react-time-ago";
 
 type RollResultProps = {
     value: RollValue
@@ -60,11 +60,39 @@ export default class RollResult extends Component<RollResultProps, any>{
         }
         return(
             <div className={'dice-roll'}>
-                <span>{this.props.value.alias ?
-                    this.props.value.alias : this.props.value.player}</span>
-                <br/>
+                <div className={'right subheader'}>
+                    <ReactTimeAgo date={new Date(this.props.value.timestamp)}
+                                  locale={"en-US"} updateInterval={5000} timeStyle={
+                        {steps:[
+                                {
+                                  formatAs: 'now'
+                                },
+                                {
+                                    minTime: 5,
+                                    // "second" labels are used for formatting the output.
+                                    formatAs: 'second'
+                                },
+                                {
+                                    // This step is effective starting from 59.5 seconds.
+                                    minTime: 60,
+                                    // "minute" labels are used for formatting the output.
+                                    formatAs: 'minute'
+                                },
+                                {
+                                    // This step is effective starting from 59.5 minutes.
+                                    minTime: 60 * 60,
+                                    // "hour" labels are used for formatting the output.
+                                    formatAs: 'hour'
+                                }],
+                            labels:[]}}></ReactTimeAgo>
+                </div>
+                <div className={'title'}>{this.props.value.alias ?
+                    this.props.value.alias: this.props.value.player}</div>
+                {this.props.value.alias ?
+                    <div className={'subheader'}>({this.props.value.player})</div>: null}
                 <div className={"roll_for"}>{this.props.value.rollFor}</div>
-                <span>{DateUtil.formatDate(this.props.value.timestamp, true)}</span>
+                {this.props.value.rollWith ?
+                    <div className={"roll_for subheader"}>{this.props.value.rollWith}</div> : null}
                 <div className={"dice-result flex"}>
                     {this.props.value.roll.regular.map(die =>
                         <Die

@@ -1,5 +1,5 @@
 .btn-book__wrapper {
-    flex: 0 0 50vw;
+    flex: 0 0 250px;
     height: 380px;
     margin-right: 10px;
 }
@@ -19,19 +19,35 @@
     margin: 0 auto 0 calc(50% - 70px);
 }
 .btn-book.btn-chronicle {
-    background-image: linear-gradient(0.25turn, #fff 10%, #444, #777 7%, #aaa 15%, #bbb 20%, #fff 100%), url('../img/leather.jpeg');
+    background-image: linear-gradient(90deg,#fff 10%,#444,#161616 0,#5d5c5c 15%,#bbb 20%,#fff), url('../img/leather.jpeg');
 }
 .btn-book.btn-campaign {
-    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #351c09 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-brown.jpeg);
+    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #211105 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-brown.jpeg);
     color: #cec2ae;
 }
 .btn-book.btn-adventure {
-    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #351c09 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-aquamarine.jpeg);
+    background-image: linear-gradient(90deg,#fff 10%,#021821,#2f2f2f 0,#6d6d6d 15%,#bbb 20%,#fff), url(../img/leather-aquamarine.jpeg);
     color: #ceaf51;
 }
 .btn-book.btn-fate {
-    background-image: linear-gradient(0.25turn, #fff 10%, #1b0b02, #351c09 7%, #4a1e06 15%, #bbb 20%, #fff 100%), url(../img/leather-blue.jpeg);
+    background-image: linear-gradient(90deg,#fff 10%,#020915,#111213 0,#4e5264 15%,#bbb 20%,#fff), url(../img/leather-blue.jpeg);
     color: #ceaf51;
+}
+.btn-book.btn-genesys {
+    background-image: linear-gradient(0.25turn, #fff 10%, #181818, #424242 7%, #aaa 15%, #bbb 20%, #fff 100%), url(../img/leather-white.jpeg);
+    color: #988440;
+}
+.btn-book.btn-starwars {
+    background-image: linear-gradient(90deg,#fff 10%,#100303,#420b0b 0,#7d3030 15%,#bbb 20%,#fff), url(../img/leather-red.jpeg);
+    color: #e3b724;
+}
+.btn-book.btn-savage {
+    background-image: linear-gradient(90deg,#fff 10%,#202111,#282925 0,#777962 15%,#bbb 20%,#fff), url(../img/leather-yellow.jpeg);
+    color: #131313;
+}
+.btn-book.btn-shadowrun {
+    background-image: linear-gradient(0.25turn, #fff 10%, #181226, #292046 7%, #41326e 15%, #bbb 20%, #fff 100%), url(../img/leather-purple.jpeg);
+    color: #c5c5c5;
 }
 .btn-book.disabled {
 	opacity: 0.5;
@@ -39,26 +55,26 @@
 .btn-book:not(.disabled) {
     cursor: pointer;
 }
-.btn-book.opened {
+.btn-book.hover {
 	margin-top: 0;
 	height: 360px;
 	width: 280px;
-    transition: height 0.25s 0.25s, width 0.25s 0.25s, margin 0.25s 0.25s, top 0.25s;
     z-index: 2;
     margin-left: calc( 50% - 140px );
+    transition: height .25s ease, width .25s ease, margin .25s ease, top 0.25s ease;
 }
-.btn-book:not(.opened) {
+.btn-book:not(.hover) {
 	margin-top: 10vh;
 }
 .btn-book:not(.opened):not(.disabled) {
     transition: transform 0.25s 0.25s, -webkit-transform 0.25s 0.25s, height 0.25s, width 0.25s, margin 0.25s, top 0.25s;
 }
-.btn-book.opened>div {
-  	transition: transform 0.25s, -webkit-transform 0.25s, height 0.25s 0.25s, width 0.25s 0.25s, margin 0.25s 0.25s;
-	margin-left: 30px;
+.btn-book.hover>div {
+  	transition: transform 0.25s, -webkit-transform 0.25s, height 0.25s, width 0.25s, margin 0.25s;
+	margin-left: 33px;
 }
 .btn-book:not(.opened):not(.disabled)>div {
-  	transition: transform 0.25s, -webkit-transform 0.25s, height 0.25s, width 0.25s, margin 0.25s;
+  	transition: transform 0.25s, -webkit-transform 0.25s, height 0.25s, width 0.25s, margin 0.25s, font-size 0.25s;
 }
 .btn-book>div {
   	transform-style: preserve-3d;
@@ -75,12 +91,21 @@
 .btn-book.opened .book-cover__wrapper {
 	transform: rotateY(-180deg);
 	-webkit-transform: rotateY(-180deg);
-	height: 360px;
-	width: 246px;
 }
-.btn-book:not(.opened):not(.disabled) .book-cover__wrapper {
+.btn-book .book-cover__wrapper,
+.btn-book .book-cover {
+    transition: height 0.25s ease, width 0.25s ease;
+}
+.btn-book.hover .book-cover__wrapper,
+.btn-book.hover .book-cover {
+    height: 360px;
+    width: 246px;
+    font-size: 2em;
+}
+.btn-book:not(.hover):not(.disabled) .book-cover__wrapper {
 	height: 180px;
 	width: 123px;
+    font-size: 0.9em;
 }
 .btn-book:not(.opened):not(.disabled):hover .book-cover__wrapper {
 	/*transition: transform 0.25s;*/
@@ -96,30 +121,45 @@
     background-position-x: -17px;
     border-radius: 3px;
 }
-.btn-chronicle .book-cover {
+.btn-chronicle .book-cover,
+.btn-chronicle .book-cover-back {
+    background-image: url(../img/leather.jpeg);
     background-color: #222;
 }
-.btn-campaign .book-cover {
+.btn-campaign .book-cover,
+.btn-campaign .book-cover-back {
+    background-image: url(../img/leather-brown.jpeg);
     background-color: #4d311f;
 }
-.btn-adventure .book-cover {
-    background-color: #1b3f69;
-}
-.btn-fate .book-cover {
-    background-color: #1b3f69;
-}
-
-.btn-chronicle .book-cover {
-    background-image: url(../img/leather.jpeg);
-}
-.btn-campaign .book-cover {
-    background-image: url(../img/leather-brown.jpeg);
-}
-.btn-adventure .book-cover {
+.btn-adventure .book-cover,
+.btn-adventure .book-cover-back {
     background-image: url(../img/leather-aquamarine.jpeg);
+    background-color: #0E729A;
 }
-.btn-fate .book-cover {
+.btn-fate .book-cover,
+.btn-fate .book-cover-back {
     background-image: url(../img/leather-blue.jpeg);
+    background-color: #1b3f69;
+}
+.btn-starwars .book-cover,
+.btn-starwars .book-cover-back {
+    background-image: url(../img/leather-red.jpeg);
+    background-color: #F23232;
+}
+.btn-genesys .book-cover,
+.btn-genesys .book-cover-back {
+    background-image: url(../img/leather-white.jpeg);
+    background-color: #C5C5C5;
+}
+.btn-savage .book-cover,
+.btn-savage .book-cover-back {
+    background-image: url(../img/leather-yellow.jpeg);
+    background-color: #d3db68;
+}
+.btn-shadowrun .book-cover,
+.btn-shadowrun .book-cover-back {
+    background-image: url(../img/leather-purple.jpeg);
+    background-color: #41326E;
 }
 
 .book-cover::after {
@@ -130,30 +170,124 @@
     position: absolute;
     top: 30px;
     opacity: 0.5;
+    transition: height 0.25s ease, width 0.25s ease, right 0.25s ease, top 0.25s ease;
 }
-.btn-chronicle .book-cover::after {
+.btn-chronicle.hover .book-cover::after {
+    height: 280px;
+    right: calc(50% - 65px);
+    width: 130px;
+    top: 50px;
+}
+.btn-chronicle:not(.hover) .book-cover::after {
     width: 60px;
     height: 120px;
     right: calc( 50% - 30px );
+}
+.btn-chronicle .book-cover::after {
     background-image: url(../img/vampire-logo.png);
 }
-.btn-campaign .book-cover::after {
+.btn-campaign.hover .book-cover::after {
+    height: 260px;
+    right: calc(50% - 110px);
+    width: 200px;
+    top: 50px;
+}
+.btn-campaign:not(.hover) .book-cover::after {
     width: 100px;
     height: 110px;
     right: calc( 50% - 58px );
+}
+.btn-campaign .book-cover::after {
     background-image: url(../img/dnd-logo.png);
 }
-.btn-adventure .book-cover::after {
+.btn-adventure.hover .book-cover::after {
+    width: 300px;
+    height: 300px;
+    right: calc(50% - 150px);
+    top: 50px;
+}
+.btn-adventure:not(.hover) .book-cover::after {
     width: 140px;
     height: 140px;
-    right: calc( 50% - 70px );
+    right: calc(50% - 70px);
+}
+.btn-adventure .book-cover::after {
     background-image: url(../img/7th-sea_logo.png);
 }
-.btn-fate .book-cover::after {
+.btn-fate:not(.hover) .book-cover::after {
+    height: 35px;
+    right: calc(50% - 40px);
     width: 80px;
-    height: 123px;
-    right: calc( 50% - 40px );
+    top: 130px;
+}
+.btn-fate.hover .book-cover::after {
+    height: 80px;
+    right: calc(50% - 90px);
+    width: 180px;
+    top: 250px;
+}
+.btn-fate .book-cover::after {
     background-image: url(../img/fate-logo.png);
+}
+.btn-shadowrun.hover .book-cover::after {
+    right: calc(50% - 90px);
+    top: 120px;
+    width: 180px;
+    height: 210px;
+}
+.btn-shadowrun:not(.hover) .book-cover::after {
+    right: calc(50% - 40px);
+    top: 50px;
+    width: 80px;
+    height: 105px;
+}
+.btn-shadowrun .book-cover::after {
+    background-image: url(../img/shadowrun-logo.png);
+}
+.btn-savage:not(.hover) .book-cover::after {
+    height: 55px;
+    right: calc(50% - 40px);
+    width: 80px;
+    top: 115px;
+}
+.btn-savage.hover .book-cover::after {
+    height: 130px;
+    right: calc(50% - 90px);
+    width: 180px;
+    top: 220px;
+}
+.btn-savage .book-cover::after {
+    background-image: url(../img/savageworlds-logo.png);
+}
+.btn-genesys:not(.hover) .book-cover::after {
+    height: 33px;
+    right: calc(50% - 40px);
+    width: 80px;
+    top: 130px;
+}
+.btn-genesys.hover .book-cover::after {
+    height: 85px;
+    right: calc(50% - 90px);
+    width: 180px;
+    top: 260px;
+}
+.btn-genesys .book-cover::after {
+    background-image: url(../img/genesys-logo.png);
+}
+.btn-starwars:not(.hover) .book-cover::after {
+    height: 33px;
+    right: calc(50% - 40px);
+    width: 80px;
+    top: 130px;
+}
+.btn-starwars.hover .book-cover::after {
+    height: 85px;
+    right: calc(50% - 90px);
+    width: 180px;
+    top: 260px;
+}
+.btn-starwars .book-cover::after {
+    background-image: url(../img/starwars-logo.png);
 }
 
 .book-cover-back {
@@ -171,22 +305,33 @@
     border-radius: 3px;
 }
 
-.btn-chronicle .book-cover-back {
-    background-image: url(../img/leather.jpeg);
-    background-color: #222;
-}
-.btn-campaign .book-cover-back {
-    background-image: url(../img/leather-brown.jpeg);
-    background-color: #4d311f;
-}
-.btn-adventure .book-cover-back {
-    background-image: url(../img/leather-aquamarine.jpeg);
-    background-color: #1b3f69;
-}
-.btn-fate .book-cover-back {
-    background-image: url(../img/leather-blue.jpeg);
-    background-color: #1b3f69;
-}
+/*.btn-chronicle .book-cover-back {*/
+/*    background-image: url(../img/leather.jpeg);*/
+/*    background-color: #222;*/
+/*}*/
+/*.btn-campaign .book-cover-back {*/
+/*    background-image: url(../img/leather-brown.jpeg);*/
+/*    background-color: #4d311f;*/
+/*}*/
+/*.btn-adventure .book-cover-back {*/
+/*    background-image: url(../img/leather-aquamarine.jpeg);*/
+/*    background-color: #1b3f69;*/
+/*}*/
+/*.btn-fate .book-cover-back {*/
+/*    background-image: url(../img/leather-blue.jpeg);*/
+/*    background-color: #0E729A;*/
+/*}*/
+/*.btn-shadowrun .book-cover-back {*/
+/*    background-image: url(../img/leather-red.jpeg);*/
+/*    background-color: #f23232;*/
+/*}*/
+/*.btn-genesys .book-cover-back {*/
+/*    background-image: url(../img/leather-white.jpeg);*/
+/*    background-color: #c5c5c5;*/
+/*}*/
+/*.btn-starwars .book-cover-back {*/
+/*    background-image: url(../img/leather-yellow.jpeg);*/
+/*}*/
 
 .book-cover__wrapper>div {
 	backface-visibility: hidden;
@@ -205,7 +350,7 @@
     font-family: 'Amethyst', cursive;
     font-size: 2em;
     text-overflow: ellipsis;
-    height: 145px;
+    height: calc( 100% - 30px );
     overflow: hidden;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
@@ -235,23 +380,19 @@
     height: 29px;
     margin: 0 auto 0 calc(50% - 42px);
 }
-.btn-campaign .btn.btn-create,
-.btn-campaign .btn-user {
+.btn-campaign .btn {
     background-color: #4a2932;
 }
-.btn-chronicle .btn.btn-create,
-.btn-chronicle .btn-user {
+.btn-chronicle .btn {
     background-color: #5d000d;
 }
-.btn-adventure .btn.btn-create,
-.btn-adventure .btn-user {
+.btn-adventure .btn {
     background-color: #1b3f69;
 }
-.btn-fate .btn.btn-create,
-.btn-fate .btn-user {
+.btn-fate .btn {
     background-color: #1b3f69;
 }
-.btn-book.opened .book-page {
+.btn-book.hover .book-page {
 	height: 320px;
 	width: 230px;
 	margin-top: 20px;
@@ -269,7 +410,7 @@
 
 .chronicle-books__wrapper,
 .campaign-books__wrapper {
-    width: 50vw;
+    width: 250px;
     margin: 20vh auto 0;
 }
 
@@ -329,5 +470,38 @@
     font-size: 3em;
     outline: none !important;
 }
+#new-game__wrapper select {
+    background: transparent;
+    border: 2px solid;
+    border-radius: 3px;
+    padding: 3px 5px;
+}
 
+#new-game__wrapper textarea {
+    width: calc( 100% - 35px ) !important;
+    height: 210px !important;
+}
 
+#new-game__wrapper .btn {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#new-game__wrapper .select__wrapper {
+    width: fit-content;
+    margin: 20px auto 10px;
+}
+.game-details {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: black;
+}
+.players__wrapper {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: black;
+}

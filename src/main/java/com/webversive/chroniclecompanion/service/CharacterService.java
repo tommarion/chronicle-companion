@@ -64,6 +64,7 @@ public class CharacterService {
                         sheet.setAnimals(characterSqlService.getBloodSlavesByCharacterId(characterId, BeingType.ANIMAL.value));
                         sheet.setGhouls(characterSqlService.getBloodSlavesByCharacterId(characterId, BeingType.GHOUL.value));
                     }
+                    character.setDisciplines(characterSqlService.getVtmDisciplinesByCharacterId(characterId));
                     InventoryCategories inventory = InventoryCategories.builder()
                             .armor(new ArrayList<>())
                             .weapons(new ArrayList<>())

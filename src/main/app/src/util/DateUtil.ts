@@ -1,29 +1,44 @@
 export default abstract class DateUtil {
 
-    static formatDate(date: string, includeSeconds: boolean): string {
+    static readonly FORMAT_DATE = (date: string, includeSeconds: boolean): string => {
         let dateObj = new Date(date);
         let current = new Date();
-        let dayDifference = (current.getTime() - dateObj.getTime()) / (1000 * 3600 * 24);
+        let hourDifference = (current.getTime() - dateObj.getTime()) / (1000 * 3600);
         let formattedDate = '';
-        if (dayDifference > 7) {
+        if (hourDifference > 7 * 24) {
             formattedDate += this.getMonthValue(dateObj.getMonth()) + " " + dateObj.getDate();
-            switch (dateObj.getDate() % 10) {
-                case 1:
-                    formattedDate += 'st';
-                    break;
-                case 2:
-                    formattedDate += 'nd';
-                    break;
-                case 3:
-                    formattedDate += 'rd';
-                    break;
-                default:
-                    formattedDate += 'th';
+            if (dateObj.getDate() > 10 && dateObj.getDate() < 20) {
+                formattedDate += 'th'
+            } else {
+                switch (dateObj.getDate() % 10) {
+                    case 1:
+                        formattedDate += 'st';
+                        break;
+                    case 2:
+                        formattedDate += 'nd';
+                        break;
+                    case 3:
+                        formattedDate += 'rd';
+                        break;
+                    default:
+                        formattedDate += 'th';
+                }
             }
-        } else if (dayDifference <= 2 && dayDifference > 1) {
+        } else if (hourDifference <= 48 && hourDifference > 24) {
             formattedDate += "Yesterday"
-        } else if (dayDifference <= 1 && dayDifference > 0) {
+        } else if (hourDifference <= 24 && hourDifference > 12) {
             formattedDate += "Today"
+        } else if (hourDifference <= 12 && hourDifference > 1) {
+            let hours = Math.floor(hourDifference);
+            return hours + ' hour' + (hours > 1 ? 's' : '') + ' ago';
+        } else if (hourDifference <= 1 && hourDifference > 1/60) {
+            let minutes = Math.floor(hourDifference * 60);
+            return minutes + ' minute' + (minutes > 1 ? 's' : '') + ' ago';
+        } else if (hourDifference <= 1/60 && hourDifference > 1/3600) {
+            let seconds = Math.floor(hourDifference * 3600);
+            return seconds + ' second' + (seconds > 1 ? 's' : '') + ' ago';
+        } else if (hourDifference <= 1/3600 && hourDifference > 0) {
+            return 'Just Now';
         } else {
             formattedDate += this.getDayValue(dateObj.getDay());
         }

@@ -1,0 +1,1186 @@
+#tracker-table {
+	width: fit-content;
+	margin: 50px auto;
+	padding: 5px 10px !important;
+}
+#tracker-table>.row>div:first-child {
+	text-align: right;
+}
+#tracker-table>.row>div:last-child {
+	text-align: left;
+}
+#health-tracker,
+#willpower-tracker,
+#humanity-tracker,
+#hunger-tracker {
+	font-size: 1em;
+	font-family: 'chronicle-companion-10' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	letter-spacing: -5px;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+#trackers__wrapper {
+	text-align: center;
+}
+.tracker__wrapper {
+	border-radius: 4px;
+	padding-top: 10px;
+	margin-top: 20px;
+}
+.tracker__wrapper:hover {
+	cursor: pointer;
+	background-color: #A2091E77;
+}
+#health-tracker.superficial0.aggravated0,
+#willpower-tracker.superficial0.aggravated0,
+#humanity-tracker.stains0,
+#hunger-tracker {
+}
+
+/****************************/
+/*          HUNGER          */
+/****************************/
+#hunger-tracker.level0:after {
+	content: "\25A1\25A1\25A1\25A1\25A1" !important;
+}
+#hunger-tracker.level1:after {
+	content: "\25A0\25A1\25A1\25A1\25A1" !important;
+}
+#hunger-tracker.level2:after {
+	content: "\25A0\25A0\25A1\25A1\25A1" !important;
+}
+#hunger-tracker.level3:after {
+	content: "\25A0\25A0\25A0\25A1\25A1" !important;
+}
+#hunger-tracker.level4:after {
+	content: "\25A0\25A0\25A0\25A0\25A1" !important;
+}
+#hunger-tracker.level5:after {
+	content: "\25A0\25A0\25A0\25A0\25A0" !important;
+}
+
+
+/****************************/
+/*        MAX LEVEL 2       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel2.superficial0.aggravated0:after,
+#health-tracker.maxlevel2.superficial0.aggravated0:after {
+	content: "\25A1\25A1";
+}
+#willpower-tracker.maxlevel2.superficial0.aggravated1:after,
+#health-tracker.maxlevel2.superficial0.aggravated1:after {
+	content: "\22A0\25A1";
+}
+#willpower-tracker.maxlevel2.superficial0.aggravated2:after,
+#health-tracker.maxlevel2.superficial0.aggravated2:after {
+	content: "\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel2.superficial1.aggravated0:after,
+#health-tracker.maxlevel2.superficial1.aggravated0:after {
+	content: "\29C4\25A1";
+}
+#willpower-tracker.maxlevel2.superficial1.aggravated1:after,
+#health-tracker.maxlevel2.superficial1.aggravated1:after {
+	content: "\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel2.superficial2.aggravated0:after,
+#health-tracker.maxlevel2.superficial2.aggravated0:after {
+	content: "\29C4\29C4";
+}
+
+/****************************/
+/*        MAX LEVEL 3       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel3.superficial0.aggravated0:after,
+#health-tracker.maxlevel3.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel3.superficial0.aggravated1:after,
+#health-tracker.maxlevel3.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel3.superficial0.aggravated2:after,
+#health-tracker.maxlevel3.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel3.superficial0.aggravated3:after,
+#health-tracker.maxlevel3.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel3.superficial1.aggravated0:after,
+#health-tracker.maxlevel3.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel3.superficial1.aggravated1:after,
+#health-tracker.maxlevel3.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel3.superficial1.aggravated2:after,
+#health-tracker.maxlevel3.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel3.superficial2.aggravated0:after,
+#health-tracker.maxlevel3.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel3.superficial2.aggravated1:after,
+#health-tracker.maxlevel3.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel3.superficial3.aggravated0:after,
+#health-tracker.maxlevel3.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4";
+}
+
+
+/****************************/
+/*        MAX LEVEL 4       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel4.superficial0.aggravated0:after,
+#health-tracker.maxlevel4.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel4.superficial0.aggravated1:after,
+#health-tracker.maxlevel4.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel4.superficial0.aggravated2:after,
+#health-tracker.maxlevel4.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel4.superficial0.aggravated3:after,
+#health-tracker.maxlevel4.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel4.superficial0.aggravated4:after,
+#health-tracker.maxlevel4.superficial0.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel4.superficial1.aggravated0:after,
+#health-tracker.maxlevel4.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel4.superficial1.aggravated1:after,
+#health-tracker.maxlevel4.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel4.superficial1.aggravated2:after,
+#health-tracker.maxlevel4.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel4.superficial1.aggravated3:after,
+#health-tracker.maxlevel4.superficial1.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel4.superficial2.aggravated0:after,
+#health-tracker.maxlevel4.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel4.superficial2.aggravated1:after,
+#health-tracker.maxlevel4.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel4.superficial2.aggravated2:after,
+#health-tracker.maxlevel4.superficial2.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel4.superficial3.aggravated0:after,
+#health-tracker.maxlevel4.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel4.superficial3.aggravated1:after,
+#health-tracker.maxlevel4.superficial3.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 4 */
+#willpower-tracker.maxlevel4.superficial4.aggravated0:after,
+#health-tracker.maxlevel4.superficial4.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4";
+}
+
+
+/****************************/
+/*        MAX LEVEL 5       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel5.superficial0.aggravated0:after,
+#health-tracker.maxlevel5.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial0.aggravated1:after,
+#health-tracker.maxlevel5.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial0.aggravated2:after,
+#health-tracker.maxlevel5.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial0.aggravated3:after,
+#health-tracker.maxlevel5.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial0.aggravated4:after,
+#health-tracker.maxlevel5.superficial0.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel5.superficial0.aggravated5:after,
+#health-tracker.maxlevel5.superficial0.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel5.superficial1.aggravated0:after,
+#health-tracker.maxlevel5.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial1.aggravated1:after,
+#health-tracker.maxlevel5.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial1.aggravated2:after,
+#health-tracker.maxlevel5.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial1.aggravated3:after,
+#health-tracker.maxlevel5.superficial1.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel5.superficial1.aggravated4:after,
+#health-tracker.maxlevel5.superficial1.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel5.superficial2.aggravated0:after,
+#health-tracker.maxlevel5.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial2.aggravated1:after,
+#health-tracker.maxlevel5.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial2.aggravated2:after,
+#health-tracker.maxlevel5.superficial2.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel5.superficial2.aggravated3:after,
+#health-tracker.maxlevel5.superficial2.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel5.superficial3.aggravated0:after,
+#health-tracker.maxlevel5.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel5.superficial3.aggravated1:after,
+#health-tracker.maxlevel5.superficial3.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel5.superficial3.aggravated2:after,
+#health-tracker.maxlevel5.superficial3.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 4 */
+#willpower-tracker.maxlevel5.superficial4.aggravated0:after,
+#health-tracker.maxlevel5.superficial4.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel5.superficial4.aggravated1:after,
+#health-tracker.maxlevel5.superficial4.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 5 */
+#willpower-tracker.maxlevel5.superficial5.aggravated0:after,
+#health-tracker.maxlevel5.superficial5.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+/****************************/
+/*        MAX LEVEL 6       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel6.superficial0.aggravated0:after,
+#health-tracker.maxlevel6.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial0.aggravated1:after,
+#health-tracker.maxlevel6.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial0.aggravated2:after,
+#health-tracker.maxlevel6.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial0.aggravated3:after,
+#health-tracker.maxlevel6.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial0.aggravated4:after,
+#health-tracker.maxlevel6.superficial0.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial0.aggravated5:after,
+#health-tracker.maxlevel6.superficial0.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel6.superficial0.aggravated6:after,
+#health-tracker.maxlevel6.superficial0.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel6.superficial1.aggravated0:after,
+#health-tracker.maxlevel6.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial1.aggravated1:after,
+#health-tracker.maxlevel6.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial1.aggravated2:after,
+#health-tracker.maxlevel6.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial1.aggravated3:after,
+#health-tracker.maxlevel6.superficial1.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial1.aggravated4:after,
+#health-tracker.maxlevel6.superficial1.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel6.superficial1.aggravated5:after,
+#health-tracker.maxlevel6.superficial1.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel6.superficial2.aggravated0:after,
+#health-tracker.maxlevel6.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial2.aggravated1:after,
+#health-tracker.maxlevel6.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial2.aggravated2:after,
+#health-tracker.maxlevel6.superficial2.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial2.aggravated3:after,
+#health-tracker.maxlevel6.superficial2.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel6.superficial2.aggravated4:after,
+#health-tracker.maxlevel6.superficial2.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel6.superficial3.aggravated0:after,
+#health-tracker.maxlevel6.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial3.aggravated1:after,
+#health-tracker.maxlevel6.superficial3.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial3.aggravated2:after,
+#health-tracker.maxlevel6.superficial3.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel6.superficial3.aggravated3:after,
+#health-tracker.maxlevel6.superficial3.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 4 */
+#willpower-tracker.maxlevel6.superficial4.aggravated0:after,
+#health-tracker.maxlevel6.superficial4.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel6.superficial4.aggravated1:after,
+#health-tracker.maxlevel6.superficial4.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel6.superficial4.aggravated2:after,
+#health-tracker.maxlevel6.superficial4.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 5 */
+#willpower-tracker.maxlevel6.superficial5.aggravated0:after,
+#health-tracker.maxlevel6.superficial5.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel6.superficial5.aggravated1:after,
+#health-tracker.maxlevel6.superficial5.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 6 */
+#willpower-tracker.maxlevel6.superficial6.aggravated0:after,
+#health-tracker.maxlevel6.superficial6.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+
+/****************************/
+/*        MAX LEVEL 7       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel7.superficial0.aggravated0:after,
+#health-tracker.maxlevel7.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated1:after,
+#health-tracker.maxlevel7.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated2:after,
+#health-tracker.maxlevel7.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated3:after,
+#health-tracker.maxlevel7.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated4:after,
+#health-tracker.maxlevel7.superficial0.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated5:after,
+#health-tracker.maxlevel7.superficial0.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated6:after,
+#health-tracker.maxlevel7.superficial0.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel7.superficial0.aggravated7:after,
+#health-tracker.maxlevel7.superficial0.aggravated7:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel7.superficial1.aggravated0:after,
+#health-tracker.maxlevel7.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial1.aggravated1:after,
+#health-tracker.maxlevel7.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial1.aggravated2:after,
+#health-tracker.maxlevel7.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial1.aggravated3:after,
+#health-tracker.maxlevel7.superficial1.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial1.aggravated4:after,
+#health-tracker.maxlevel7.superficial1.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial1.aggravated5:after,
+#health-tracker.maxlevel7.superficial1.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel7.superficial1.aggravated6:after,
+#health-tracker.maxlevel7.superficial1.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel7.superficial2.aggravated0:after,
+#health-tracker.maxlevel7.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial2.aggravated1:after,
+#health-tracker.maxlevel7.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial2.aggravated2:after,
+#health-tracker.maxlevel7.superficial2.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial2.aggravated3:after,
+#health-tracker.maxlevel7.superficial2.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial2.aggravated4:after,
+#health-tracker.maxlevel7.superficial2.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel7.superficial2.aggravated5:after,
+#health-tracker.maxlevel7.superficial2.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel7.superficial3.aggravated0:after,
+#health-tracker.maxlevel7.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial3.aggravated1:after,
+#health-tracker.maxlevel7.superficial3.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial3.aggravated2:after,
+#health-tracker.maxlevel7.superficial3.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial3.aggravated3:after,
+#health-tracker.maxlevel7.superficial3.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel7.superficial3.aggravated4:after,
+#health-tracker.maxlevel7.superficial3.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 4 */
+#willpower-tracker.maxlevel7.superficial4.aggravated0:after,
+#health-tracker.maxlevel7.superficial4.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial4.aggravated1:after,
+#health-tracker.maxlevel7.superficial4.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial4.aggravated2:after,
+#health-tracker.maxlevel7.superficial4.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel7.superficial4.aggravated3:after,
+#health-tracker.maxlevel7.superficial4.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 5 */
+#willpower-tracker.maxlevel7.superficial5.aggravated0:after,
+#health-tracker.maxlevel7.superficial5.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel7.superficial5.aggravated1:after,
+#health-tracker.maxlevel7.superficial5.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel7.superficial5.aggravated2:after,
+#health-tracker.maxlevel7.superficial5.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 6 */
+#willpower-tracker.maxlevel7.superficial6.aggravated0:after,
+#health-tracker.maxlevel7.superficial6.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel7.superficial6.aggravated1:after,
+#health-tracker.maxlevel7.superficial6.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 7 */
+#willpower-tracker.maxlevel7.superficial7.aggravated0:after,
+#health-tracker.maxlevel7.superficial7.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+/****************************/
+/*        MAX LEVEL 8       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel8.superficial0.aggravated0:after,
+#health-tracker.maxlevel8.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated1:after,
+#health-tracker.maxlevel8.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated2:after,
+#health-tracker.maxlevel8.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated3:after,
+#health-tracker.maxlevel8.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated4:after,
+#health-tracker.maxlevel8.superficial0.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated5:after,
+#health-tracker.maxlevel8.superficial0.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated6:after,
+#health-tracker.maxlevel8.superficial0.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated7:after,
+#health-tracker.maxlevel8.superficial0.aggravated7:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel8.superficial0.aggravated8:after,
+#health-tracker.maxlevel8.superficial0.aggravated8:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel8.superficial1.aggravated0:after,
+#health-tracker.maxlevel8.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated1:after,
+#health-tracker.maxlevel8.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated2:after,
+#health-tracker.maxlevel8.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated3:after,
+#health-tracker.maxlevel8.superficial1.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated4:after,
+#health-tracker.maxlevel8.superficial1.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated5:after,
+#health-tracker.maxlevel8.superficial1.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated6:after,
+#health-tracker.maxlevel8.superficial1.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated7:after,
+#health-tracker.maxlevel8.superficial1.aggravated7:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel8.superficial2.aggravated0:after,
+#health-tracker.maxlevel8.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated1:after,
+#health-tracker.maxlevel8.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated2:after,
+#health-tracker.maxlevel8.superficial2.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated3:after,
+#health-tracker.maxlevel8.superficial2.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated4:after,
+#health-tracker.maxlevel8.superficial2.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated5:after,
+#health-tracker.maxlevel8.superficial2.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated6:after,
+#health-tracker.maxlevel8.superficial2.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel8.superficial3.aggravated0:after,
+#health-tracker.maxlevel8.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated1:after,
+#health-tracker.maxlevel8.superficial3.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated2:after,
+#health-tracker.maxlevel8.superficial3.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated3:after,
+#health-tracker.maxlevel8.superficial3.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated4:after,
+#health-tracker.maxlevel8.superficial3.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated5:after,
+#health-tracker.maxlevel8.superficial3.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 4 */
+#willpower-tracker.maxlevel8.superficial4.aggravated0:after,
+#health-tracker.maxlevel8.superficial4.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated1:after,
+#health-tracker.maxlevel8.superficial4.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated2:after,
+#health-tracker.maxlevel8.superficial4.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated3:after,
+#health-tracker.maxlevel8.superficial4.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated4:after,
+#health-tracker.maxlevel8.superficial4.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 5 */
+#willpower-tracker.maxlevel8.superficial5.aggravated0:after,
+#health-tracker.maxlevel8.superficial5.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial5.aggravated1:after,
+#health-tracker.maxlevel8.superficial5.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial5.aggravated2:after,
+#health-tracker.maxlevel8.superficial5.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial5.aggravated3:after,
+#health-tracker.maxlevel8.superficial5.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 6 */
+#willpower-tracker.maxlevel8.superficial6.aggravated0:after,
+#health-tracker.maxlevel8.superficial6.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial6.aggravated1:after,
+#health-tracker.maxlevel8.superficial6.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial6.aggravated2:after,
+#health-tracker.maxlevel8.superficial6.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 7 */
+#willpower-tracker.maxlevel8.superficial7.aggravated0:after,
+#health-tracker.maxlevel8.superficial7.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial7.aggravated1:after,
+#health-tracker.maxlevel8.superficial7.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 8 */
+#willpower-tracker.maxlevel8.superficial8.aggravated0:after,
+#health-tracker.maxlevel8.superficial8.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+
+
+/****************************/
+/*        MAX LEVEL 9       */
+/****************************/
+
+/* SUPERFICIAL 0 */
+#willpower-tracker.maxlevel9.superficial0.aggravated0:after,
+#health-tracker.maxlevel9.superficial0.aggravated0:after {
+	content: "\25A1\25A1\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated1:after,
+#health-tracker.maxlevel9.superficial0.aggravated1:after {
+	content: "\22A0\25A1\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated2:after,
+#health-tracker.maxlevel9.superficial0.aggravated2:after {
+	content: "\22A0\22A0\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated3:after,
+#health-tracker.maxlevel9.superficial0.aggravated3:after {
+	content: "\22A0\22A0\22A0\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated4:after,
+#health-tracker.maxlevel9.superficial0.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated5:after,
+#health-tracker.maxlevel9.superficial0.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated6:after,
+#health-tracker.maxlevel9.superficial0.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated7:after,
+#health-tracker.maxlevel9.superficial0.aggravated7:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\25A1\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated8:after,
+#health-tracker.maxlevel9.superficial0.aggravated8:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\22A0\25A1";
+}
+#willpower-tracker.maxlevel9.superficial0.aggravated9:after,
+#health-tracker.maxlevel9.superficial0.aggravated9:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\22A0\22A0";
+}
+
+/* SUPERFICIAL 1 */
+#willpower-tracker.maxlevel8.superficial1.aggravated0:after,
+#health-tracker.maxlevel8.superficial1.aggravated0:after {
+	content: "\29C4\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated1:after,
+#health-tracker.maxlevel8.superficial1.aggravated1:after {
+	content: "\22A0\29C4\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated2:after,
+#health-tracker.maxlevel8.superficial1.aggravated2:after {
+	content: "\22A0\22A0\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated3:after,
+#health-tracker.maxlevel8.superficial1.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated4:after,
+#health-tracker.maxlevel8.superficial1.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated5:after,
+#health-tracker.maxlevel8.superficial1.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated6:after,
+#health-tracker.maxlevel8.superficial1.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial1.aggravated7:after,
+#health-tracker.maxlevel8.superficial1.aggravated7:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\22A0\29C4";
+}
+
+
+/* SUPERFICIAL 2 */
+#willpower-tracker.maxlevel8.superficial2.aggravated0:after,
+#health-tracker.maxlevel8.superficial2.aggravated0:after {
+	content: "\29C4\29C4\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated1:after,
+#health-tracker.maxlevel8.superficial2.aggravated1:after {
+	content: "\22A0\29C4\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated2:after,
+#health-tracker.maxlevel8.superficial2.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated3:after,
+#health-tracker.maxlevel8.superficial2.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated4:after,
+#health-tracker.maxlevel8.superficial2.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated5:after,
+#health-tracker.maxlevel8.superficial2.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial2.aggravated6:after,
+#health-tracker.maxlevel8.superficial2.aggravated6:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\22A0\29C4\29C4";
+}
+
+
+/* SUPERFICIAL 3 */
+#willpower-tracker.maxlevel8.superficial3.aggravated0:after,
+#health-tracker.maxlevel8.superficial3.aggravated0:after {
+	content: "\29C4\29C4\29C4\25A1\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated1:after,
+#health-tracker.maxlevel8.superficial3.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated2:after,
+#health-tracker.maxlevel8.superficial3.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated3:after,
+#health-tracker.maxlevel8.superficial3.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated4:after,
+#health-tracker.maxlevel8.superficial3.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial3.aggravated5:after,
+#health-tracker.maxlevel8.superficial3.aggravated5:after {
+	content: "\22A0\22A0\22A0\22A0\22A0\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 4 */
+#willpower-tracker.maxlevel8.superficial4.aggravated0:after,
+#health-tracker.maxlevel8.superficial4.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\25A1\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated1:after,
+#health-tracker.maxlevel8.superficial4.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated2:after,
+#health-tracker.maxlevel8.superficial4.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated3:after,
+#health-tracker.maxlevel8.superficial4.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial4.aggravated4:after,
+#health-tracker.maxlevel8.superficial4.aggravated4:after {
+	content: "\22A0\22A0\22A0\22A0\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 5 */
+#willpower-tracker.maxlevel8.superficial5.aggravated0:after,
+#health-tracker.maxlevel8.superficial5.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\25A1\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial5.aggravated1:after,
+#health-tracker.maxlevel8.superficial5.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial5.aggravated2:after,
+#health-tracker.maxlevel8.superficial5.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial5.aggravated3:after,
+#health-tracker.maxlevel8.superficial5.aggravated3:after {
+	content: "\22A0\22A0\22A0\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 6 */
+#willpower-tracker.maxlevel8.superficial6.aggravated0:after,
+#health-tracker.maxlevel8.superficial6.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\25A1\25A1";
+}
+#willpower-tracker.maxlevel8.superficial6.aggravated1:after,
+#health-tracker.maxlevel8.superficial6.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial6.aggravated2:after,
+#health-tracker.maxlevel8.superficial6.aggravated2:after {
+	content: "\22A0\22A0\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 7 */
+#willpower-tracker.maxlevel8.superficial7.aggravated0:after,
+#health-tracker.maxlevel8.superficial7.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\29C4\25A1";
+}
+#willpower-tracker.maxlevel8.superficial7.aggravated1:after,
+#health-tracker.maxlevel8.superficial7.aggravated1:after {
+	content: "\22A0\29C4\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+/* SUPERFICIAL 8 */
+#willpower-tracker.maxlevel8.superficial8.aggravated0:after,
+#health-tracker.maxlevel8.superficial8.aggravated0:after {
+	content: "\29C4\29C4\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+/*********************************/
+/*			  HUMANITY   		 */
+/*********************************/
+
+#humanity-tracker.maxlevel3.stains0:after {
+	content: "\25A0\25A0\25A0\25A1\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#humanity-tracker.maxlevel3.stains1:after {
+	content: "\25A0\25A0\25A0\25A1\25A1\25A1\25A1\25A1\25A1\29C4";
+}
+#humanity-tracker.maxlevel3.stains2:after {
+	content: "\25A0\25A0\25A0\25A1\25A1\25A1\25A1\25A1\29C4\29C4";
+}
+#humanity-tracker.maxlevel3.stains3:after {
+	content: "\25A0\25A0\25A0\25A1\25A1\25A1\25A1\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel3.stains4:after {
+	content: "\25A0\25A0\25A0\25A1\25A1\25A1\29C4\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel3.stains5:after {
+	content: "\25A0\25A0\25A0\25A1\25A1\29C4\29C4\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel3.stains6:after {
+	content: "\25A0\25A0\25A0\25A1\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel3.stains7:after {
+	content: "\25A0\25A0\25A0\29C4\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+#humanity-tracker.maxlevel4.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A1\25A1\25A1\25A1\25A1\25A1";
+}
+#humanity-tracker.maxlevel4.stains1:after {
+	content: "\25A0\25A0\25A0\25A0\25A1\25A1\25A1\25A1\25A1\29C4";
+}
+#humanity-tracker.maxlevel4.stains2:after {
+	content: "\25A0\25A0\25A0\25A0\25A1\25A1\25A1\25A1\29C4\29C4";
+}
+#humanity-tracker.maxlevel4.stains3:after {
+	content: "\25A0\25A0\25A0\25A0\25A1\25A1\25A1\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel4.stains4:after {
+	content: "\25A0\25A0\25A0\25A0\25A1\25A1\29C4\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel4.stains5:after {
+	content: "\25A0\25A0\25A0\25A0\25A1\29C4\29C4\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel4.stains6:after {
+	content: "\25A0\25A0\25A0\25A0\29C4\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+#humanity-tracker.maxlevel5.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A1\25A1\25A1\25A1\25A1";
+}
+#humanity-tracker.maxlevel5.stains1:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A1\25A1\25A1\25A1\29C4";
+}
+#humanity-tracker.maxlevel5.stains2:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A1\25A1\25A1\29C4\29C4";
+}
+#humanity-tracker.maxlevel5.stains3:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A1\25A1\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel5.stains4:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A1\29C4\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel5.stains5:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\29C4\29C4\29C4\29C4\29C4";
+}
+
+
+#humanity-tracker.maxlevel6.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A1\25A1\25A1\25A1";
+}
+#humanity-tracker.maxlevel6.stains1:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A1\25A1\25A1\29C4";
+}
+#humanity-tracker.maxlevel6.stains2:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A1\25A1\29C4\29C4";
+}
+#humanity-tracker.maxlevel6.stains3:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A1\29C4\29C4\29C4";
+}
+#humanity-tracker.maxlevel6.stains4:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\29C4\29C4\29C4\29C4";
+}
+
+#humanity-tracker.maxlevel7.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A1\25A1\25A1";
+}
+#humanity-tracker.maxlevel7.stains1:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A1\25A1\29C4";
+}
+#humanity-tracker.maxlevel7.stains2:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A1\29C4\29C4";
+}
+#humanity-tracker.maxlevel7.stains3:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\29C4\29C4\29C4";
+}
+
+
+#humanity-tracker.maxlevel8.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A1\25A1";
+}
+#humanity-tracker.maxlevel8.stains1:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A1\29C4";
+}
+#humanity-tracker.maxlevel8.stains2:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\29C4\29C4";
+}
+
+
+#humanity-tracker.maxlevel9.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A1";
+}
+#humanity-tracker.maxlevel9.stains1:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\29C4";
+}
+
+#humanity-tracker.maxlevel10.stains0:after {
+	content: "\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0\25A0";
+}
+/* 
+	empty box \25A1
+	superficial box \29C4
+	aggravated box \22A0
+*/

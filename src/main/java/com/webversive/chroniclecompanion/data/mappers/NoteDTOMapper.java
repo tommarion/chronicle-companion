@@ -13,6 +13,10 @@ import static com.webversive.chroniclecompanion.util.DateUtil.getDateFromSQLStri
 public class NoteDTOMapper implements RowMapper<NoteDTO> {
     @Override
     public NoteDTO mapRow(ResultSet resultSet, int i) throws SQLException {
+        String author = null;
+        if (resultSet.getMetaData().getColumnCount() == 8) {
+            author = resultSet.getString("author");
+        }
         return NoteDTO.builder()
                 .id(resultSet.getString("id"))
                 .sessionId(resultSet.getString("session_id"))
@@ -21,6 +25,7 @@ public class NoteDTOMapper implements RowMapper<NoteDTO> {
                 .name(resultSet.getString("name"))
                 .note(resultSet.getString("note"))
                 .date(getDateFromSQLString(resultSet.getString("date")))
+                .author(author)
                 .build();
     }
 }

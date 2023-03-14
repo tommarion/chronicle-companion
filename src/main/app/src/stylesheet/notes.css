@@ -1,0 +1,83 @@
+.notes-title {
+    width: calc( 100% - 80px );
+    margin: 0 30px;
+    padding: 5px 10px;
+    background-color: var(--theme-background-color);
+    color: var(--theme-color);
+    border: none;
+    border-radius: 3px;
+    font-size: 1.5em;
+}
+.tag-text {
+    background: #0850be85;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.btn-delete_note::after {
+    content: "\00D7";
+}
+.btn-delete_note {
+    float: right;
+}
+#session__wrapper li {
+    border-radius: 3px;
+    margin-bottom: 2px;
+    list-style-type: none;
+    padding: 5px 15px;
+}
+#session__wrapper li.new-note {
+    height: 1.5em;
+}
+#session__wrapper li:not(.new-note) {
+    height: fit-content;
+}
+.note_span[contenteditable=true]:empty:not(:focus):before {
+    content: "Enter note text";
+    opacity: 0.5;
+}
+.note-date.sub-text {
+    font-size: 0.5em;
+    opacity: 0.7;
+    user-select: none;
+    width: fit-content;
+}
+.note-author::before {
+    font-family: 'chronicle-companion-10';
+    content: "\e907";
+    margin-right: 5px;
+}
+.note-author {
+    font-size: 0.5em;
+    opacity: 0.7;
+    margin-left: 10px;
+}
+.other-persons-note {
+    background: #ffffff22;
+    user-select: none;
+}
+#session__wrapper {
+    height: 100%;
+}
+#session-notes__wrapper {
+    background-color: #00000099;
+    border-radius: 5px;
+    height: calc(100% - 60px);
+    margin-top: 10px;
+}
+#session-notes__wrapper ul {
+    overflow-y: auto;
+    height: calc( 100% - 46px );
+    margin: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#session-notes__wrapper hr {
+    width: calc( 100% - 60px );
+    opacity: 0.2;
+    margin: 0 auto;
+}
+
+.new-note {
+    padding: 7px 15px;
+    min-height: 1.5em;
+}

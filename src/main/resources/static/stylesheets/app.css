@@ -74,7 +74,7 @@ body {
     top: 0;
 }
 
-#login__wrapper input {
+#login__wrapper input:not(#remember-me) {
     width: 100%;
     padding: 0.25em 0.5em;
     font-size: 1.25em;
@@ -136,4 +136,27 @@ input.error {
     color: #C5C5C5;
     background-color: #ff000044;
     border: 2px solid red;
+}
+.flex {
+    display: flex;
+}
+#register-toggle, #login-toggle {
+    font-size: 0.75em;
+    margin-top: 14px;
+    flex: 0 0 calc( 100% - 50px );
+}
+
+#register-toggle:hover, #login-toggle:hover {
+    cursor: pointer;
+    opacity: 0.75;
+}
+.header {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+.form-submit {
+    flex: 0 0 50px
+}
+#login-form, #register-form {
+    margin-bottom: 0;
 }

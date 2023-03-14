@@ -10,7 +10,6 @@ interface CharacterBio {
     experience: number
     generation: number
     house: string
-    info: string
     isGhouled: boolean
     predatorType: string
     retainerFor: string

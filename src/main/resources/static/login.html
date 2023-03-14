@@ -7,19 +7,29 @@
 <div id='container'>
     <div id='login__wrapper'>
         <div>
-            <form action="/login" method="post">
+            <form action="/login" method="post" id='login-form'>
+                <div class='header'>Login</div>
                 <label for="username">User</label>
                 <input type='text' name='username' id='username'/>
                 <label for="password">Password</label>
                 <input type='password' name='password' id='password'/>
-                <div id="password-confirm__wrapper" class="hidden">
-                    <label for="password-confirm">Password</label>
-                    <input type='password' name='password-confirm' id='password-confirm'/>
+                <div>Remember Me: <input type='checkbox' name='remember-me' id='remember-me'></div>
+                <div class="flex">
+                    <div id='register-toggle' onclick="registerHandler()">Don't have an account?</div>
+                    <button class='form-submit' type="submit">Submit</button>
                 </div>
-                <div>
-                    <button type='button' id='register-toggle' onclick="registerHandler()">Register</button>
-                    <button type='button' id='login-toggle' onclick="loginHandler()">Login</button>
-                    <button type="submit">Submit</button>
+            </form>
+            <form action="/register" method="post" class='hidden' id='register-form'>
+                <div class='header'>Create Account</div>
+                <label for="username">User</label>
+                <input type='text' name='username' id='register-username'/>
+                <label for="password">Password</label>
+                <input type='password' name='password' id='register-password'/>
+                <label for="password-confirm">Confirm Password</label>
+                <input type='password' name='password-confirm' id='password-confirm'/>
+                <div class="flex">
+                    <div id='login-toggle' onclick="loginHandler()">Already have an account?</div>
+                    <button class='form-submit' type="submit">Submit</button>
                 </div>
             </form>
         </div>
@@ -33,15 +43,13 @@
     }
 
     function registerHandler() {
-        document.getElementById('register-toggle').classList.add('hidden');
-        document.getElementById('login-toggle').classList.remove('hidden');
-        document.getElementById('password-confirm__wrapper').classList.remove('hidden');
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-form').classList.remove('hidden');
         return false;
     }
     function loginHandler() {
-        document.getElementById('register-toggle').classList.remove('hidden');
-        document.getElementById('login-toggle').classList.add('hidden');
-        document.getElementById('password-confirm__wrapper').classList.add('hidden');
+        document.getElementById('register-form').classList.add('hidden');
+        document.getElementById('login-form').classList.remove('hidden');
         return false;
     }
 </script>

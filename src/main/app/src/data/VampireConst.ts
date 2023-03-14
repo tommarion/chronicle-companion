@@ -1,9 +1,5 @@
 import SidebarView from "./enum/SidebarView";
 import MainContentView from "./enum/MainContentView"
-import UIfx from 'uifx'
-const diceRoll1 = require('../sound-effects/dice-roll_1.mp3')
-const diceRoll2 = require('../sound-effects/dice-roll_2.mp3')
-const diceRoll3 = require('../sound-effects/dice-roll_3.mp3')
 
 export default class VampireConst {
     static readonly ROLL_ACTION_REFERENCE = new Map<string, number>([
@@ -131,55 +127,93 @@ export default class VampireConst {
             id: 'btn-roll',
             view: SidebarView.ROLL,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: false,
+            tooltip: 'Dice Rolls'
         },
         {
             id: 'btn-ref',
             view: SidebarView.REFERENCE,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: false,
+            tooltip: 'Rules Reference'
         },
         {
             id: 'btn-notes',
             view: SidebarView.NOTES,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: false,
+            tooltip: 'Session & General Notes'
         },
         {
             id: 'btn-character_sheets',
             view: SidebarView.CHARACTERS,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: true,
+            tooltip: 'Character Sheets'
         },
         {
             id: 'btn-locations',
             view: SidebarView.LOCATIONS,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: false,
+            tooltip: 'In-game Location'
         },
         {
             id: 'btn-maps',
             view: SidebarView.ENCOUNTERS,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: false,
+            tooltip: 'Encounter Maps'
         },
         {
             id: 'btn-sound_effects',
             view: SidebarView.SOUND_EFFECTS,
             mainView: MainContentView.NULL,
-            admin: true
+            admin: true,
+            tooltip: 'Sound Effects & Background Music'
         },
         {
             id: 'btn-relationship_map',
             view: SidebarView.NULL,
             mainView: MainContentView.RELATIONSHIP_MAP,
-            admin: false
+            admin: false,
+            tooltip: 'Relationship Map'
         },
         {
             id: 'btn-chronicle_settings',
             view: SidebarView.SETTINGS,
             mainView: MainContentView.NULL,
-            admin: false
+            admin: false,
+            tooltip: 'Settings'
         }
     ];
+
+    static readonly DISCIPLINE_POWERS = new Map<string, Map<string, DisciplinePowerInterface>>([
+        [ "Animalism", new Map<string, DisciplinePowerInterface>([
+            ["Bound Famulus", {
+                description:"When Blood Bonding an animal, the vampire can make it a famulus, forming a mental link with it and facilitating the use of other Animalism powers. While this power alone does not allow two-way communication with the animal, it can follow simple verbal instructions such as “stay” and “come here.\" It attacks in defense of itself and its master but cannot otherwise be persuaded to fight something it would not normally attack.",
+                cost:"The animal must be fed the user’s Blood on three separate nights, each of which requires a Rouse Check by the user. The amount of Blood needed to sustain the ghoulstate of the animal after this is negligible. Players starting with this power have completed this process and can chose a famulus for free.",
+                system:"Without the use of Feral Whispers, below, giving commands to the animal requires a Charisma + Animal Ken roll (Difficulty 2); increase Difficulty for more complex orders. A vampire can only have one famulus, but can get a new one if the current one dies. A vampire can use Feral Whispers (Animalism 2) and Subsume the Spirit (Animalism 4) on their famulus for free."
+            }],
+            ["Sense the Beast", {
+                dice_pool:"Resolve + Animalism",
+                resist_pool:"Composure + Subterfuge",
+                description: "The vampire can sense the Beast present in mortals, vampires, and other supernaturals, gaining a sense of their nature, hunger, and hostility.",
+                system:"A win allows the user to sense the level of hostility in a target (whether the person is prepared to do harm or even determined to cause it) and determine whether they harbor a supernatural Beast, marking them as a vampire or werewolf. On a win, a critical gives the user information on the exact type of creature, as well as their Hunger or Rage level. This power can be used both actively and passively, warning the user of aggressive intent in their immediate vicinity."
+            }]
+        ])],
+        [ "Protean", new Map<string, DisciplinePowerInterface>([
+            ["Weight of the Feather", {
+                dice_pool:"Wits + Survival",
+                description:"The vampire can reduce their effective mass and density, making themselves almost weightless. This allows them to avoid triggering pressure sensors as well as avoiding major damage from falls, collisions, or being thrown. The power cannot be used for longer leaps, as the vampire’s strength is proportionally reduced.",
+                system:"If the vampire has time to prepare, no roll is required. As a reaction, such as during a sudden fall, activating the power requires a Wits + Survival roll at Difficulty 3. As long as the power is in effect, the vampire is immune to damage from falls, collisions, and being thrown. The user also avoids triggering devices that rely on pressure, at the Storyteller’s discretion."
+            }]
+        ])]
+    ]);
+
+
+    static readonly SKILLS = ["athletics", "animal ken", "academics", "brawl", "etiquette", "awareness",
+        "craft", "insight", "finance", "drive", "intimidation", "investigation", "firearms", "leadership",
+        "medicine", "larceny", "performance", "occult", "melee", "persuasion", "politics", "stealth",
+        "streetwise", "science", "survival", "subterfuge", "technology"];
 }

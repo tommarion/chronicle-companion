@@ -1,0 +1,116 @@
+.die-data__wrapper {
+    width: 50px;
+    overflow: hidden;
+    border: 1px solid;
+    border-radius: 3px;
+    color: var(--theme-color);
+}
+.die-data__wrapper input {
+    width: 20px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+}
+.die-data__wrapper input:not(.positive):not(.negative) {
+    color: var(--theme-color);
+}
+.die-data__wrapper input.positive {
+    color: #0db60d;
+}
+.die-data__wrapper input.negative {
+    color: #a40c0c;
+}
+input#dice-roll__input {
+    width: calc( 100% - 30px );
+    padding: 5px 10px;
+    font-size: 1em;
+    margin: 0 4px 10px;
+    background: transparent;
+    border: 1px solid;
+    color: var(--theme-color);
+    border-radius: 3px;
+    text-align: center;
+    outline: none !important;
+}
+.die-input__wrapper {
+    justify-content: center;
+}
+
+.die-data__wrapper input[name="modifier"], .die-type__wrapper {
+    font-size: 0.75em;
+}
+
+#btn_roll-dice {
+
+    background-image: url(../img/dice.svg);
+}
+#go-dice_btn {
+    background-image: url(../img/godice.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 28px;
+    margin: 5px;
+    width: 30px;
+}
+#go-dice_btn:not(:hover) {
+    opacity: 0.3;
+}
+#go-dice__wrapper {
+    height: fit-content;
+}
+#go-dice-dice__wrapper {
+    left: 50px;
+    text-align: center;
+    flex: 0 0 calc( 100% - 50px );
+    height: fit-content;
+}
+.go-dice_info {
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    width: 40px;
+    font-size: 0.75em;
+    user-select: none;
+    height: 14px;
+}
+.go-dice_info.color0 {
+    background-color: black;
+}
+.go-dice_info.rolling::before {
+    content: 'Rolling';
+    font-size: 0.5em;
+}
+.go-dice_info.battery3::after {
+    background: #17b717;
+    height: 15px;
+}
+.go-dice_info.battery2::after {
+    background: #ffc711;
+    height: 10px;
+    margin-top: 5px;
+}
+.go-dice_info.battery1::after {
+    background: #d96809;
+    height: 5px;
+    margin-top: 10px;
+}
+.go-dice_info.battery0::after,
+.go-dice_info.battery1::after,
+.go-dice_info.battery2::after,
+.go-dice_info.battery3::after {
+    border-radius: 2px;
+    content: "";
+    float: right;
+    right: 0;
+    width: 5px;
+}
+.go-dice_info.battery0::after {
+    background: #dc150f;
+    height: 2px;
+    margin-top: 13px;
+}

@@ -28,9 +28,8 @@ public class AccountSQLService {
 
     public boolean isDungeonMaster(String campaignId, String username) {
         Integer rowCount = jdbcTemplate.queryForObject(
-                "SELECT COUNT(*) FROM campaigns INNER JOIN dungeon_master ON " +
-                        "campaigns.id=dungeon_master.campaign_id INNER JOIN accounts ON " +
-                        "dungeon_master.account_id=accounts.id WHERE campaigns.id=? AND accounts.username=?",
+                "SELECT COUNT(*) FROM campaigns INNER JOIN accounts ON " +
+                        "campaigns.dungeon_master=accounts.id WHERE campaigns.id=? AND accounts.username=?",
                 Integer.class, campaignId, username);
         return nonNull(rowCount) && rowCount > 0;
     }
@@ -38,8 +37,8 @@ public class AccountSQLService {
     public boolean isDungeonMasterForSession(String sessionId, String username) {
         Integer rowCount = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM sessions INNER JOIN campaigns ON sessions.campaign_id=campaigns.id " +
-                        "INNER JOIN dungeon_master ON campaigns.id=dungeon_master.campaign_id INNER JOIN accounts ON " +
-                        "dungeon_master.account_id=accounts.id WHERE sessions.id=? AND accounts.username=?",
+                        "INNER JOIN accounts ON campaigns.dungeon_master=accounts.id " +
+                        "WHERE sessions.id=? AND accounts.username=?",
                 Integer.class, sessionId, username);
         return nonNull(rowCount) && rowCount > 0;
     }
@@ -89,6 +88,19 @@ public class AccountSQLService {
         }
     }
 
+    public boolean getNoteByUsernameCount(String username, String noteId) {
+        try {
+            Integer noteCount = jdbcTemplate.queryForObject(
+                    "SELECT COUNT(*) FROM notes INNER JOIN accounts ON " +
+                            "notes.account_id=accounts.id WHERE notes.id=? AND accounts.username=?",
+                    Integer.class, noteId, username);
+
+            return nonNull(noteCount) && noteCount != 0;
+        } catch (EmptyResultDataAccessException erdae) {
+            return false;
+        }
+    }
+
     public String getCampaignIdByCharacter(String characterId) {
         return jdbcTemplate.queryForObject("SELECT campaign_id FROM characters WHERE id=?", String.class,
                 characterId);
@@ -102,9 +114,29 @@ public class AccountSQLService {
                     return true;
                 }
                 return getCharacterByUsernameCount(username, dataId);
+            case NOTE:
+                String noteCampaignId = getCampaignIdByNote(dataId);
+                if (isDungeonMaster(noteCampaignId, username)) {
+                    return true;
+                }
+                return getNoteByUsernameCount(username, dataId);
             case LOCATION:
+                String locationCampaignId = getCampaignIdByLocation(dataId);
+                if (isDungeonMaster(locationCampaignId, username)) {
+                    return true;
+                }
+                return isLocationVisible(dataId) || userHasAssetAccess(dataId, username);
             default:
                 return false;
+        }
+    }
+
+    public String getCampaignIdByNote(String noteId) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT campaignId FROM notes WHERE notes.id=?", String.class,
+                    noteId);
+        } catch (Exception ex) {
+            return null;
         }
     }
 
@@ -136,11 +168,42 @@ public class AccountSQLService {
 
     public String getGMForCampaignId(String campaignId) {
         try {
-            return jdbcTemplate.queryForObject("SELECT accounts.username FROM accounts INNER JOIN dungeon_master" +
-                            " ON accounts.id=dungeon_master.account_id WHERE dungeon_master.campaign_id=?",
+            return jdbcTemplate.queryForObject("SELECT accounts.username FROM accounts INNER JOIN campaigns" +
+                            " ON accounts.id=campaigns.dungeon_master WHERE campaigns.id=?",
                     String.class, campaignId);
         } catch (Exception ex) {
             throw new DatabaseException("Unable to find GM for campaignId: " + campaignId, ex);
+        }
+    }
+
+    public String getCampaignIdByLocation(String locationId) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT chronicle_id FROM vtm_locations WHERE id=?", String.class,
+                    locationId);
+        } catch (Exception ex) {
+            throw new DatabaseException("Unable to find location data for this locationId", ex);
+        }
+    }
+
+    public boolean isLocationVisible(String locationId) {
+        try {
+            Integer isVisible = jdbcTemplate.queryForObject("SELECT visible_on_map FROM vtm_locations WHERE id=?",
+                    Integer.class, locationId);
+            return nonNull(isVisible) && isVisible != 0;
+        } catch (Exception ex) {
+            throw new DatabaseException("Unable to find location data for this locationId", ex);
+        }
+    }
+
+    public boolean userHasAssetAccess(String assetId, String username) {
+        try {
+            Integer count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM asset_access " +
+                            "INNER JOIN accounts ON asset_access.account_id=accounts.id " +
+                            "WHERE account_access.asset_id=? AND accounts.username=?",
+                    Integer.class, assetId, username);
+            return nonNull(count) && count != 0;
+        } catch (Exception ex) {
+            throw new DatabaseException("Unable to find location data for this locationId", ex);
         }
     }
 }

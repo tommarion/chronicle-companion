@@ -8,7 +8,6 @@ import lombok.Data;
 public class VtmCharacterBio {
     private String being;
     private String alias;
-    private String info;
     private String clan;
     private int generation;
     private int bloodPotency;

@@ -7,11 +7,17 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "eslint": "8.22.0",
+    "html-react-parser": "^3.0.4",
+    "leaflet-geosearch": "^3.7.0",
     "react": "^18.2.0",
     "react-autocomplete": "^1.8.1",
     "react-dom": "^18.2.0",
+    "react-html-parser": "^2.0.2",
+    "react-leaflet": "^4.2.1",
+    "react-leaflet-geosearch": "^0.3.4",
     "react-scripts": "5.0.1",
     "react-stomp": "^5.1.0",
+    "react-time-ago": "^7.2.1",
     "sockjs-client": "^1.6.1",
     "stompjs": "^2.3.3",
     "ts-loader": "^9.3.1",
@@ -47,6 +53,10 @@
     ]
   },
   "devDependencies": {
-    "@types/sockjs-client": "^1.5.1"
+    "@types/leaflet": "^1.9.1",
+    "@types/leaflet-geosearch": "^3.0.0",
+    "@types/react-leaflet": "^3.0.0",
+    "@types/sockjs-client": "^1.5.1",
+    "@types/web-bluetooth": "^0.0.16"
   }
 }

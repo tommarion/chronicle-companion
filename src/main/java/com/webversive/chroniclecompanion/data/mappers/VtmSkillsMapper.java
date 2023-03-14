@@ -41,6 +41,8 @@ public class VtmSkillsMapper implements RowMapper<VtmSkills> {
                 .larcenySpecialty(resultSet.getString("larceny_specialty"))
                 .leadership(resultSet.getInt("leadership"))
                 .leadershipSpecialty(resultSet.getString("leadership_specialty"))
+                .medicine(resultSet.getInt("medicine"))
+                .meleeSpecialty(resultSet.getString("medicine_specialty"))
                 .melee(resultSet.getInt("melee"))
                 .meleeSpecialty(resultSet.getString("melee_specialty"))
                 .occult(resultSet.getInt("occult"))

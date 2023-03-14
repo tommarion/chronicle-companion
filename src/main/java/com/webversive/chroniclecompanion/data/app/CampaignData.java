@@ -18,4 +18,6 @@ public class CampaignData {
     private String relationshipMapLink;
     private String activeEncounter;
     private boolean admin;
+    private SessionNotes sessionContent;
+    private String gameType;
 }

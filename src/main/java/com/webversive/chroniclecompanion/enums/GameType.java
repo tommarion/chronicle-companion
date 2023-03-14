@@ -1,7 +1,7 @@
 package com.webversive.chroniclecompanion.enums;
 
 public enum GameType {
-    DND("dnd"), VTM("vampire");
+    DND("dnd"), VTM("vampire"), GEN("gen");
 
     public final String value;
 
@@ -15,5 +15,9 @@ public enum GameType {
             }
         }
         return null;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 }

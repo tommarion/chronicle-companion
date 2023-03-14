@@ -1,0 +1,210 @@
+body.dnd .stat__wrapper {
+    background: #000000;
+    border: 1px solid;
+    border-radius: 5px 5px 18px 19px;
+    font-size: .75em;
+    width: 60px;
+    padding: 5px 5px 12px;
+}
+
+body.dnd .skill-header {
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+body.dnd #stats__wrapper {
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+body.dnd .stat__wrapper .stat-title {
+    font-family: Amethyst;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: -6px;
+}
+body.dnd #left-pane {
+    flex: 0 0 510px;
+}
+body.dnd #right-pane {
+    margin-left: 10px;
+    flex: 1 0;
+    flex-flow: column;
+}
+body.dnd #left-sub-left-pane,
+body.dnd #left-sub-right-pane {
+    flex: 0 0 50%;
+}
+
+body.dnd #explorer {
+    flex: 1 0 auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    background-color: #000000;
+}
+
+body.dnd .stat-modifier {
+    background: #000;
+    border: 2px solid;
+    border-radius: 50%;
+    height: 23px;
+    margin-left: 11px;
+    margin-bottom: -25px;
+    text-align: center;
+    width: 35px;
+}
+body.dnd .stat-value {
+    height: 30px;
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+}
+body.dnd .skill-proficiency.proficient::after {
+    content: '\25CF';
+}
+body.dnd .skill-proficiency:not(.proficient)::after {
+    content: '\25CB';
+}
+body.dnd .skill-proficiency,
+body.dnd .skills-mod {
+    text-align: center;
+}
+body.dnd .skill-mod {
+    font-size: 0.5em;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+body.dnd .saving-throw-header,
+body.dnd .skills-header {
+    text-align: center;
+}
+body.dnd .skills-header>div {
+    border-bottom: 1px solid;
+    padding: 0 5px;
+}
+
+body.dnd #skills__wrapper {
+    background-color: #000000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    font-size: 0.5em;
+    width: calc( 100% - 30px );
+}
+
+body.dnd .skill-name {
+    padding-right: 5px;
+}
+body.dnd .skill-bonus {
+    text-align: center;
+}
+body.dnd #saving-throws__wrapper {
+    border-radius: 5px;
+    background-color: #000000;
+    padding: 5px 10px;
+    border: 1px solid;
+    font-size: 0.5em;
+    margin-bottom: 10px;
+}
+body.dnd .saving-throw__wrapper {
+    flex: 0 0 50%;
+}
+body.dnd #saving-throws__wrapper {
+    border-radius: 5px;
+    background-color: #000000;
+    padding: 5px 10px;
+    border: 1px solid;
+    font-size: 0.5em;
+}
+body.dnd .saving-throw__wrapper {
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+body.dnd #character-main-details {
+    background-color: #000000;
+    border: 1px solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+body.dnd .saving-throw-name {
+    flex: 0 0 calc( 100% - 20px );
+}
+body.dnd .saving-throw-mod {
+    flex: 0 0 20px;
+}
+body.dnd #equipment__wrapper {
+    flex-flow: column;
+    background: black;
+    flex: 1 0 auto;
+    border-radius: 5px;
+    border: 1px solid;
+}
+body.dnd #left-sub-right-pane {
+    flex-flow: column;
+}
+body.dnd .saving-throw-mod {
+    text-align: center;
+}
+.skill__wrapper>div {
+    padding: 2px 0;
+}
+body.dnd #right-pane-top {
+    justify-content: space-evenly;
+}
+body.dnd #right-pane-top>div {
+    background-color: #000000;
+    border-radius: 5px;
+    border: 1px solid;
+    padding: 5px 10px;
+    font-size: 0.75em;
+    font-family: Amethyst;
+    text-align: center;
+}
+
+body.dnd #right-pane-top>div.double-width {
+    width: 140px;
+}
+body.dnd #right-pane-top>div:not(.double-width) {
+    width: 70px;
+}
+body.dnd #right-pane-top>div>div {
+    font-family: 'Catull';
+    font-size: 1.5em;
+}
+
+body.dnd #armor-class__wrapper {
+    border-radius: 5px 5px 50% 50% !important;
+}
+body.dnd #explorer-menu {
+    justify-content: space-between;
+    border-bottom: 1px solid;
+    font-size: 0.75em;
+}
+body.dnd #explorer-menu>div {
+    padding: 0 10px;
+}
+body.dnd #character__wrapper {
+    margin-bottom: 50px;
+    user-select: none;
+}
+
+body.dnd #save-character {
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-top-right-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    padding: 5px 10px;
+    background-color: var(--theme-background-color);
+    user-select: none;
+    line-height: 1;
+}
+
+body.dnd #explorer-menu>.btn:not(.active):hover {
+    cursor: pointer;
+}
+body.dnd #character-main-details>.flex>div {
+    flex: 0 0 50%;
+}

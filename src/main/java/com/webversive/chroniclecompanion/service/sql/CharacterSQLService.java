@@ -1,10 +1,14 @@
 package com.webversive.chroniclecompanion.service.sql;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webversive.chroniclecompanion.data.app.CharacterBeing;
 import com.webversive.chroniclecompanion.data.app.character.Character;
 import com.webversive.chroniclecompanion.data.app.character.InventoryItem;
 import com.webversive.chroniclecompanion.data.app.character.VtmAdvantageFlaw;
 import com.webversive.chroniclecompanion.data.app.character.VtmAttributesGroups;
+import com.webversive.chroniclecompanion.data.app.character.VtmDiscipline;
 import com.webversive.chroniclecompanion.data.app.character.VtmSkills;
 import com.webversive.chroniclecompanion.data.app.character.VtmTouchstones;
 import com.webversive.chroniclecompanion.data.mappers.CharacterBeingMapper;
@@ -20,6 +24,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,8 +33,11 @@ public class CharacterSQLService {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public CharacterSQLService(JdbcTemplate jdbcTemplate) {
+    private final ObjectMapper objectMapper;
+
+    public CharacterSQLService(JdbcTemplate jdbcTemplate, ObjectMapper objectMapper) {
         this.jdbcTemplate = jdbcTemplate;
+        this.objectMapper = objectMapper;
     }
 
     public String getCharacterNameForUsername(String username, String campaignId) {
@@ -124,5 +132,23 @@ public class CharacterSQLService {
             log.error("Unable to find character data for id: {}", characterId);
             return null;
         }
+    }
+
+    public List<VtmDiscipline> getVtmDisciplinesByCharacterId(String characterId) {
+        return jdbcTemplate.query("SELECT * FROM disciplines WHERE character_id=?",
+                (rs, row) -> {
+                    List<String> disciplines = new ArrayList<>();
+                    try {
+                        disciplines = objectMapper.readValue(rs.getString("powers"), new TypeReference<>() {
+                        });
+                    } catch (JsonProcessingException jpe) {
+                        log.error(jpe.getMessage(), jpe);
+                    }
+                    return VtmDiscipline.builder()
+                            .discipline(rs.getString("discipline"))
+                            .level(rs.getInt("level"))
+                            .powers(disciplines)
+                            .build();
+                }, characterId);
     }
 }

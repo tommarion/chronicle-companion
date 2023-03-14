@@ -14,14 +14,12 @@ import java.sql.SQLException;
 public class VtmCharacterMapper implements RowMapper<Character> {
     @Override
     public Character mapRow(ResultSet resultSet, int i) throws SQLException {
-        log.info(resultSet.toString());
         return Character.builder()
                 .id(resultSet.getString("id"))
                 .name(resultSet.getString("name"))
                 .bio(VtmCharacterBio.builder()
                         .being(resultSet.getString("being"))
                         .alias(resultSet.getString("alias"))
-                        .info(resultSet.getString("bio"))
                         .clan(resultSet.getString("clan"))
                         .generation(resultSet.getInt("generation"))
                         .bloodPotency(resultSet.getInt("blood_potency"))
@@ -39,6 +37,7 @@ public class VtmCharacterMapper implements RowMapper<Character> {
                         .retainerFor(resultSet.getString("retainer_for"))
                         .tribe(resultSet.getString("tribe"))
                         .build())
+                .bioText(resultSet.getString("bio"))
                 .sheet(VtmCharacterSheet.builder()
                         .trackers(VtmTrackers.builder()
                                 .healthAggravated(resultSet.getInt("health_aggravated"))

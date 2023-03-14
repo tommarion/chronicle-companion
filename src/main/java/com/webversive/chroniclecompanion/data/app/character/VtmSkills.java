@@ -50,6 +50,8 @@ public class VtmSkills {
     private String financeSpecialty;
     private int investigation;
     private String investigationSpecialty;
+    private int medicine;
+    private String medicineSpecialty;
     private int occult;
     private String occultSpecialty;
     private int politics;

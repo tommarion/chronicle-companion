@@ -107,8 +107,8 @@ function buildFilterWrapper( filters, activeFilterBtns ) {
 	$( filterBtn ).addClass( 'btn btn-filter' )
 	$( filterBtnWrapper ).addClass( 'btn-filter__wrapper' ).append( filterBtn );
 
-	if ( filters.authors.length == 0 && filters.characters.length == 0 && 
-			filters.locations.length == 0 && filters.tags.length == 0 ) {
+	if ( filters.authors.length === 0 && filters.characters.length === 0 &&
+			filters.locations.length === 0 && filters.tags.length === 0 ) {
 		$( filterBtn ).addClass( 'disabled' );
 		let noFilterCategories = document.createElement( 'div' );
 		let noTags = document.createElement( 'div' );
@@ -459,10 +459,10 @@ function buildNotePage( noteData ) {
 	let noteName = document.createElement( 'input' );
 	let updateName = true;
 	noteText = noteData.note;
-	if ( noteData.name != null && noteData.name != '' ) {
+	if ( noteData.name != null && noteData.name !== '' ) {
 		$( noteName ).val( noteData.name );
 	}
-	if ( noteData.note == null || noteData.note == '' ) {
+	if ( noteData.note == null || noteData.note === '' ) {
 		updateName = false;
 	}
 	$( noteWrapper ).append( noteName );

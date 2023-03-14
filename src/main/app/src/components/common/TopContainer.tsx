@@ -7,7 +7,6 @@ import '../../stylesheet/sidebar.css';
 
 type TopContainerProps = {
     sidebar: boolean
-    appView : AppView
     online: OnlineStatusInterface[]
     updateCharacterId: Function
     characterId: string
@@ -20,15 +19,6 @@ class TopContainer extends Component<TopContainerProps, TopContainerState> {
     render () {
         return (
             <div id='top-container' className={this.props.sidebar ? 'sidebar' : ''}>
-                <div id="title__wrapper">
-                    <span className="header">
-                        Chronicle<br/>
-                        Companion
-                    </span>
-                    <div id="version__wrapper">
-                        <span className="sub-text" >v0.3</span>
-                    </div>
-                </div>
                 <div id="pc__btns__wrapper">
                     {this.props.online ?
                         this.props.online.map((online , index) => {

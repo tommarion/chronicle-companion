@@ -1,9 +1,22 @@
 footer {
-    display: flex;
+    display: table;
     position: fixed;
     bottom: 0;
     background: #000000aa;
     width: 100vw;
+    height: 60px;
+}
+body.dnd footer {
+    display: table;
+}
+body.dnd footer>p {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 20px;
+    font-size: 0.75em;
+}
+body.vampire footer {
+    display: flex;
 }
 #dark-pack-logo {
     flex: 0 0 90px;

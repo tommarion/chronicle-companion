@@ -25,7 +25,16 @@
     transition: width 0.5s;
     overflow: hidden;
     z-index: 2;
-    height: calc( 100% - 76px );
+    height: calc( 100% - 60px );
+}
+.tooltip {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+    background-color: #000000aa;
+    padding: 5px 10px;
+    border-radius: 3px;
 }
 
 @media screen and (min-width: 1100px) {
@@ -36,10 +45,8 @@
         opacity: 0.5;
     }
     #sidebar-content {
-        width: 268px;
-        border-right: 2px solid;
-        border-bottom: 2px solid;
-        border-bottom-right-radius: 5px;
+        width: 269px;
+        border-right: 1px solid;
     }
 }
 @media screen and (max-width: 1099px) {
@@ -52,38 +59,39 @@
         width: 0;
     }
     #sidebar-content.active {
-        width: 268px;
-        border-right: 2px solid;
-        border-bottom: 2px solid;
-        border-bottom-right-radius: 5px;
+        width: 269px;
+        border-right: 1px solid;
     }
 }
 #sidebar>.btn {
     width: 40px;
     height: 40px;
     margin: 10px 0;
-    border-top: 2px solid;
-    border-right: 2px solid;
-    border-bottom: 2px solid;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;
 }
 
 #sidebar>.btn.active {
+    opacity: 1;
+}
+#sidebar>.btn:not(.active):not(:hover) {
+    opacity: 0.25;
+}
+#sidebar>.btn:not(.active):hover {
     opacity: 0.5;
 }
 #sidebar>.btn.badge::after {
     content: attr(data-badge);
     font-size: 0.75em;
-    margin-left: -9px;
+    margin-left: -12px;
     text-align: center;
     background: #d50505;
-    padding: 5px 5px;
+    padding: 2px;
     width: 15px;
     height: 15px;
     position: absolute;
-    margin-top: -10px;
+    margin-top: -6px;
     border-radius: 50%;
     left: 40px;
 }
@@ -99,10 +107,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-#sidebar:not(.dnd) #btn-maps {
+body.vampire #btn-maps {
     background-image: url(../img/map.svg);
 }
-#sidebar.dnd #btn-maps {
+body.dnd #btn-maps {
     background-image: url(../img/map-beige.svg);
 }
 #btn-encounter {
@@ -117,10 +125,10 @@
     background-repeat: no-repeat;
 }
 
-#sidebar:not(.dnd) #btn-sound_effects {
+body.vampire #btn-sound_effects {
     background-image: url(../img/music-note.svg);
 }
-#sidebar.dnd #btn-sound_effects {
+body.dnd #btn-sound_effects {
     background-image: url(../img/music-note-beige.svg);
 }
 
@@ -131,10 +139,10 @@
     background-position: center;
 }
 
-#btn-chronicle_settings {
+body.vampire #btn-chronicle_settings {
     background-image: url(../img/settings.svg);
 }
-#btn-campaign_settings {
+body.dnd #btn-chronicle_settings {
     background-image: url(../img/settings-beige.svg);
 }
 #container.iPhone #sidebar-content {
@@ -143,9 +151,24 @@
 #container:not(.iPhone) #sidebar-content {
     height: calc( 100vh - 78px );
 }
-#sidebar-content>div {
-    height: 100%;
+#sidebar-content>div:not(#title__wrapper) {
+    height: calc( 100% - 34px );
     width: 100%;
+    overflow: auto
+}
+#title__wrapper {
+    display: flex;
+    margin-left: 10px;
+}
+#version__wrapper {
+    font-size: 0.5em;
+    margin-top: 22px;
+}
+#title__wrapper>.header {
+    padding-top: 8px;
+    line-height: 0.5em;
+    text-align: left;
+    padding-bottom: 10px;
 }
 
 #btn-notes:after {
@@ -190,13 +213,28 @@
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 5px;
-    padding: 20px 5px;
+    padding: 10px 5px 20px;
     width: 90%;
     margin: 0 auto;
     overflow-y: auto;
     overflow-x: hidden;
-    text-align: center;
 }
+#npc__btns__wrapper>.title,
+#locations__btns__wrapper>.title,
+#general_notes__wrapper>.title,
+#session_notes__wrapper>.title,
+#sound-effects__content__wrapper>.title,
+#maps-btns__wrapper>.title {
+    margin: 0 0 10px 10px;
+}
+#npc__btns__wrapper>.header,
+ #locations__btns__wrapper>.header,
+ #general_notes__wrapper>.header,
+ #session_notes__wrapper>.header,
+ #sound-effects__content__wrapper>.header,
+ #maps-btns__wrapper>.header {
+    padding-top: 9px;
+ }
 #npc__btns__wrapper,
 #locations__btns__wrapper,
 #sound-effects__content__wrapper {
@@ -205,8 +243,8 @@
 #general_notes__wrapper,
 #session_notes__wrapper {
     max-height: calc( 100% - 300px );
+    margin-bottom: 10px;
 }
-
 #sound-effects__content__wrapper>div {
     width: 100%;
 }
@@ -224,7 +262,7 @@
 #add-location__wrapper,
 #add_general__wrapper,
 #add_maps__wrapper {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 #start_session,
 #add-character,
@@ -234,29 +272,13 @@
 .btn-filter,
 #search_notes,
 #add_map {
-    font-size: 1.25em;
-    padding: 5px 10px;
     border-radius: 5px;
-    margin: 0 auto 10px;
+    font-size: .75em;
+    margin-bottom: 5px;
+    padding: 5px 10px;
     text-align: center;
-}
-#start_session {
-    width: 108px;
-}
-#add-character {
-    width: 122px;
-}
-#add-location {
-    width: 115px;
-}
-#add_general {
-    width: 100px;
-}
-#search_notes {
-    width: 140px;
-}
-#add_map {
-    width: 90px;
+    position: absolute;
+    right: 20px;
 }
 #close_chronicle__wrapper,
 #close_campaign__wrapper {
@@ -271,7 +293,29 @@
     margin: 0 auto;
     padding: 5px 10px;
     border-radius: 5px;
-    border: 2px solid;
+    border: 1px solid;
     font-size: 1.25em;
     text-align: center;
+}
+#settings__wrapper>.btn {
+    width: fit-content;
+    background-color: var(--theme-background-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 11px auto;
+}
+#character-account__wrapper {
+    border: 2px solid;
+    margin: 0 auto;
+    width: calc( 100% - 40px );
+    border-radius: 3px;
+    padding: 10px 5px;
+}
+#settings__wrapper .title {
+    font-family: 'Amethyst';
+    font-size: 1.5em;
+    padding-left: 25px;
+}
+#character-accounts__wrapper {
+    margin: 20px 0;
 }

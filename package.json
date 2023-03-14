@@ -1,8 +1,12 @@
 {
   "dependencies": {
     "eslint": "8.22.0",
+    "javascript-time-ago": "^2.5.9",
     "react": "^18.2.0",
     "react-autocomplete": "^1.8.1",
+    "react-html-parser": "^2.0.2",
+    "react-time-ago": "^7.2.1",
+    "react-to-print": "^2.14.7",
     "stomp-js": "^0.1.3",
     "stompjs": "^2.3.3",
     "uifx": "^2.0.7"

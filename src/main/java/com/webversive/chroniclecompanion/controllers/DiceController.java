@@ -1,5 +1,7 @@
 package com.webversive.chroniclecompanion.controllers;
 
+import com.webversive.chroniclecompanion.data.app.DndRollData;
+import com.webversive.chroniclecompanion.data.app.DndRollResultsData;
 import com.webversive.chroniclecompanion.data.app.RollData;
 import com.webversive.chroniclecompanion.enums.NotifyType;
 import com.webversive.chroniclecompanion.service.AccountService;
@@ -36,10 +38,10 @@ public class DiceController {
         this.brokerMessagingTemplate = brokerMessagingTemplate;
     }
 
-    @PostMapping("/campaign/{campaignId}/roll")
+    @PostMapping("/vampire/campaign/{campaignId}/roll")
     public ResponseEntity<String> rollDice(@AuthenticationPrincipal User user,
-                                                    @PathVariable("campaignId") String campaignId,
-                                                    @RequestBody RollData rollData){
+                                           @PathVariable("campaignId") String campaignId,
+                                           @RequestBody RollData rollData){
         try {
             if (rollData.getNotify().equals(NotifyType.EVERYONE)) {
                 brokerMessagingTemplate.convertAndSend("/secured/roll/results",
@@ -58,6 +60,39 @@ public class DiceController {
                 }
             }
 
+            return new ResponseEntity<>("Accepted", OK);
+        } catch (Exception ex) {
+            log.error("Error submitting roll results", ex);
+            return new ResponseEntity<>("Error submitting roll results", BAD_REQUEST);
+        }
+    }
+
+
+    @PostMapping("/dnd/campaign/{campaignId}/godice/roll")
+    public ResponseEntity<String> rollGoDice(@AuthenticationPrincipal User user,
+                                           @PathVariable("campaignId") String campaignId,
+                                           @RequestBody DndRollResultsData rollResultsData) {
+        try {
+            String gmUsername = accountService.getGMForCampaignId(campaignId);
+            rollService.handleDndRollResults(rollService.getGoDiceRollResults(user.getUsername(), campaignId, rollResultsData),
+                    user.getUsername(), campaignId, onlineService.getTokenByUsername(gmUsername),
+                    onlineService.getTokenByUsername(user.getUsername()));
+            return new ResponseEntity<>("Accepted", OK);
+        } catch (Exception ex) {
+            log.error("Error submitting roll results", ex);
+            return new ResponseEntity<>("Error submitting roll results", BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/dnd/campaign/{campaignId}/roll")
+    public ResponseEntity<String> rollDice(@AuthenticationPrincipal User user,
+                                           @PathVariable("campaignId") String campaignId,
+                                           @RequestBody DndRollData rollData){
+        try {
+            String gmUsername = accountService.getGMForCampaignId(campaignId);
+            rollService.handleDndRollResults(rollService.getRollResults(user.getUsername(), campaignId, rollData),
+                    user.getUsername(), campaignId, onlineService.getTokenByUsername(gmUsername),
+                    onlineService.getTokenByUsername(user.getUsername()));
             return new ResponseEntity<>("Accepted", OK);
         } catch (Exception ex) {
             log.error("Error submitting roll results", ex);

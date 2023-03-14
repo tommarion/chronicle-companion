@@ -14,7 +14,6 @@
     font-display: block;
 }
 
-
 @font-face {
     font-family: 'Vampire Calligraphy';
     src:
@@ -33,18 +32,280 @@
     font-style: normal;
     font-display: block;
 }
-
+.btn.btn_roll_as {
+    background: var(--theme-background-color);
+    border-radius: 5px;
+    left: 2px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 2px;
+}
 .characterName {
-    margin-left: 80px;
-    text-align: left;
+    margin-top: 30px
+}
+#character-sheet_menu__wrapper {
+    position: absolute;
+    top: 2px;
+    right: 0;
+}
+#character-sheet_menu>.btn {
+    background-color: var(--theme-background-color);
+    border-left: 1px solid;
+    padding: 5px 10px;
+    border-right: 1px solid;
+    user-select: none;
+}
+#character-sheet_menu>.btn:first-child {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-left: none;
+}
+#character-sheet_menu>.btn:last-child {
+    border-right: 0;
+}
+#character-bio__wrapper:not(.hidden) {
+    margin-bottom: 20px;
+}
+.character_data {
+    float: left;
+    margin: 10px 10px 20px 10px;
+    font-size: 0.75em;
+    width: fit-content;
+    border-radius: 5px;
+}
+.character_data:not(.hidden) {
+    display: table;
+    border: 2px solid;
+    padding: 5px 10px;
+}
+.character_data>div {
+    display: table-row;
+}
+.character_data>div:not(:last-child)>div {
+    border-bottom: 1px solid var(--theme-accent-color);
+}
+.character_data>div>div.right {
+    text-align: right;
+    border-right: 2px solid var(--theme-accent-color);
+}
+.character_data>div>div {
+    display: table-cell;
+    padding: 2px 5px;
+    vertical-align: middle;
 }
 
+#sheet__wrapper {
+    width: 100%;
+}
+
+#attributes__wrapper>div>div.subheader {
+    text-transform: uppercase;
+}
+
+#bio-text {
+    overflow: auto;
+    text-indent: 1.5em;
+    background-color: #000000aa;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+#disciplines__wrapper {
+    justify-content: space-around;
+    margin: 0 auto 30px;
+}
+#disciplines__wrapper>div {
+    margin: 10px;
+    width: fit-content;
+}
+#disciplines__wrapper .title {
+    font-size: 1.5em;
+    width: calc( 100% - 58px );
+}
+#disciplines__wrapper ul,
+#advantage-flaw__wrapper ul {
+    margin-top: -10px;
+}
+#disciplines__wrapper ul>li {
+    display: block;
+    width: 250px;
+    height: 30px;
+    cursor: help;
+    overflow: auto;
+    transition: height 1s ease, width 1s ease;
+}
+#disciplines__wrapper ul>li.active {
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 0 10px;
+    width: calc( 100% - 80px );
+    height: fit-content;
+}
+
+#disciplines__wrapper ul>li .subheader {
+    overflow-y: auto;
+    height: 0;
+    width: 0;
+    transition: height 1s ease, width 1s ease;
+    margin-bottom: 15px;
+}
+
+.table {
+    display: table;
+}
+.row {
+    display: table-row;
+}
+.table>.row>div {
+    display: table-cell;
+}
+.table>.row>div:first-child {
+    padding-right: 10px;
+}
+@media screen {
+    #character-content__wrapper {
+        height: calc( 100vh - 290px);
+        overflow-y: auto;
+    }
+
+    #disciplines__wrapper ul>li.active>.subheader {
+        width: 100%;
+        height: fit-content;
+        max-height: 150px;
+    }
+}
+
+#disciplines__wrapper ul>li:not(.active) div {
+    display: none;
+}
+@media (max-width: 601px) {
+    .characterName {
+        text-align: center;
+        font-size: 2em;
+    }
+    #attributes__wrapper {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    #tracker-table {
+        grid-column: 1;
+        grid-row: 5;
+    }
+    body.vampire #skills__wrapper {
+        padding-top: 40px;
+        grid-column: 1;
+        grid-row: 2/5;
+    }
+    #sheet__wrapper {
+        height: calc(100vh - 330px);
+        overflow-y: auto;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(180px, auto);
+    }
+
+}
+
+@media screen and (min-width: 602px) {
+    #attributes__wrapper {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .characterName {
+        margin-left: 80px;
+        text-align: left;
+        font-size: 3em;
+    }
+    #sheet__wrapper {
+        height: calc(100vh - 290px);
+    }
+    body.vampire #skills__wrapper {
+        height: 100%;
+        overflow-y: auto;
+        grid-column: 2;
+        grid-row: 1 / 3;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(140px, auto);
+    }
+
+    #sheet__wrapper>div {
+        padding: 0 calc((50% - 255px) / 2);
+    }
+    #character-bio__wrapper {
+        margin: 0 10vw 20px;
+    }
+    #tracker-table {
+        margin-top: 30px;
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
+
+body.vampire #skills__wrapper,
+#attributes__wrapper {
+    width: 255px;
+    margin: 0 auto;
+}
+
+body.vampire #skills__wrapper>div,
+#attributes__wrapper>div {
+    flex: 0 0 33.3%
+}
+body.vampire .skill__wrapper {
+    height: 47px;
+    padding-bottom: 10px;
+}
+button.btn__pdf-export {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: var(--theme-color);
+    background-color: var(--theme-background-color);
+    border-left: 2px solid;
+    border-top: 2px solid;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+}
+#advantage-flaw__wrapper {
+    justify-content: space-around;
+}
+
+#advantage-flaw__wrapper span.subheader {
+    opacity: .7;
+    position: relative;
+    top: -15px;
+}
+#advantage-flaw__wrapper .title {
+    font-size: 1.5em;
+}
+.ad-flaw_details__wrapper {
+    position: relative;
+    top: -10px;
+    padding-left: 10px;
+    text-align: center;
+}
+.ad-flaw_details__wrapper .level {
+    margin-left: -30px;
+}
+#advantage-flaw__wrapper ul>li {
+    flex-wrap: nowrap;
+    font-size: 0.75em;
+}
 /*************************************/
 /*            LEVEL METERS           */
 /*************************************/
 .level {
     font-family: auto;
-    font-size: 2em;
+    font-size: 1em;
 }
 .level:not(.expanded).level0:after {
     content: "\25CB\25CB\25CB\25CB\25CB";
@@ -106,9 +367,11 @@
     width: 160px;
     margin: -10px;
     position: absolute;
-    top: 20px;
+    top: 60px;
+    left: 30px;
     opacity: 0.25;
     pointer-events: none;
+    filter: drop-shadow(8px 9px 2px black);
 }
 #character__wrapper.human #clan:after {
     content: "\e90b";
@@ -186,8 +449,8 @@
 #character__wrapper.Toreador .title,
 #character__wrapper.Tremere .header,
 #character__wrapper.Tremere .title,
-#character__wrapper.Hecata .header,
-#character__wrapper.Hecata .title {
+#character__wrapper.Tzimisce .header,
+#character__wrapper.Tzimisce .title {
     font-family: 'Vampire Calligraphy' !important;
 }
 #character__wrapper.Ventrue .header,
@@ -202,8 +465,8 @@
 #character__wrapper.Nosferatu .title,
 #character__wrapper.Malkavian .header,
 #character__wrapper.Malkavian .title,
-#character__wrapper.Tzimisce .header,
-#character__wrapper.Tzimisce .title{
+#character__wrapper.Hecata .header,
+#character__wrapper.Hecata .title {
     font-family: 'Rosemary Roman' !important;
 }
 #character__wrapper.Gangrel .header,
@@ -216,4 +479,110 @@
 }
 #character__wrapper .attr__wrapper .title {
     font-family: 'Catull' !important;
+}
+
+
+/*************************************/
+/*             PRINT STYLE           */
+/*************************************/
+
+.btn__pdf-export:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+@media print {
+    body {
+        background-image: unset;
+    }
+    .btn_roll_as, #character-sheet_menu {
+        display: none
+    }
+    .characterName {
+        margin-left: 120px;
+        font-size: 3.5em;
+        filter: drop-shadow(4px 3px 2px black);
+        text-align: left;
+    }
+    #disciplines__wrapper {
+        display: flex;
+    }
+    #character-bio__wrapper {
+        display: block;
+        margin: 0 40px;
+    }
+    #character-bio, #sheet__wrapper-content {
+        background-image: url(../img/vampire/background.png);
+        background-size: cover;
+        height: 100vh;
+        position: absolute;
+    }
+    #character-bio{
+        background-position: 23% center;
+    }
+    #sheet__wrapper-content {
+        background-position: right;
+    }
+    #character-bio {
+        top: 0;
+    }
+    #bio-text,
+    .character_data {
+        font-size: 1.25em;
+    }
+    #sheet__wrapper-content {
+        page-break-before: always;
+        display: table;
+        top: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+    #sheet__wrapper {
+        display: table-cell !important;
+        font-size: 1.25em;
+        height: fit-content !important;
+        width: 100vw;
+        vertical-align: middle;
+    }
+    #attributes__wrapper {
+        top: 80px;
+        margin: 0 auto 40px;
+    }
+    body.vampire #skills__wrapper {
+        height: fit-content;
+    }
+    #disciplines__wrapper {
+        margin-top: 80px;
+    }
+    #attributes__wrapper,
+    body.vampire #skills__wrapper,
+    #character-bio__wrapper,
+    #disciplines__wrapper>div,
+    #tracker-table {
+        padding: 5px 10px;
+        background: #000000aa;
+        border-radius: 5px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(180px, auto);
+    }
+    #attributes__wrapper {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    #tracker-table {
+        margin: 0 auto;
+    }
+    #skills__wrapper {
+        grid-column: 1;
+        grid-row: 2/5;
+    }
+}
+#attributes__wrapper>div, #skills__wrapper, #tracker-table {
+    background: #000000aa;
+    border-radius: 5px;
 }

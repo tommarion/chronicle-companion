@@ -11,12 +11,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.sql.DataSource;
 
 @Configuration
 @Slf4j
 public class SecurityConfig {
+
+    private final DataSource dataSource;
+
+    public SecurityConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -60,7 +69,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
         http
                 .formLogin(form -> form
                         .loginPage("/login.html")
@@ -72,6 +81,8 @@ public class SecurityConfig {
                 )
                 .logout()
                 .logoutSuccessUrl("/login.html")
+                .and()
+                .rememberMe().tokenRepository(persistentTokenRepository()).userDetailsService(userDetailsService)
                 .and()
                 .authorizeRequests((authz) -> authz
                         .antMatchers(
@@ -92,5 +103,12 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 ).csrf().disable();
         return http.build();
+    }
+
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl tokenRepo = new JdbcTokenRepositoryImpl();
+        tokenRepo.setDataSource(dataSource);
+        return tokenRepo;
     }
 }

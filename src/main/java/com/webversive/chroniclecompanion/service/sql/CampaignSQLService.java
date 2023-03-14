@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -27,22 +28,34 @@ public class CampaignSQLService {
 
     public List<CampaignBook> getCampaignBooksWithPlayer(String username) {
         return jdbcTemplate.query(
-                "SELECT campaigns.*, characters.name, characters.id FROM campaigns INNER JOIN characters ON " +
-                        "campaigns.id=characters.campaign_id INNER JOIN account_characters ON " +
-                        "characters.id=account_characters.character_id INNER JOIN accounts ON " +
-                        "account_characters.account_id=accounts.id WHERE accounts.username=?",
+                "SELECT campaigns.*, characters.name, characters.id, COUNT(sessions.id) AS session_count, MAX(sessions.date) AS last_played FROM campaigns " +
+                        "INNER JOIN characters ON campaigns.id=characters.campaign_id " +
+                        "INNER JOIN account_characters ON characters.id=account_characters.character_id " +
+                        "INNER JOIN accounts ON account_characters.account_id=accounts.id " +
+                        "LEFT JOIN sessions ON campaigns.id=sessions.campaign_id " +
+                        "WHERE accounts.username=? GROUP BY campaigns.id " +
+                        "ORDER BY sessions.date IS NULL, sessions.date",
                 new CampaignBookMapper(), username);
     }
 
     public List<CampaignBook> getCampaignBooksForDM(String username) {
-        return jdbcTemplate.query("SELECT campaigns.* FROM campaigns INNER JOIN dungeon_master ON " +
-                "campaigns.id=dungeon_master.campaign_id INNER JOIN accounts ON " +
-                "dungeon_master.account_id=accounts.id WHERE accounts.username=?",
+        return jdbcTemplate.query("SELECT campaigns.*, COUNT(sessions.id) AS session_count, MAX(sessions.date) AS last_played, " +
+                        "(SELECT group_concat('{ id: \"' || accounts.username || '\", name: \"' || characters.name || '\" }') " +
+                        "FROM characters " +
+                        "INNER JOIN account_characters ON characters.id=account_characters.character_id " +
+                        "INNER JOIN accounts ON account_characters.account_id = accounts.id " +
+                        "WHERE characters.campaign_id=campaigns.id) players " +
+                        "FROM campaigns " +
+                        "INNER JOIN accounts ON campaigns.dungeon_master=accounts.id " +
+                        "LEFT JOIN sessions ON campaigns.id=sessions.campaign_id " +
+                        "WHERE accounts.username=? GROUP BY campaigns.id " +
+                        "ORDER BY sessions.date IS NULL, sessions.date",
                 new CampaignBookMapper(), username);
     }
 
     public CampaignDTO getCampaignDTOById(String campaignId) {
-        return jdbcTemplate.queryForObject("SELECT * FROM campaigns WHERE id=?", new CampaignDTOMapper(), campaignId);
+        return jdbcTemplate.queryForObject("SELECT * FROM campaigns WHERE campaigns.id=?", new CampaignDTOMapper(),
+                campaignId);
     }
 
 
@@ -67,6 +80,13 @@ public class CampaignSQLService {
     public GameType getGameTypeForCampaign(String campaignId) {
         return GameType.fromString(jdbcTemplate.queryForObject("SELECT game_type FROM campaigns WHERE campaigns.id=?",
                 String.class, campaignId));
+    }
+
+    public String addCampaign(String accountId, String name, String gameType) {
+        String id = UUID.randomUUID().toString();
+        jdbcTemplate.update("INSERT INTO campaigns (id, name, game_type, dungeon_master) VALUES (?, ?, ?, ?)", id,
+                name, gameType, accountId);
+        return id;
     }
 
 }

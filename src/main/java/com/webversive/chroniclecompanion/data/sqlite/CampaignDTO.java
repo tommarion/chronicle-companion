@@ -12,4 +12,5 @@ public class CampaignDTO {
     private boolean enabled;
     private String relationshipMapLink;
     private String activeEncounter;
+    private String sessions;
 }

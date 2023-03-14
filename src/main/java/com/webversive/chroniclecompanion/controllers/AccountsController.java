@@ -5,6 +5,7 @@ import com.webversive.chroniclecompanion.data.app.LoginCredentials;
 import com.webversive.chroniclecompanion.data.app.OnlineStatus;
 import com.webversive.chroniclecompanion.service.AccountService;
 import com.webversive.chroniclecompanion.service.OnlineService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import static java.util.Objects.isNull;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
+@Slf4j
 public class AccountsController {
     private final AccountService accountService;
     private final OnlineService onlineService;
@@ -57,8 +60,13 @@ public class AccountsController {
     @GetMapping("/campaign/{campaignId}/online")
     public ResponseEntity<List<OnlineStatus>> getOnlineStatus(@AuthenticationPrincipal User user,
                                                               @PathVariable("campaignId") String campaignId) {
-        return new ResponseEntity<>(onlineService.getOnlineStatus(user.getUsername(), campaignId),
-                OK);
+        try {
+            return new ResponseEntity<>(onlineService.getOnlineStatus(user.getUsername(), campaignId),
+                    OK);
+        } catch (NullPointerException npe) {
+            log.error("Unable to find ");
+            return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("/register")

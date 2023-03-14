@@ -103,7 +103,7 @@ public class OnlineService {
         }
         List<OnlineStatus> onlineStatus = new ArrayList<>() {{
             OnlineStatus status =
-                    getOnlineDataByAccountId(accountSqlService.getAccountIdForUsername("storyteller"), gmTitle);
+                    getOnlineDataByAccountId(accountSqlService.getAccountIdForUsername(accountSqlService.getGMForCampaignId(campaignId)), gmTitle);
             status.setName(gmTitle);
             add(status);
         }};

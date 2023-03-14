@@ -1,15 +1,32 @@
 #btn__dice-roll__wrapper {
     width: 100%;
-    height: 90px;
-    padding-top: 10px;
+    height: fit-content;
+    border-bottom: 1px solid;
+}
+.right {
+    float: right;
+    margin-bottom: -15px;
+}
+.dice-roll>.right.subheader {
+    padding-right: 15px;
 }
 #roll-type {
     font-size: 1.25em;
     text-align: center;
-    border-radius: 5px;
-    border: 2px solid;
     width: 80%;
     margin: 0 auto;
+}
+#dice-results .title {
+    font-size: 2em;
+    text-align: left;
+    opacity: 0.7;
+    margin-bottom: -10px;
+}
+.dice-roll>div:not(.dice-result):not(.dice-result__tooltip) {
+    margin-left: 10px;
+}
+.dice-result__tooltip {
+    text-align: center;
 }
 #roll-type > div > input {
     color: #C5C5C5;
@@ -37,20 +54,18 @@
     border-radius: 5px;
     padding: 7px 5px 5px;
     margin-top: 3px;
+    width: 53px;
+    color: #C5C5C5;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border: 1px solid;
 }
 #dice-pool__input {
-    width: 53px;
     background: black;
-    color: #C5C5C5;
-    border: 2px solid;
 }
 #hunger-dice__input {
-    width: 53px;
     background: #5d000d;
-    border: 2px solid #C5C5C5;
     border-top-right-radius: 0;
-    margin-left: 10px;
-    color: #C5C5C5;
 }
 #dice-pool__input:disabled,
 #hunger-dice__input:disabled {
@@ -62,8 +77,6 @@
     height: 20px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    border: 2px solid #C5C5C5;
-    margin-left: -2px;
     margin-top: 3px;
 }
 input::-webkit-outer-spin-button,
@@ -77,39 +90,42 @@ input::-webkit-inner-spin-button {
     margin-left: 4px;
     line-height: 20px;
 }
-#btn_roll-dice {
-    border-left: 2px solid;
-    border-right: 2px solid;
-    border-top: 2px solid;
-    border-top-right-radius: 10px;
-    font-weight: 700;
+body.vampire #btn_roll-dice {
     margin-left: 4px;
-    margin-top: 18px;
-    padding: 2px 10px 7px 5px;
+    margin-top: 12px;
     position: absolute;
     right: 20px;
-    text-align: center;
-    width: 25px;
-    height: 23px;
-    background-color: #5d000d;
+}
+
+body.dnd #btn_roll-dice {
+    border-bottom: 1px solid;
+    border-bottom-right-radius: 10px;
+}
+#btn_roll-dice {
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-top-right-radius: 10px;
+    background-color: var(--theme-background-color);
     background-image: url(../img/dice.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 70%;
+    padding: 2px 10px 7px 5px;
+    width: 25px;
+    height: 23px;
 }
 
 #btn_private-roll {
     color: #c5c5c5;
     background-color: #610000;
     right: 62px;
-    top: 67px;
-    position: absolute;
+    margin-left: 17px;
+    margin-top: 12px;
     width: 20px;
     height: 20px;
-    border: 2px solid;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    margin-left: 30px;
 }
 .die {
     color: #c5c5c5;
@@ -117,7 +133,7 @@ input::-webkit-inner-spin-button {
     margin: 0 3px 5px;
     border-radius: 10px;
     padding: 5px 0 5px 13px;
-    height: 48px;
+    height: fit-content;
 }
 .die.hunger {
     background: #5d000d;
@@ -136,10 +152,10 @@ input::-webkit-inner-spin-button {
 }
 .icon_failure:before {
     content: "\25CF";
-    font-size: 0.8em;
-    margin-right: -1px;
-    top: -10px;
+    font-size: .8em;
+    margin-left: -1px;
     position: relative;
+    top: -7px;
 }
 .icon_bestial-failure:before {
     content: "\e901";
@@ -151,23 +167,31 @@ input::-webkit-inner-spin-button {
 #dice-roll__window {
     color: #c5c5c5;
     width: 100%;
-    height: calc( 100% - 97px );
+    height: calc( 100% - 86px );
     overflow: auto;
     border-radius: 5px;
-    background-color: #000000aa;
 }
 #dice-results {
     margin: 20px 0;
 }
+body.vampire .dice-result {
+    letter-spacing: 12px;
+}
+body.dnd .dice-result>div {
+    background-color: #000000aa;
+    border-radius: 3px;
+    padding: 5px 10px;
+    height: fit-content;
+    margin: 0 5px;
+}
 .dice-result {
-    font-size: 3em;
+    font-size: 2em;
     font-family: 'chronicle-companion-10' !important;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    letter-spacing: 12px;
     margin: 0 auto;
     padding: 6px 0 4px;
     border-radius: 5px;
@@ -176,7 +200,6 @@ input::-webkit-inner-spin-button {
     -moz-osx-font-smoothing: grayscale;
 }
 .dice-roll {
-    text-align: center;
     width: 260px;
     margin: 0 auto;
 }

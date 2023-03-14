@@ -14,6 +14,7 @@ public class RollResultsData {
     private NotifyType notify;
     private Date timestamp;
     private String rollFor;
+    private String rollWith;
     private RollResults roll;
     private boolean reroll;
 }

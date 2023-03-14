@@ -18,7 +18,8 @@ li.btn:not(.active):not(.disabled):active {
 
 .btn-location,
 .btn-character,
-.btn-note {
+.btn-note,
+.btn-location {
     background-color: var(--theme-background-color);
     color: var(--theme-color);
     text-align: center;
@@ -38,7 +39,9 @@ li.btn:not(.active):not(.disabled):active {
 	display: table-cell;
 	vertical-align: middle;
 }
-
+.btn-character>.name {
+    padding: 0 10px;
+}
 .close_users {
     background-color: var(--theme-background-color);
     color: var(--theme-color);
