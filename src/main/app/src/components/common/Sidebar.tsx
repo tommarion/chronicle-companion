@@ -15,6 +15,7 @@ import DndConst from "../../data/DndConst";
 import Settings from "./Settings";
 import {ClientData} from "../../data/ClientData";
 import MainContentView from "../../data/enum/MainContentView";
+import { isMobile } from "react-device-detect";
 
 type SidebarProps = {
     active:                 boolean
@@ -49,6 +50,7 @@ type SidebarProps = {
     handleNotesUpdate:      Function
     addCharacterHandler:    React.MouseEventHandler
     stompClient:            ClientData
+    handleUpdateTooltip:    Function
 }
 
 type SidebarBtnType = {
@@ -60,21 +62,12 @@ type SidebarBtnType = {
 }
 
 export default function Sidebar(props: SidebarProps) {
-    const [tooltip, setToolTip] = useState<TooltipData>(null);
     const [rollSeenIndex, setRollSeenIndex] = useState(0);
     const [rollCount, setRollCount] = useState(0);
 
     let diceComponent = <></>;
     let headerType = "";
     let sidebarButtons: SidebarBtnType[] = [];
-
-    const updateTooltip = (e: React.MouseEvent<HTMLDivElement>, text: string) => {
-        setToolTip({
-            xPos: e.clientX + 15,
-            yPos: e.clientY + 15,
-            text: text
-        })
-    }
 
     const setRollCountData = (rollCountData: number) => {
         setRollCount(rollCountData);
@@ -124,6 +117,7 @@ export default function Sidebar(props: SidebarProps) {
                 stompClient={props.stompClient}
                 setRollCountData={setRollCountData}
                 setRollSeenData={setRollSeenData}
+                handleUpdateTooltip={props.handleUpdateTooltip}
             />;
             headerType = "Chronicle";
             sidebarButtons = VampireConst.SIDEBAR_BTNS;
@@ -191,10 +185,11 @@ export default function Sidebar(props: SidebarProps) {
                                         (showRollBadge && rollBadgeNum > 0 ? ' badge' : '')}
                                     data-badge={showRollBadge ? rollBadgeNum : null}
                                     onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) =>
-                                        updateTooltip(e, btn.tooltip)}
+                                        props.handleUpdateTooltip(e, btn.tooltip)}
                                     onMouseMove={(e: React.MouseEvent<HTMLDivElement>) =>
-                                        updateTooltip(e, btn.tooltip)}
-                                    onMouseLeave={() => setToolTip(null)}
+                                        props.handleUpdateTooltip(e, btn.tooltip)}
+                                    onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) =>
+                                        props.handleUpdateTooltip(null, null)}
                                     onClick={() => {
                                         props.playSoundHandler(isActive ? SoundType.SIDEBAR_CLOSE :
                                             SoundType.SIDEBAR_OPEN)
@@ -218,7 +213,6 @@ export default function Sidebar(props: SidebarProps) {
                     {diceComponent}
                     {sidebarContent}
                 </div>
-                {tooltip ? <div style={{left: tooltip.xPos, top: tooltip.yPos}} className={'tooltip'}>{tooltip.text}</div> : null}
             </>
         );
 }

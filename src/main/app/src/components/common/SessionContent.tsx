@@ -29,8 +29,7 @@ export default function SessionContent(props: SessionContentProps) {
                 note: noteText.replace('&nbsp;', ' ')
             })
         }).then(() => {
-            setSessionContent(null);
-            getSessionContent();
+            updateSessionContent();
             if (noteId === null) {
                 e.target.innerHTML = "";
             }
@@ -42,8 +41,7 @@ export default function SessionContent(props: SessionContentProps) {
                 method: "delete",
                 headers: {'Content-Type':'application/json'}
             }).then(() => {
-                setSessionContent(null);
-                getSessionContent();
+                updateSessionContent();
             });
         }
     }
@@ -64,7 +62,7 @@ export default function SessionContent(props: SessionContentProps) {
     }
     useEffect(() => {
         if (props.id) {
-            getSessionContent();
+            updateSessionContent();
         }
     }, [props.id]);
 
@@ -79,6 +77,12 @@ export default function SessionContent(props: SessionContentProps) {
             });
     }
     const refs = useRef([]);
+
+    const updateSessionContent = () => {
+        setSessionContent(null);
+        getSessionContent();
+    }
+
     return (
         sessionContent && sessionContent.session && sessionContent.notes ?
         <div id={'session__wrapper'}>

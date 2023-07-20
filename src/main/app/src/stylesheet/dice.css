@@ -170,6 +170,7 @@ body.dnd #btn_roll-dice {
     height: calc( 100% - 86px );
     overflow: auto;
     border-radius: 5px;
+    background-color: #000000aa;
 }
 #dice-results {
     margin: 20px 0;

@@ -172,13 +172,13 @@ export default class VampireConst {
             admin: true,
             tooltip: 'Sound Effects & Background Music'
         },
-        {
-            id: 'btn-relationship_map',
-            view: SidebarView.NULL,
-            mainView: MainContentView.RELATIONSHIP_MAP,
-            admin: false,
-            tooltip: 'Relationship Map'
-        },
+        // {
+        //     id: 'btn-relationship_map',
+        //     view: SidebarView.NULL,
+        //     mainView: MainContentView.RELATIONSHIP_MAP,
+        //     admin: false,
+        //     tooltip: 'Relationship Map'
+        // },
         {
             id: 'btn-chronicle_settings',
             view: SidebarView.SETTINGS,

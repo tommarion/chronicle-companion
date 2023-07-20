@@ -8,8 +8,8 @@ import com.webversive.chroniclecompanion.service.OnlineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
@@ -23,16 +23,18 @@ public class SocketController {
 
     final OnlineService onlineService;
     final AccountService accountService;
+    final SimpMessagingTemplate brokerMessagingTemplate;
 
     public SocketController(OnlineService onlineService,
-                            AccountService accountService) {
+                            AccountService accountService,
+                            SimpMessagingTemplate brokerMessagingTemplate) {
         this.onlineService = onlineService;
         this.accountService = accountService;
+        this.brokerMessagingTemplate = brokerMessagingTemplate;
     }
 
     @MessageMapping("/register")
-    @SendTo("/secured/online/update")
-    public SocketOutputMessage send(@Payload SocketMessage socketMessage, SimpMessageHeaderAccessor headerAccessor)
+    public void send(@Payload SocketMessage socketMessage, SimpMessageHeaderAccessor headerAccessor)
             throws Exception {
         if (nonNull(headerAccessor.getUser())) {
             log.info(headerAccessor.getUser().getName());
@@ -46,9 +48,9 @@ public class SocketController {
                     .characterId(accountService.getCharacterIdForUsername(username, chronicleId))
                     .campaignId(chronicleId)
                     .build());
-            log.info(onlineService.getOnlineDataByToken(sessionId).toString());
+            brokerMessagingTemplate.convertAndSend("/secured/campaign/" + chronicleId + "/online/update",
+                    new SocketOutputMessage(new SimpleDateFormat("HH:mm").format(new Date())));
         }
         log.info("Register received");
-        return new SocketOutputMessage(new SimpleDateFormat("HH:mm").format(new Date()));
     }
 }

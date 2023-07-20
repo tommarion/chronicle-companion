@@ -16,6 +16,7 @@ import {getBaseURL} from "../../js/common";
 import * as SockJS from "sockjs-client";
 import VampireConst from "../../data/VampireConst";
 import DndFooter from "../dnd/DndFooter";
+import {isMobile} from "react-device-detect";
 
 const Stomp = require('stompjs');
 
@@ -60,6 +61,8 @@ export default function Campaign(props: CampaignProps) {
     const [dndCharacterData, setDndCharacterData] = useState<DndCharacterInterface>(null);
     const [vampireCharacterData, setVampireCharacterData] = useState<CharacterSheetInterface>(null);
 
+    const [tooltip, setToolTip] = useState<TooltipData>(null);
+
     const [dice, setDice] = useState<DicePool>({
         vampire: {
             pool:   1,
@@ -67,6 +70,21 @@ export default function Campaign(props: CampaignProps) {
         },
         dnd: new Map([[20, {value:1, modifier: 0}]])
     });
+
+    const updateTooltip = (e: React.MouseEvent<HTMLDivElement>, text: string) => {
+        if (isMobile) {
+            return;
+        }
+        if (e === null) {
+            setToolTip(null);
+        } else {
+            setToolTip({
+                xPos: e.clientX + 15,
+                yPos: e.clientY + 15,
+                text: text
+            });
+        }
+    }
 
     useEffect(() => {
         console.log( "fetching chronicle" );
@@ -102,7 +120,7 @@ export default function Campaign(props: CampaignProps) {
 
             stompClient.send('/socket/register', {},
                 JSON.stringify({campaignId: sessionStorage.getItem('campaignId')}));
-            stompClient.subscribe('/secured/online/update', () => {
+            stompClient.subscribe('/secured/campaign/' + props.id + '/online/update', () => {
                 fetch(getBaseURL() + "campaign/" + props.id + '/online')
                     .then(response => response.json())
                     .then(result => setOnline(result))
@@ -318,6 +336,7 @@ export default function Campaign(props: CampaignProps) {
                      handleNotesUpdate={handleNotesUpdate}
                      addCharacterHandler={handleAddCharacter}
                      stompClient={stompClient}
+                     handleUpdateTooltip={updateTooltip}
             />
             <MainContent
                 admin={campaignData ? campaignData.admin : false}
@@ -341,6 +360,7 @@ export default function Campaign(props: CampaignProps) {
                     console.log(characterSheet);
                 }}
             />
+            {tooltip ? <div style={{left: tooltip.xPos, top: tooltip.yPos}} className={'tooltip'}>{tooltip.text}</div> : null}
             {footer}
         </>
     );

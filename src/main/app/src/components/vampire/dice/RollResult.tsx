@@ -37,10 +37,7 @@ export default class RollResult extends Component<RollResultProps, any>{
                     successes++;
                 }
             }
-            let messyCrit = false;
-            if (critSuccessHunger > 1) {
-                messyCrit = true;
-            }
+            let messyCrit = critSuccessHunger > 1 || (critSuccessHunger === 1 && critSuccess >= 1);
             let crit = (critSuccessHunger + critSuccess) > 1 && !messyCrit;
             successes += Math.floor((critSuccessHunger + critSuccess) / 2) * 4;
             successes += (critSuccessHunger + critSuccess) % 2;

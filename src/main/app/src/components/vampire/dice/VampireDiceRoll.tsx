@@ -27,6 +27,7 @@ type DiceRollProps = {
     playSoundHandler:       Function
     setRollCountData:       Function
     setRollSeenData:        Function
+    handleUpdateTooltip:    Function
 }
 
 export default function VampireDiceRoll(props: DiceRollProps) {
@@ -61,13 +62,13 @@ export default function VampireDiceRoll(props: DiceRollProps) {
 
     useEffect(() => {
         if (props.stompClient) {
-            props.stompClient.stompClient.unsubscribe('/secured/roll/results');
+            props.stompClient.stompClient.unsubscribe('/secured/campaign/' + props.campaignId + '/roll/results');
             props.stompClient.stompClient.unsubscribe('/secured/user/' + props.stompClient.userSessionId +
-                '/roll/results');
-            props.stompClient.stompClient.subscribe('/secured/roll/results', (message: Message) =>
-                handleDiceResults(message));
+                + '/campaign/' + props.campaignId + '/roll/results');
+            props.stompClient.stompClient.subscribe('/secured/campaign/' + props.campaignId + '/roll/results',
+                (message: Message) => handleDiceResults(message));
             props.stompClient.stompClient.subscribe('/secured/user/' + props.stompClient.userSessionId +
-                '/roll/results', (message: Message) => handleDiceResults(message));
+                + '/campaign/' + props.campaignId + '/roll/results', (message: Message) => handleDiceResults(message));
             console.log(props.stompClient.stompClient.subscriptions);
         }
     }, [props.stompClient]);
@@ -164,6 +165,11 @@ export default function VampireDiceRoll(props: DiceRollProps) {
                             props.dice.hunger <= parseInt(e.target.value) ?
                                 props.dice.hunger : e.target.value
                         )}
+                        onMouseEnter={e => props.handleUpdateTooltip(e,
+                            "Total Dice Pool (including hunger dice)")}
+                        onMouseMove={e => props.handleUpdateTooltip(e,
+                            "Total Dice Pool (including hunger dice)")}
+                        onMouseLeave={e => props.handleUpdateTooltip(null, null)}
                     />
                     <input
                         id={"hunger-dice__input"}
@@ -175,6 +181,11 @@ export default function VampireDiceRoll(props: DiceRollProps) {
                         disabled={!includeHunger}
                         onChange={e => props.onDiceValueUpdate(props.dice.pool >= parseInt(e.target.value) ?
                             props.dice.pool : e.target.value, e.target.value)}
+                        onMouseEnter={e => props.handleUpdateTooltip(e,
+                            "Hunger Dice")}
+                        onMouseMove={e => props.handleUpdateTooltip(e,
+                            "Hunger Dice")}
+                        onMouseLeave={() => props.handleUpdateTooltip(null, null)}
                     />
                     <div
                         id={'hunger-dice__input-div'}

@@ -3,6 +3,7 @@ package com.webversive.chroniclecompanion.controllers;
 import com.webversive.chroniclecompanion.data.app.DndRollData;
 import com.webversive.chroniclecompanion.data.app.DndRollResultsData;
 import com.webversive.chroniclecompanion.data.app.RollData;
+import com.webversive.chroniclecompanion.enums.GameType;
 import com.webversive.chroniclecompanion.enums.NotifyType;
 import com.webversive.chroniclecompanion.service.AccountService;
 import com.webversive.chroniclecompanion.service.OnlineService;
@@ -44,19 +45,19 @@ public class DiceController {
                                            @RequestBody RollData rollData){
         try {
             if (rollData.getNotify().equals(NotifyType.EVERYONE)) {
-                brokerMessagingTemplate.convertAndSend("/secured/roll/results",
-                        rollService.getRollResults(user.getUsername(), campaignId, rollData));
+                brokerMessagingTemplate.convertAndSend("/secured/campaign/" + campaignId + "/roll/results",
+                        rollService.getRollResults(user.getUsername(), campaignId, rollData, GameType.VTM));
             } else {
                 String gmUsername = accountService.getGMForCampaignId(campaignId);
                 String gmSessionId = onlineService.getTokenByUsername(gmUsername);
                 String userSessionId = onlineService.getTokenByUsername(user.getUsername());
                 brokerMessagingTemplate.convertAndSend(
-                        "/secured/user/" + userSessionId + "/roll/results",
-                        rollService.getRollResults(user.getUsername(), campaignId, rollData));
+                        "/secured/user/" + userSessionId + "/campaign/" + campaignId + "/roll/results",
+                        rollService.getRollResults(user.getUsername(), campaignId, rollData, GameType.VTM));
                 if (!userSessionId.equals(gmSessionId)) {
                     brokerMessagingTemplate.convertAndSend(
-                            "/secured/user/" + gmSessionId + "/roll/results",
-                            rollService.getRollResults(user.getUsername(), campaignId, rollData));
+                            "/secured/user/" + gmSessionId + "/campaign/" + campaignId + "/roll/results",
+                            rollService.getRollResults(user.getUsername(), campaignId, rollData, GameType.VTM));
                 }
             }
 

@@ -12,6 +12,7 @@
     display: flex;
     top: 10px;
     overflow-x: auto;
+    max-height: 30px;
 }
 @media screen and (max-width: 1099px) {
     #top-container:not(.sidebar) #pc__btns__wrapper {

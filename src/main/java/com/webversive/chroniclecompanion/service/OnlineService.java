@@ -84,8 +84,14 @@ public class OnlineService {
         return onlineStatus;
     }
 
-    public void removeToken(String token) {
-        SOCKET_DATA.remove(token);
+    public String removeToken(String token) {
+        String campaignId = SOCKET_DATA.get(token).getCampaignId();
+        try {
+            SOCKET_DATA.remove(token);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+        return campaignId;
     }
 
     public List<OnlineStatus> getOnlineStatus(String username, String campaignId) {

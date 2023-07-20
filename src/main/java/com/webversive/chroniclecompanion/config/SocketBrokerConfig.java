@@ -1,5 +1,6 @@
 package com.webversive.chroniclecompanion.config;
 
+import com.webversive.chroniclecompanion.service.OnlineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -15,6 +16,12 @@ import org.springframework.web.socket.handler.WebSocketHandlerDecorator;
 @EnableWebSocketMessageBroker
 @Slf4j
 public class SocketBrokerConfig implements WebSocketMessageBrokerConfigurer {
+
+    private final OnlineService onlineService;
+
+    public SocketBrokerConfig(OnlineService onlineService) {
+        this.onlineService = onlineService;
+    }
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
@@ -57,9 +64,13 @@ public class SocketBrokerConfig implements WebSocketMessageBrokerConfigurer {
 //            }
 
             @Override
+
             public void afterConnectionClosed(final WebSocketSession session, CloseStatus closeStatus)
                     throws Exception {
                 log.info("Client {} disconnected", session.getId());
+                String campaignId = onlineService.removeToken(session.getId());
+//                brokerMessagingTemplate.convertAndSend("/secured/campaign/" + campaignId + "/online/update",
+//                        new SocketOutputMessage(new SimpleDateFormat("HH:mm").format(new Date())));
                 super.afterConnectionClosed(session, closeStatus);
             }
         });

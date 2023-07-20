@@ -6,6 +6,7 @@ import com.webversive.chroniclecompanion.data.app.DndRollResultsData;
 import com.webversive.chroniclecompanion.data.app.RollData;
 import com.webversive.chroniclecompanion.data.app.RollResults;
 import com.webversive.chroniclecompanion.data.app.RollResultsData;
+import com.webversive.chroniclecompanion.enums.GameType;
 import com.webversive.chroniclecompanion.enums.NotifyType;
 import com.webversive.chroniclecompanion.service.sql.CharacterSQLService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class RollService {
         this.brokerMessagingTemplate = brokerMessagingTemplate;
     }
 
-    public RollResultsData getRollResults(String username, String campaignId, RollData rollData) {
+    public RollResultsData getRollResults(String username, String campaignId, RollData rollData, GameType gameType) {
         RollResults rollResults = RollResults.builder()
                 .regular(rollDice(rollData.getTotal() - rollData.getHunger(), 10))
                 .hunger(rollDice(rollData.getHunger(), 10))
@@ -40,8 +41,9 @@ public class RollService {
             rollResults.getRegular().addAll(rollData.getReroll().getRegular());
             rollResults.getHunger().addAll(rollData.getReroll().getHunger());
         }
+        String player = characterSqlService.getCharacterNameForUsername(username, campaignId);
         return RollResultsData.builder()
-                .player(characterSqlService.getCharacterNameForUsername(username, campaignId))
+                .player(gameType == GameType.VTM && player.equals("DM") ? "Storyteller" : player)
                 .alias(rollData.getAlias())
                 .notify(rollData.getNotify())
                 .rollFor(rollData.getRollFor())
